@@ -1,0 +1,23 @@
+:root {
+  // Color Palette
+  --color-primary-300: #9bc93e;
+
+  --color-grey-100: #f4f4f4;
+  --color-grey-150: #f0f2f5;
+  --color-grey-500: #717171;
+  --color-grey-900: #222222;
+  --color-grey-950: #0f0f0f;
+
+  --color-black: #000;
+  --color-white: #fff;
+
+  // Other color variables
+  --color-primary: var(--color-primary-300);
+  --color-text-primary: var(--color-grey-950);
+  --color-text-secondary: var(--color-grey-500);
+  --color-body-bg: var(--color-grey-100);
+  --color-cards-bg: var(--color-white);
+
+  // Header
+  --header-height: 7rem;
+}
