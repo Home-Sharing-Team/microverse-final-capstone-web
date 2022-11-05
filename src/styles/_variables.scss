@@ -1,0 +1,34 @@
+:root {
+  // Color Palette
+  --color-primary-300: #9bc93e;
+  --color-grey-100: #f4f4f4;
+  --color-grey-150: #f0f2f5;
+  --color-grey-500: #717171;
+  --color-grey-700: #3d3c42;
+  --color-grey-900: #222;
+  --color-grey-950: #0f0f0f;
+  --color-black: #000;
+  --color-white: #fff;
+
+  // Other color variables
+  --color-primary: var(--color-primary-300);
+  --color-text-primary: var(--color-grey-950);
+  --color-text-secondary: var(--color-grey-500);
+  --color-body-bg: var(--color-grey-100);
+  --color-cards-bg: var(--color-white);
+
+  // Box shadows
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-2: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-3: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  --shadow-cards: var(--shadow-2);
+
+  // Border-radius
+  --border-radius: 0.8rem;
+
+  // Header
+  --header-height: 7rem;
+
+  // Sidebar
+  --sidebar-width: 24rem;
+}
