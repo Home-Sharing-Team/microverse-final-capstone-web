@@ -22,6 +22,7 @@ const propertySlice = createSlice({
     [fetchPropertyItems.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.propertyItems = payload;
+      state.error = null;
     },
   },
 });

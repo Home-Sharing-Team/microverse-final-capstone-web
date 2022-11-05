@@ -1,0 +1,11 @@
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100%;
+  background-color: var(--color-cards-bg);
+  box-shadow: var(--shadow-cards);
+  z-index: 50;
+  padding: 2.4rem;
+}

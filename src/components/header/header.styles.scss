@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--color-cards-bg);
+  box-shadow: var(--shadow-cards);
+  padding: 0 2.4rem;
+  z-index: 50;
+}

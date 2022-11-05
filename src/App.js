@@ -1,33 +1,24 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Spinner from './components/spinner/spinner.component';
-import { fetchPropertyItems } from './redux/property/property.actions';
-import { selectPropertyIsLoading, selectPropertyItems } from './redux/property/property.selectors';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { Navigation } from './components/navigation/navigation.component';
+import { AuthExample } from './pages/auth-example/auth-example.component';
+import { Homepage } from './pages/homepage/homepage.component';
+import { checkUserSessionAsync } from './redux/user/user.actions';
 
 export default function App() {
   const dispatch = useDispatch();
-  const propertyItems = useSelector(selectPropertyItems);
-  const isLoading = useSelector(selectPropertyIsLoading);
 
   useEffect(() => {
-    dispatch(fetchPropertyItems());
+    dispatch(checkUserSessionAsync());
   }, []);
 
   return (
-    <>
-      {
-        isLoading ? (
-          <Spinner />
-        ) : (
-          <div>
-            {
-              propertyItems.map((property) => (
-                <p key={property.id}>{property.name}</p>
-              ))
-            }
-          </div>
-        )
-      }
-    </>
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route index element={<Homepage />} />
+        <Route path="/auth-example" element={<AuthExample />} />
+      </Route>
+    </Routes>
   );
 }
