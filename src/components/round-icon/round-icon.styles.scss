@@ -1,0 +1,16 @@
+.round-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-grey-200);
+  color: var(--color-text-primary);
+  border-radius: 50%;
+
+  &--sm {
+    padding: 0.8rem;
+  }
+
+  &--md {
+    padding: 1rem;
+  }
+}
