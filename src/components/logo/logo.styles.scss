@@ -1,0 +1,17 @@
+.logo {
+  display: flex;
+  align-items: center;
+  color: var(--color-primary);
+
+  &__text {
+    // display: none;
+    font-size: 1.85rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-left: 0.6rem;
+
+    // @media only screen and (min-width: 28.75em) {
+    //  display: block;
+    // }
+  }
+}
