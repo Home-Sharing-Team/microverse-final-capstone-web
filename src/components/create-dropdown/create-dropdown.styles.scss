@@ -1,0 +1,43 @@
+.create-dropdown {
+  &__content {
+    margin-top: 1.2rem;
+  }
+
+  &__list > li:not(:last-child) {
+    margin-bottom: 0.2rem;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius);
+    padding: 0.8rem;
+    transition: background-color 100ms cubic-bezier(0, 0, 1, 1);
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1.2rem;
+    }
+
+    &-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 2rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.2rem;
+    }
+
+    &-text {
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.6rem;
+      color: var(--color-text-secondary);
+    }
+  }
+}

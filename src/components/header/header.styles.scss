@@ -11,4 +11,94 @@
   box-shadow: var(--shadow-cards);
   padding: 0 2.4rem;
   z-index: 50;
+
+  &__logo {
+    display: none;
+
+    @media only screen and (min-width: 48em) {
+      display: block;
+    }
+  }
+
+  &__start {
+    display: flex;
+    align-items: center;
+
+    & > *:not(:last-child) {
+      margin-right: 0.8rem;
+    }
+  }
+
+  &__center {
+    display: none;
+    width: 40%;
+    max-width: 60rem;
+    min-width: 27rem;
+
+    @media only screen and (min-width: 48em) {
+      display: block;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+
+    > li:not(:last-child) {
+      margin-right: 0.8rem;
+    }
+  }
+
+  &__auth-btn,
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    transition: all 0.2s;
+  }
+
+  &__btn {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+
+    img {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+
+  &__auth-btn {
+    height: 3.6rem;
+    color: #222;
+    border: 1px solid #ddd;
+    border-radius: 2.1rem;
+    padding: 0 1.2rem;
+
+    &:hover {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    }
+
+    & > *:not(:last-child) {
+      margin-right: 1.2rem;
+    }
+  }
+
+  &__hamburger-btn {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    @media only screen and (min-width: 48em) {
+      display: none;
+    }
+  }
 }

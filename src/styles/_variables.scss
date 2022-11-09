@@ -3,6 +3,7 @@
   --color-primary-300: #9bc93e;
   --color-grey-100: #f4f4f4;
   --color-grey-150: #f0f2f5;
+  --color-grey-200: #e4e6eb;
   --color-grey-500: #717171;
   --color-grey-700: #3d3c42;
   --color-grey-900: #222;
@@ -27,8 +28,12 @@
   --border-radius: 0.8rem;
 
   // Header
-  --header-height: 7rem;
+  --header-height: 6rem;
 
   // Sidebar
-  --sidebar-width: 24rem;
+  --sidebar-width-desktop: 24rem;
+
+  // Separator lines
+  --separator-line-1: 1px solid rgba(0, 0, 0, 0.1);
+  --separator-line-2: 1px solid #ced0d4;
 }
