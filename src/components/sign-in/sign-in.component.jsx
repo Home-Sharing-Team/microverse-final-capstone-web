@@ -78,22 +78,29 @@ const LogInComponent = () => {
         </div>
 
         <form className="sign-ex__container__form" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChange={handleChange}
-            required
-          />
+          <div className="sign-ex__container__form__inputBox">
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              required
+            />
+            <span>Email</span>
+            <i />
+          </div>
+
+          <div className="sign-ex__container__form__inputBox">
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              required
+            />
+            <span>Password</span>
+            <i />
+          </div>
           <button type="submit" className="sign-ex__container__form__btn">Sign In</button>
         </form>
       </div>
