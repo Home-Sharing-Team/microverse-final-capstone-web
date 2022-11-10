@@ -1,6 +1,8 @@
 :root {
   // Color Palette
   --color-primary-300: #9bc93e;
+  --color-hover-300: #92b148;
+  --color-active-300: #7ca028;
   --color-grey-100: #f4f4f4;
   --color-grey-150: #f0f2f5;
   --color-grey-200: #e4e6eb;
@@ -13,6 +15,8 @@
 
   // Other color variables
   --color-primary: var(--color-primary-300);
+  --color-hover: var(--color-hover-300);
+  --color-active: var(--color-active-300);
   --color-text-primary: var(--color-grey-950);
   --color-text-secondary: var(--color-grey-500);
   --color-body-bg: var(--color-grey-100);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { signInAsync, signOut } from '../../redux/user/user.actions';
 import { selectCurrentUser, selectUserError } from '../../redux/user/user.selectors';
 
@@ -45,9 +46,9 @@ const LogInComponent = () => {
   };
 
   return (
-    <div className="auth-ex">
+    <section className="sign-ex">
       {currentUser ? (
-        <div className="auth-ex__status">
+        <div className="sign-ex__status">
           <p>
             {'Status: '}
             <strong>Logged-in!</strong>
@@ -61,7 +62,7 @@ const LogInComponent = () => {
           </button>
         </div>
       ) : (
-        <div className="auth-ex__status">
+        <div className="sign-ex__status">
           <p>
             {'Status: '}
             <strong>NOT</strong>
@@ -70,28 +71,42 @@ const LogInComponent = () => {
         </div>
       )}
 
-      <form className="auth-ex__form" onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter you email..."
-          value={email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter your password..."
-          value={password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Sign In</button>
-      </form>
+      <div className="sign-ex__container">
+        <div className="sign-ex__container__header">
+          <h2>Welcome to Home Sharing</h2>
+          <p>Reserve the weekend of your dreams!</p>
+        </div>
+
+        <form className="sign-ex__container__form" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" className="sign-ex__container__form__btn">Sign In</button>
+        </form>
+      </div>
+
+      <p className="sign-ex__new">
+        Need an account?
+        <Link to="./" className="sign-ex__new__link">
+          Sign up
+        </Link>
+      </p>
 
       {authError && <p>{`Error: ${authError}`}</p>}
-    </div>
+    </section>
   );
 };
 

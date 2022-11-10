@@ -1,4 +1,4 @@
-.auth-ex {
+.sign-ex {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,13 +11,71 @@
     margin-bottom: 3.2rem;
   }
 
-  &__form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2.4rem;
+  &__container {
+    background-color: var(--color-cards-bg);
+    padding: 1.2rem 2.4rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-grey-200);
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.5);
 
-    & > *:not(:last-child) {
-      margin-bottom: 0.8rem;
+    &__header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      margin: 1.2rem 0 2.4rem;
+    }
+
+    &__header p {
+      font-size: 1.5rem;
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2.4rem;
+
+      & > *:not(:last-child) {
+        margin-bottom: 1.6rem;
+      }
+
+      & input {
+        padding: 1.2rem 0.6rem;
+      }
+
+      &__btn {
+        background-color: var(--color-primary);
+        border: none;
+        border-radius: var(--border-radius);
+        padding: 1.2rem 0;
+        color: var(--color-white);
+      }
+
+      &__btn:hover {
+        background-color: var(--color-hover);
+      }
+
+      &__btn:active {
+        background-color: var(--color-active);
+      }
+    }
+  }
+
+  &__new {
+    margin-top: 2.4rem;
+
+    &__link {
+      color: var(--color-primary);
+      margin-left: 0.6rem;
+    }
+
+    &__link:hover {
+      color: var(--color-hover);
+    }
+
+    &__link:active {
+      color: var(--color-active);
     }
   }
 }
