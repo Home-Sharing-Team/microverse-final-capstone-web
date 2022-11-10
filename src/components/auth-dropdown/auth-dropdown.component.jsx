@@ -11,7 +11,7 @@ export function AuthDropdown() {
       <div className="auth-dropdown__content">
         <ul className="auth-dropdown__list">
           <li>
-            <Link to="/" className="auth-dropdown__link">
+            <Link to="/sign-in" className="auth-dropdown__link">
               <RoundIcon>
                 <Icon name="log-in" size="sm" />
               </RoundIcon>
