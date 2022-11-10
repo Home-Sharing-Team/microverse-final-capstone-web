@@ -9,6 +9,7 @@
   box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   border-radius: var(--border-radius);
   padding: 1.6rem 0.8rem 0.8rem;
+  z-index: 60;
   transition: all 0.2s;
 
   &__title {

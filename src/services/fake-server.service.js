@@ -1,5 +1,6 @@
 import { createServer } from 'miragejs';
 import { v4 as uuidV4 } from 'uuid';
+import { fakeCategories } from '../data/category.fake.data';
 import { fakePropertyItems } from '../data/property.fake.data';
 
 const fakeUser = {
@@ -18,10 +19,34 @@ export const initFakeServer = () => {
     routes() {
       this.namespace = 'api/v1';
 
-      this.get('/properties', () => ({
+      this.get('/categories', () => ({
         success: true,
-        data: fakePropertyItems,
+        data: Object.values(fakeCategories),
       }));
+
+      this.get('/properties/:id', (schema, request) => ({
+        success: true,
+        data: fakePropertyItems.filter((property) => property.id === request.params.id),
+      }));
+
+      this.get('/properties', (schema, request) => {
+        if (Object.keys(request.queryParams).length > 0) {
+          const categoryId = request.queryParams.category;
+          const propertiesByCategory = fakePropertyItems.filter(
+            ({ categories }) => categories.some((category) => category.id === categoryId),
+          );
+
+          return {
+            success: true,
+            data: propertiesByCategory,
+          };
+        }
+
+        return {
+          success: true,
+          data: fakePropertyItems,
+        };
+      });
 
       this.get('/auth/me', (schema, request) => {
         try {

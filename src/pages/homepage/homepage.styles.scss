@@ -1,0 +1,34 @@
+.homepage {
+  &__top {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-cards);
+    // border-bottom: var(--separator-line-2);
+    padding: 1.2rem 2.4rem;
+    z-index: 50;
+
+    @media only screen and (min-width: 48em) {
+      left: var(--sidebar-width-desktop);
+      width: calc(100% - var(--sidebar-width-desktop));
+      border-bottom: var(--separator-line-2);
+      box-shadow: none;
+    }
+  }
+
+  &__bottom {
+    margin-top: calc(
+      var(--header-height) + var(--category-selector-height) + 2.4rem
+    );
+  }
+}
+
+.properties-grid {
+  display: grid;
+  grid-gap: 4rem 2.4rem;
+  grid-auto-flow: row dense;
+  grid-auto-rows: minmax(min-content, max-content);
+  grid-template-columns: repeat(var(--property-grid-columns), minmax(0, 1fr));
+}

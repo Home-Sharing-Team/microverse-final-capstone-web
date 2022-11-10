@@ -50,67 +50,70 @@ export function Header({ handleHamburgerBtnClick }) {
   };
 
   return (
-    <header className="header">
-      <div className="header__start">
-        <button
-          className="header__btn header__hamburger-btn"
-          type="button"
-          onClick={handleHamburgerBtnClick}
-        >
-          <Icon name="menu" size="md" />
-        </button>
-        <Link className="header__logo" to="/">
-          <Logo />
-        </Link>
-      </div>
+    <>
 
-      <div className="header__center">
-        <SearchBar />
-      </div>
-
-      <div className="header__end">
-        {user ? (
-          <ul className="header__list">
-            <li>
-              <button
-                onClick={() => {
-                  toggleDropdown('create');
-                }}
-                className="header__btn"
-                type="button"
-              >
-                <RoundIcon size="md">
-                  <Icon name="plus" size="sm" />
-                </RoundIcon>
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => {
-                  toggleDropdown('account');
-                }}
-                className="header__btn"
-                type="button"
-              >
-                <img src={userAvatar} alt="user avatar" />
-              </button>
-            </li>
-          </ul>
-        ) : (
+      <header className="header">
+        <div className="header__start">
           <button
-            onClick={() => {
-              toggleDropdown('auth');
-            }}
-            className="header__auth-btn"
+            className="header__btn header__hamburger-btn"
             type="button"
+            onClick={handleHamburgerBtnClick}
           >
-            <Icon name="menu" size="sm" />
-            <Icon name="user" size="sm" />
+            <Icon name="menu" size="md" />
           </button>
-        )}
-      </div>
+          <Link className="header__logo" to="/">
+            <Logo />
+          </Link>
+        </div>
+
+        <div className="header__center">
+          <SearchBar />
+        </div>
+
+        <div className="header__end">
+          {user ? (
+            <ul className="header__list">
+              <li>
+                <button
+                  onClick={() => {
+                    toggleDropdown('create');
+                  }}
+                  className="header__btn"
+                  type="button"
+                >
+                  <RoundIcon size="md">
+                    <Icon name="plus" size="sm" />
+                  </RoundIcon>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    toggleDropdown('account');
+                  }}
+                  className="header__btn"
+                  type="button"
+                >
+                  <img src={userAvatar} alt="user avatar" />
+                </button>
+              </li>
+            </ul>
+          ) : (
+            <button
+              onClick={() => {
+                toggleDropdown('auth');
+              }}
+              className="header__auth-btn"
+              type="button"
+            >
+              <Icon name="menu" size="sm" />
+              <Icon name="user" size="sm" />
+            </button>
+          )}
+        </div>
+      </header>
       {selectedDropdown.element && selectedDropdown.element}
-    </header>
+    </>
   );
 }
 

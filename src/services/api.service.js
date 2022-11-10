@@ -19,6 +19,25 @@ export const fetchProperties = async () => {
   return handleApiResponse(response);
 };
 
+export const fetchPropertyById = async (propertyId) => {
+  const response = await api.get(`properties/${propertyId}`);
+  return handleApiResponse(response);
+};
+
+export const fetchPropertiesByCategory = async (categoryId) => {
+  const response = await api.get('properties', {
+    params: {
+      category: categoryId,
+    },
+  });
+  return handleApiResponse(response);
+};
+
+export const fetchCategories = async () => {
+  const response = await api.get('categories');
+  return handleApiResponse(response);
+};
+
 export const signIn = async (email, password) => {
   const response = await api.post('auth/login', {
     email,

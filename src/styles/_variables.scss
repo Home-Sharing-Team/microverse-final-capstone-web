@@ -36,4 +36,30 @@
   // Separator lines
   --separator-line-1: 1px solid rgba(0, 0, 0, 0.1);
   --separator-line-2: 1px solid #ced0d4;
+
+  // Category
+  --category-selector-height: 5.7rem;
+
+  // Property
+  --property-grid-columns: 1;
+
+  @media only screen and (min-width: 550px) {
+    --property-grid-columns: 2;
+  }
+
+  @media only screen and (min-width: 1106px) {
+    --property-grid-columns: 3;
+  }
+
+  @media only screen and (min-width: 1388px) {
+    --property-grid-columns: 4;
+  }
+
+  @media only screen and (min-width: 1667px) {
+    --property-grid-columns: 5;
+  }
+
+  @media only screen and (min-width: 1950px) {
+    --property-grid-columns: 6;
+  }
 }

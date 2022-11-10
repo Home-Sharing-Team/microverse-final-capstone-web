@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPropertyItems } from './property.actions';
+import { fetchPropertyItemsAsync, fetchPropertyItemsByCategoryAsync } from './property.actions';
 
 const INITIAL_STATE = {
   propertyItems: [],
@@ -12,14 +12,26 @@ const propertySlice = createSlice({
   name: 'property',
   initialState: INITIAL_STATE,
   extraReducers: {
-    [fetchPropertyItems.pending]: (state) => {
+    [fetchPropertyItemsAsync.pending]: (state) => {
       state.isLoading = true;
     },
-    [fetchPropertyItems.rejected]: (state, { error }) => {
+    [fetchPropertyItemsAsync.rejected]: (state, { error }) => {
       state.isLoading = false;
       state.error = error.message;
     },
-    [fetchPropertyItems.fulfilled]: (state, { payload }) => {
+    [fetchPropertyItemsAsync.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.propertyItems = payload;
+      state.error = null;
+    },
+    [fetchPropertyItemsByCategoryAsync.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [fetchPropertyItemsByCategoryAsync.rejected]: (state, { error }) => {
+      state.isLoading = false;
+      state.error = error.message;
+    },
+    [fetchPropertyItemsByCategoryAsync.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.propertyItems = payload;
       state.error = null;
