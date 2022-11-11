@@ -19,7 +19,7 @@ export function AuthDropdown() {
             </Link>
           </li>
           <li>
-            <Link to="/" className="auth-dropdown__link">
+            <Link to="/sign-up" className="auth-dropdown__link">
               <RoundIcon>
                 <Icon name="user-plus" size="sm" />
               </RoundIcon>

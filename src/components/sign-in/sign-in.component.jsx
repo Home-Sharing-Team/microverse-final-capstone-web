@@ -101,13 +101,13 @@ const LogInComponent = () => {
             <span>Password</span>
             <i />
           </div>
-          <button type="submit" className="sign-ex__container__form__btn">Sign In</button>
+          <button type="submit" className="sign-ex__container__form__btn">Log In</button>
         </form>
       </div>
 
       <p className="sign-ex__new">
         Need an account?
-        <Link to="./" className="sign-ex__new__link">
+        <Link to="../sign-up" className="sign-ex__new__link">
           Sign up
         </Link>
       </p>

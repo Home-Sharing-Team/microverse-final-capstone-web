@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { signUpAsync } from '../../redux/user/user.actions';
 
 import './sign-up.styles.scss';
+import '../sign-in/sign-in.styles.scss';
 
 const defaultFormFields = {
   email: '',
@@ -12,7 +15,7 @@ const SignUpComponent = () => {
   const dispatch = useDispatch();
 
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { email, password } = formFields;
+  const { name, email, password } = formFields;
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -21,7 +24,13 @@ const SignUpComponent = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    dispatch();
+    dispatch(
+      signUpAsync({
+        name,
+        email,
+        password,
+      }),
+    );
 
     resetFormFields();
   };
@@ -33,8 +42,59 @@ const SignUpComponent = () => {
   };
 
   return (
-    <section>
-      <h2>Thanks for visiting!</h2>
+    <section className="sign-ex">
+      <div className="sign-ex__container">
+        <div className="sign-ex__container__header">
+          <h2>Welcome to Home Sharing</h2>
+          <p>Host or rent a home by yourself!</p>
+        </div>
+
+        <form className="sign-ex__container__form" onSubmit={handleSubmit}>
+          <div className="sign-ex__container__form__inputBox">
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}
+              required
+            />
+            <span>Name</span>
+            <i />
+          </div>
+
+          <div className="sign-ex__container__form__inputBox">
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              required
+            />
+            <span>Email</span>
+            <i />
+          </div>
+
+          <div className="sign-ex__container__form__inputBox">
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              required
+            />
+            <span>Password</span>
+            <i />
+          </div>
+          <button type="submit" className="sign-ex__container__form__btn">Create Account</button>
+        </form>
+      </div>
+
+      <p className="sign-ex__new">
+        Already have an account?
+        <Link to="../sign-in" className="sign-ex__new__link">
+          Log in
+        </Link>
+      </p>
     </section>
   );
 };
