@@ -9,7 +9,7 @@ const fetchReservation = (reservationDetails) => ({
 
 // Initial State
 const preloadedState = {
-  reservationDetails: [],
+  reservationsDetails: [],
 };
 
 // Reducer for the reservation
@@ -18,7 +18,7 @@ const reservationReducer = (state = preloadedState, action = {}) => {
     case FETCH_RESERVATION:
       return {
         ...state,
-        reservationDetails: action.payload,
+        reservationsDetails: action.payload,
       };
 
     default:

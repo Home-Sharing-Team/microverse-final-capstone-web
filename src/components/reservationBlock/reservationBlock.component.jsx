@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+import houseReserved from '../../assets/images/house-reserved-test.jpg';
 import './reservationBlock.styles.scss';
 
 const ReservationBlock = (props) => {
@@ -20,7 +21,13 @@ const ReservationBlock = (props) => {
 
   return (
     <article className="reservation">
-      <h2>Here&apos;s your reservation</h2>
+      <h2>
+        You do have
+        {' '}
+        {id}
+        {' '}
+        reservations
+      </h2>
     </article>
   );
 };

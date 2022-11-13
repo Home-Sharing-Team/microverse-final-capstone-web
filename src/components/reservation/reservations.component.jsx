@@ -14,7 +14,7 @@ const ReservationsComponent = () => {
     });
   }, []);
 
-  const allReservations = useSelector((state) => state.reservations);
+  const allReservations = useSelector((state) => state.reservations.reservationsDetails);
 
   return (
     <section className="reservation">

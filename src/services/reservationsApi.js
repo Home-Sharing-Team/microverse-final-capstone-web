@@ -2,14 +2,14 @@
 import { fetchReservation } from '../redux/reservation/reservation.reducer';
 
 // Const for Base URL
-const reservationsUrl = '';
+const reservationsUrl = 'http://localhost:3000/api/v1/reservations';
 
 // API Action for reservations
 const getReservationsFromApi = () => async (dispatch) => {
   const data = await fetch(reservationsUrl);
   const response = await data.json();
 
-  const reservationsList = await response.results;
+  const reservationsList = await response.data;
 
   // Dispatch 1st page
   dispatch(
