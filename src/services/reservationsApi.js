@@ -9,12 +9,12 @@ const getReservationsFromApi = () => async (dispatch) => {
   const data = await fetch(reservationsUrl);
   const response = await data.json();
 
-  const reservationList = await response.results;
+  const reservationsList = await response.results;
 
   // Dispatch 1st page
   dispatch(
     fetchReservation(
-      reservationList.map(({
+      reservationsList.map(({
         id,
         user_id,
         accommodation_id,

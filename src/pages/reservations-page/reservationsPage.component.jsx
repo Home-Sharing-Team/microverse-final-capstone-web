@@ -1,10 +1,10 @@
 import React from 'react';
 
-import ReservationComponent from '../../components/reservation/reservation.component';
+import ReservationsComponent from '../../components/reservation/reservations.component';
 
 const ReservationPage = () => (
   <>
-    <ReservationComponent />
+    <ReservationsComponent />
   </>
 );
 
