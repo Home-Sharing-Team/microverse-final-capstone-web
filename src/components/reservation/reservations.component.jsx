@@ -19,7 +19,7 @@ const ReservationsComponent = () => {
 
   return (
     <main className="reservations">
-      <h3>Here you&apos;ll see the reservations you&apos;ve made</h3>
+      <h3 className="reservations__title">Here you&apos;ll see the reservations you&apos;ve made</h3>
       {
         isLoading ? (
           <Spinner />
@@ -32,6 +32,7 @@ const ReservationsComponent = () => {
                   checkOut={reservation.checkOut}
                   price={reservation.price}
                   guests={reservation.guests}
+                  propertyDetails={reservation.propertyDetails}
                   id={reservation.id}
                   reservationId={reservation.reservationId}
                   userId={reservation.userId}

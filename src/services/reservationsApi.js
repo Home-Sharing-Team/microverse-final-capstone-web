@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { fetchReservation } from '../redux/reservation/reservation.reducer';
+import { fetchReservation, deleteReservation } from '../redux/reservation/reservation.reducer';
 
 // Const for Base URL
 const reservationsUrl = 'http://localhost:3000/api/v1/reservations';
@@ -17,19 +17,21 @@ const getReservationsFromApi = () => async (dispatch) => {
       reservationsList.map(({
         id,
         user_id,
-        accommodation_id,
+        hosting_id,
         guests,
         check_in,
         check_out,
         price,
+        property,
       }) => ({
         id,
         userId: user_id,
-        reservationId: accommodation_id,
+        reservationId: hosting_id,
         guests,
         checkIn: check_in,
         checkOut: check_out,
         price,
+        propertyDetails: property,
       })),
     ),
   );
@@ -37,4 +39,18 @@ const getReservationsFromApi = () => async (dispatch) => {
   return null;
 };
 
-export { getReservationsFromApi };
+const deleteReservationFromApi = (reservationId) => async (dispatch) => {
+  const data = await fetch(`${reservationsUrl}/${reservationId}`, { method: 'delete' });
+
+  const response = await data.json();
+
+  const reservationsList = await response.data;
+
+  dispatch(
+    deleteReservation(reservationsList),
+  );
+
+  return null;
+};
+
+export { getReservationsFromApi, deleteReservationFromApi };

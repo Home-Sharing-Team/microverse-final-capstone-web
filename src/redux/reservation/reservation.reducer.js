@@ -1,9 +1,15 @@
 // Const for the actions
 const FETCH_RESERVATIONS = 'homeSharing/reservation/FETCH_RESERVATIONS';
+const DELETE_RESERVATION = 'homeSharing/reservation/DELETE_RESERVATIONS';
 
 // Function to fetch reservation
 const fetchReservation = (reservationDetails) => ({
   type: FETCH_RESERVATIONS,
+  payload: reservationDetails,
+});
+
+const deleteReservation = (reservationDetails) => ({
+  type: DELETE_RESERVATION,
   payload: reservationDetails,
 });
 
@@ -23,10 +29,16 @@ const reservationReducer = (state = preloadedState, action = {}) => {
         reservationsDetails: action.payload,
       };
 
+    case DELETE_RESERVATION:
+      return {
+        ...state,
+        reservationsDetails: action.payload,
+      };
+
     default:
       return state;
   }
 };
 
-export { fetchReservation };
+export { fetchReservation, deleteReservation };
 export default reservationReducer;
