@@ -17,17 +17,44 @@ const ReservationBlock = (props) => {
     userId,
   } = props;
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <article className="reservation">
-      <h2>
-        You do have
-        {' '}
-        {id}
-        {' '}
-        reservations
-      </h2>
+      <div className="reservation__img-container">
+        <img src={houseReserved} alt="visual representation of the house" className="reservation__img-container__img" />
+      </div>
+
+      <div className="reservation__content">
+        <h3 className="reservation__content__title">Title of the property</h3>
+        <p className="reservation__content_price">
+          Price: $
+          {price}
+        </p>
+        <div className="reservation__content__dates">
+          <p>
+            Check in date:
+            {' '}
+            {checkIn}
+          </p>
+
+          <p>
+            Check out date:
+            {' '}
+            {checkOut}
+          </p>
+        </div>
+        <p>
+          Guests:
+          {' '}
+          {guests}
+        </p>
+      </div>
+
+      <div className="reservation_actions">
+        <button type="button">See Details</button>
+        <button type="button">Delete</button>
+      </div>
     </article>
   );
 };
