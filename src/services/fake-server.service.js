@@ -26,7 +26,7 @@ export const initFakeServer = () => {
 
       this.get('/properties/:id', (schema, request) => ({
         success: true,
-        data: fakePropertyItems.filter((property) => property.id === request.params.id),
+        data: fakePropertyItems.find((property) => property.id === request.params.id),
       }));
 
       this.get('/properties', (schema, request) => {

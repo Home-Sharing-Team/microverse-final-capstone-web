@@ -1,6 +1,8 @@
 :root {
   // Color Palette
   --color-primary-300: #9bc93e;
+  --color-primary-400: #86c801;
+  --color-primary-600: #81b122;
   --color-grey-100: #f4f4f4;
   --color-grey-150: #f0f2f5;
   --color-grey-200: #e4e6eb;
@@ -17,6 +19,7 @@
   --color-text-secondary: var(--color-grey-500);
   --color-body-bg: var(--color-grey-100);
   --color-cards-bg: var(--color-white);
+  --color-error: #c13515;
 
   // Box shadows
   --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.1);

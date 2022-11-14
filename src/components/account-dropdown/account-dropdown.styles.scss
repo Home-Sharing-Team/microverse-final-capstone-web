@@ -47,14 +47,6 @@
 
   &__content {
     margin-top: 1.6rem;
-
-    // & > .account-dropdown__list:not(:last-of-type) {
-    //   border-bottom: var(--separator-line-1);
-    //   border-bottom: 1px solid #ced0d4;
-
-    //   padding-bottom: 0.8rem;
-    //   margin-bottom: 0.8rem;
-    // }
   }
 
   &__list > li:not(:last-child) {

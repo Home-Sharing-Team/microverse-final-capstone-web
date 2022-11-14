@@ -1,9 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPropertyItemsAsync, fetchPropertyItemsByCategoryAsync } from './property.actions';
+import { fetchPropertyItemsAsync, fetchPropertyItemsByCategoryAsync, fetchSelectedPropertyAsync } from './property.actions';
 
 const INITIAL_STATE = {
   propertyItems: [],
+  selectedProperty: null,
   isLoading: false,
   error: null,
 };
@@ -34,6 +35,18 @@ const propertySlice = createSlice({
     [fetchPropertyItemsByCategoryAsync.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.propertyItems = payload;
+      state.error = null;
+    },
+    [fetchSelectedPropertyAsync.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [fetchSelectedPropertyAsync.rejected]: (state, { error }) => {
+      state.isLoading = false;
+      state.error = error.message;
+    },
+    [fetchSelectedPropertyAsync.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.selectedProperty = payload;
       state.error = null;
     },
   },

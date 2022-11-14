@@ -1,56 +1,19 @@
+/* eslint-disable camelcase */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
+import { formatCurrencyNumber } from '../../utils/format.utils';
 
 import { ImageSlider } from '../image-slider/image-slider.component';
 
 import './property-card.styles.scss';
-
-const CYCLE_TYPES = {
-  NIGHT: 'night',
-  WEEK: 'week',
-  MONTH: 'month',
-};
-
-const getHostingCycleToShow = (hostings) => {
-  const cycleToPriceMap = hostings.reduce(
-    (acc, { cycle, rate }) => ({
-      ...acc,
-      [cycle]: rate,
-    }),
-    {},
-  );
-
-  if (cycleToPriceMap[CYCLE_TYPES.NIGHT]) {
-    return {
-      cycle: CYCLE_TYPES.NIGHT,
-      price: cycleToPriceMap[CYCLE_TYPES.NIGHT],
-    };
-  }
-  if (cycleToPriceMap[CYCLE_TYPES.WEEK]) {
-    return {
-      cycle: CYCLE_TYPES.WEEK,
-      price: cycleToPriceMap[CYCLE_TYPES.WEEK],
-    };
-  }
-  if (cycleToPriceMap[CYCLE_TYPES.MONTH]) {
-    return {
-      cycle: CYCLE_TYPES.MONTH,
-      price: cycleToPriceMap[CYCLE_TYPES.MONTH],
-    };
-  }
-
-  return { cycle: 'none', price: 0 };
-};
 
 export function PropertyCard({ property }) {
   const {
     images,
     size,
     address: { city, country },
-    hostings,
+    min_cycle_hosting,
   } = property;
-
-  const { cycle, price } = getHostingCycleToShow(hostings);
 
   return (
     <article className="property-card">
@@ -64,8 +27,8 @@ export function PropertyCard({ property }) {
           </span>
         </header>
         <p className="property-card__price">
-          {`$ ${price}`}
-          <span>{` ${cycle}`}</span>
+          {formatCurrencyNumber(min_cycle_hosting.rate)}
+          <span>{` ${min_cycle_hosting.cycle}`}</span>
         </p>
       </div>
     </article>

@@ -27,5 +27,11 @@ export function ImageSlider({ images }) {
 }
 
 ImageSlider.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+    ]).isRequired,
+    source: PropTypes.string.isRequired,
+  })).isRequired,
 };

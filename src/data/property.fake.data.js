@@ -73,7 +73,31 @@ export const fakePropertyItems = [
           'https://a0.muscache.com/im/pictures/6513c49a-7537-4175-be57-f7581f393b43.jpg?im_w=1200',
       },
     ],
-    blocked_periods: [],
+    blocked_periods: [
+      {
+        id: v4(),
+        start_date: new Date(2022, 11, 15),
+        end_date: new Date(2022, 11, 25),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 0, 1),
+        end_date: new Date(2023, 0, 3),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 1, 8),
+        end_date: new Date(2023, 1, 25),
+      },
+    ],
+    min_cycle_hosting: {
+      id: v4(),
+      cycle: 'night',
+      minimum_cycle_amount: 3,
+      rate: 365,
+      cleaning_fee: null,
+      public: true,
+    },
     hostings: [
       {
         id: v4(),
@@ -150,7 +174,31 @@ export const fakePropertyItems = [
           'https://a0.muscache.com/im/pictures/431cc039-8c82-417b-95d1-cb4cb4d214dc.jpg?im_w=1200',
       },
     ],
-    blocked_periods: [],
+    blocked_periods: [
+      {
+        id: v4(),
+        start_date: new Date(2022, 11, 15),
+        end_date: new Date(2022, 11, 25),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 0, 1),
+        end_date: new Date(2023, 0, 3),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 1, 8),
+        end_date: new Date(2023, 1, 25),
+      },
+    ],
+    min_cycle_hosting: {
+      id: v4(),
+      cycle: 'night',
+      minimum_cycle_amount: 1,
+      rate: 459.99,
+      cleaning_fee: 400,
+      public: true,
+    },
     hostings: [
       {
         id: v4(),
@@ -165,7 +213,7 @@ export const fakePropertyItems = [
         cycle: 'month',
         minimum_cycle_amount: 1,
         rate: 10000,
-        cleaning_fee: 400,
+        cleaning_fee: 300,
         public: true,
       },
     ],
@@ -226,7 +274,31 @@ export const fakePropertyItems = [
           'https://a0.muscache.com/im/pictures/6861fc2a-ca6b-473a-b64d-7303f3836584.jpg?im_w=1200',
       },
     ],
-    blocked_periods: [],
+    blocked_periods: [
+      {
+        id: v4(),
+        start_date: new Date(2022, 11, 15),
+        end_date: new Date(2022, 11, 25),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 0, 1),
+        end_date: new Date(2023, 0, 3),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 1, 8),
+        end_date: new Date(2023, 1, 25),
+      },
+    ],
+    min_cycle_hosting: {
+      id: v4(),
+      cycle: 'night',
+      minimum_cycle_amount: 2,
+      rate: 700,
+      cleaning_fee: 400,
+      public: true,
+    },
     hostings: [
       {
         id: v4(),
@@ -285,7 +357,31 @@ export const fakePropertyItems = [
           'https://a0.muscache.com/im/pictures/miso/Hosting-36353867/original/b7079a51-dd6a-476a-b313-ba8589c534a0.jpeg?im_w=1200',
       },
     ],
-    blocked_periods: [],
+    blocked_periods: [
+      {
+        id: v4(),
+        start_date: new Date(2022, 11, 15),
+        end_date: new Date(2022, 11, 25),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 0, 1),
+        end_date: new Date(2023, 0, 3),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 1, 8),
+        end_date: new Date(2023, 1, 25),
+      },
+    ],
+    min_cycle_hosting: {
+      id: v4(),
+      cycle: 'month',
+      minimum_cycle_amount: 6,
+      rate: 2000,
+      cleaning_fee: null,
+      public: true,
+    },
     hostings: [
       {
         id: v4(),
@@ -330,7 +426,31 @@ export const fakePropertyItems = [
           'https://a0.muscache.com/im/pictures/miso/Hosting-578250815153607611/original/0451b654-545c-40e9-9416-458399129abf.jpeg?im_w=960',
       },
     ],
-    blocked_periods: [],
+    blocked_periods: [
+      {
+        id: v4(),
+        start_date: new Date(2022, 11, 15),
+        end_date: new Date(2022, 11, 25),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 0, 1),
+        end_date: new Date(2023, 0, 3),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 1, 8),
+        end_date: new Date(2023, 1, 25),
+      },
+    ],
+    min_cycle_hosting: {
+      id: v4(),
+      cycle: 'night',
+      minimum_cycle_amount: 2,
+      rate: 100,
+      cleaning_fee: null,
+      public: true,
+    },
     hostings: [
       {
         id: v4(),
@@ -423,7 +543,31 @@ export const fakePropertyItems = [
           'https://a0.muscache.com/im/pictures/f71daedc-dc03-4ca0-b9c0-08fdbf0bf892.jpg?im_w=1200',
       },
     ],
-    blocked_periods: [],
+    blocked_periods: [
+      {
+        id: v4(),
+        start_date: new Date(2022, 11, 15),
+        end_date: new Date(2022, 11, 25),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 0, 1),
+        end_date: new Date(2023, 0, 3),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 1, 8),
+        end_date: new Date(2023, 1, 25),
+      },
+    ],
+    min_cycle_hosting: {
+      id: v4(),
+      cycle: 'night',
+      minimum_cycle_amount: 2,
+      rate: 130,
+      cleaning_fee: 100,
+      public: true,
+    },
     hostings: [
       {
         id: v4(),
@@ -525,7 +669,31 @@ export const fakePropertyItems = [
           'https://a0.muscache.com/im/pictures/c0c0b77c-0bc5-4836-af0b-fddabcdf8a08.jpg?im_w=1200',
       },
     ],
-    blocked_periods: [],
+    blocked_periods: [
+      {
+        id: v4(),
+        start_date: new Date(2022, 11, 15),
+        end_date: new Date(2022, 11, 25),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 0, 1),
+        end_date: new Date(2023, 0, 3),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 1, 8),
+        end_date: new Date(2023, 1, 25),
+      },
+    ],
+    min_cycle_hosting: {
+      id: v4(),
+      cycle: 'night',
+      minimum_cycle_amount: 3,
+      rate: 2904,
+      cleaning_fee: null,
+      public: true,
+    },
     hostings: [
       {
         id: v4(),

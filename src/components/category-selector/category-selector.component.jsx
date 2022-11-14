@@ -44,11 +44,11 @@ export function CategorySelector({
 CategorySelector.propTypes = {
   categories: PropTypes.arrayOf(
     PropTypes.exact({
-      id: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       name: PropTypes.string,
     }),
   ).isRequired,
   handleCategoryButtonClick: PropTypes.func.isRequired,
-  allButtonId: PropTypes.oneOf([PropTypes.string, PropTypes.number]).isRequired,
-  activeButtonId: PropTypes.oneOf([PropTypes.string, PropTypes.number]).isRequired,
+  allButtonId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  activeButtonId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
