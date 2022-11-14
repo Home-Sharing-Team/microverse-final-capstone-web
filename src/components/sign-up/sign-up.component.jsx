@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signUpAsync } from '../../redux/user/user.actions';
 
-import './sign-up.styles.scss';
 import '../sign-in/sign-in.styles.scss';
 
 const defaultFormFields = {
