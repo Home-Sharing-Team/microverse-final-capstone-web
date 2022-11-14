@@ -24,7 +24,7 @@ const ReservationsComponent = () => {
         isLoading ? (
           <Spinner />
         ) : (
-          <section className="game-list-container">
+          <section className="reservations__container">
             {(allReservations.length > 0) ? (
               allReservations.map((reservation) => (
                 <ReservationBlock

@@ -1,0 +1,8 @@
+.reservations {
+  width: 100%;
+
+  &__container > *:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+}

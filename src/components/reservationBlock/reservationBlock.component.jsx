@@ -52,8 +52,10 @@ const ReservationBlock = (props) => {
       </div>
 
       <div className="reservation_actions">
-        <button type="button">See Details</button>
-        <button type="button">Delete</button>
+        <Link className="btn-link" to="/">
+          See Details
+        </Link>
+        <button type="button" className="btn-link">Delete</button>
       </div>
     </article>
   );
