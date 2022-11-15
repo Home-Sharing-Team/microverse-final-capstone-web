@@ -1,4 +1,8 @@
-import { createAction } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  deleteUserReservationById,
+  fetchUserReservations,
+} from '../../services/api.service';
 import { getSelectedHostingFromNumNights } from '../../utils/reservation.utils';
 import { RESERVATION_ACTION_TYPES } from './reservation.types';
 
@@ -37,5 +41,23 @@ export const setSelectedHosting = createAction(
     return {
       payload: selectedHosting,
     };
+  },
+);
+
+export const fetchReservationItemsAsync = createAsyncThunk(
+  RESERVATION_ACTION_TYPES.FETCH_RESERVATIONS_ASYNC,
+  async (userId) => {
+    const reservationItems = await fetchUserReservations(userId);
+    return reservationItems;
+  },
+);
+
+export const deleteReservationAsync = createAsyncThunk(
+  RESERVATION_ACTION_TYPES.FETCH_RESERVATIONS_ASYNC,
+  async ({ userId, reservationId }, { getState }) => {
+    await deleteUserReservationById(userId, reservationId);
+    return getState().reservationItems.filter(
+      (reservation) => reservation.id !== reservationId,
+    );
   },
 );

@@ -2,6 +2,7 @@ import { createServer } from 'miragejs';
 import { v4 as uuidV4 } from 'uuid';
 import { fakeCategories } from '../data/category.fake.data';
 import { fakePropertyItems } from '../data/property.fake.data';
+import { fakeReservationItems } from '../data/reservations.fake.data';
 
 const fakeUser = {
   id: uuidV4(),
@@ -47,6 +48,11 @@ export const initFakeServer = () => {
           data: fakePropertyItems,
         };
       });
+
+      this.get('/reservations', () => ({
+        success: true,
+        data: fakeReservationItems,
+      }));
 
       this.get('/auth/me', (schema, request) => {
         try {

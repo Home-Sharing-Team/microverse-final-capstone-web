@@ -19,6 +19,11 @@ export const fetchProperties = async () => {
   return handleApiResponse(response);
 };
 
+export const fetchUserReservations = async (userId) => {
+  const response = await api.get(`users/${userId}/reservations`);
+  return handleApiResponse(response);
+};
+
 export const fetchPropertyById = async (propertyId) => {
   const response = await api.get(`properties/${propertyId}`);
   return handleApiResponse(response);
@@ -46,11 +51,25 @@ export const signIn = async (email, password) => {
   return handleApiResponse(response);
 };
 
+export const signUp = async (name, email, password) => {
+  const response = await api.post('auth/signup', {
+    name,
+    email,
+    password,
+  });
+  return handleApiResponse(response);
+};
+
 export const getMe = async (accessToken) => {
   const response = await api.get('auth/me', {
     headers: {
       authorization: `Bearer ${accessToken}`,
     },
   });
+  return handleApiResponse(response);
+};
+
+export const deleteUserReservationById = async (userId, reservationId) => {
+  const response = await api.delete(`users/${userId}/reservations/${reservationId}`);
   return handleApiResponse(response);
 };
