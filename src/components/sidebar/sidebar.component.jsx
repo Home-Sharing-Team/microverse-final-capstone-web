@@ -36,7 +36,7 @@ export function Sidebar({ handleCloseBtnClick, isActive = false }) {
             </Link>
           </li>
           <li className="sidebar__item">
-            <Link to="/" className="sidebar__link">
+            <Link to="/reservations" className="sidebar__link">
               <Icon size="md" name="calendar" />
               <span>My reservations</span>
             </Link>

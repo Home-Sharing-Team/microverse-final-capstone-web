@@ -2,9 +2,9 @@ import { createDraftSafeSelector } from '@reduxjs/toolkit';
 
 const selectReservationReducer = (state) => state.reservation;
 
-export const selectReservationItems = createDraftSafeSelector(
+export const selectUserReservations = createDraftSafeSelector(
   selectReservationReducer,
-  (reservationSlice) => reservationSlice.reservationItems,
+  (reservationSlice) => reservationSlice.userReservations,
 );
 
 export const selectReservationIsLoading = createDraftSafeSelector(

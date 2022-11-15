@@ -25,10 +25,17 @@ export function Header({ handleHamburgerBtnClick }) {
     defaultSelectedDropdown,
   );
 
+  const closeDropdown = () => {
+    setSelectedDropdown({
+      name: '',
+      element: null,
+    });
+  };
+
   const headerDropdowns = {
-    create: <CreateDropdown />,
-    account: <AccountDropdown user={user} />,
-    auth: <AuthDropdown />,
+    create: <CreateDropdown handleLinkClick={closeDropdown} />,
+    account: <AccountDropdown handleLinkClick={closeDropdown} user={user} />,
+    auth: <AuthDropdown handleLinkClick={closeDropdown} />,
   };
 
   const toggleDropdown = (dropdownName) => {
@@ -51,7 +58,6 @@ export function Header({ handleHamburgerBtnClick }) {
 
   return (
     <>
-
       <header className="header">
         <div className="header__start">
           <button

@@ -1,5 +1,5 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { getMe, signIn } from '../../services/api.service';
+import { getMe, signIn, signUp } from '../../services/api.service';
 import { USER_ACTION_TYPES } from './user.types';
 
 const ACCESS_TOKEN_STORAGE_KEY = '@HomeSharing::accessToken';
@@ -28,6 +28,17 @@ export const signInAsync = createAsyncThunk(
   USER_ACTION_TYPES.CHECK_USER_SESSION_ASYNC,
   async ({ email, password }) => {
     const { user, accessToken } = await signIn(email, password);
+
+    localStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, accessToken);
+
+    return user;
+  },
+);
+
+export const signUpAsync = createAsyncThunk(
+  USER_ACTION_TYPES.CHECK_USER_SESSION_ASYNC,
+  async ({ name, email, password }) => {
+    const { user, accessToken } = await signUp(name, email, password);
 
     localStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, accessToken);
 

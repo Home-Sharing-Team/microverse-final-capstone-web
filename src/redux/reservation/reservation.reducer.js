@@ -1,13 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  deleteUserReservationAsync,
+  fetchUserReservationsAsync,
   resetSelectedReservation,
   setNumNights,
   setSelectedCheckIn, setSelectedCheckOut, setSelectedGuests, setSelectedHosting,
 } from './reservation.actions';
 
 const INITIAL_STATE = {
-  reservationItems: [],
+  userReservations: [],
   selectedGuests: 1,
   selectedCheckIn: null,
   selectedCheckOut: null,
@@ -21,6 +23,18 @@ const reservationSlice = createSlice({
   name: 'reservation',
   initialState: INITIAL_STATE,
   extraReducers: {
+    [fetchUserReservationsAsync.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [fetchUserReservationsAsync.rejected]: (state, { error }) => {
+      state.isLoading = false;
+      state.error = error.message;
+    },
+    [fetchUserReservationsAsync.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.userReservations = payload;
+      state.error = null;
+    },
     [setSelectedGuests]: (state, { payload }) => {
       state.selectedGuests = Number(payload);
     },
@@ -42,6 +56,18 @@ const reservationSlice = createSlice({
       state.selectedCheckOut = null;
       state.numNights = 0;
       state.selectedHosting = null;
+    },
+    [deleteUserReservationAsync.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [deleteUserReservationAsync.rejected]: (state, { error }) => {
+      state.isLoading = false;
+      state.error = error.message;
+    },
+    [deleteUserReservationAsync.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.userReservations = payload;
+      state.error = null;
     },
   },
 });

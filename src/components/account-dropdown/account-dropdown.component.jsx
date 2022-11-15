@@ -1,5 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 import { HeaderDropdown } from '../header-dropdown/header-dropdown.component';
@@ -7,9 +8,17 @@ import Icon from '../icon/icon.component';
 import { RoundIcon } from '../round-icon/round-icon.component';
 import userAvatar from '../../assets/images/avatar_placeholder.jpg';
 
+import { signOut } from '../../redux/user/user.actions';
 import './account-dropdown.styles.scss';
 
-export function AccountDropdown({ user }) {
+export function AccountDropdown({ user, handleLinkClick }) {
+  const dispatch = useDispatch();
+
+  const handleSignOut = () => {
+    dispatch(signOut());
+    handleLinkClick();
+  };
+
   return (
     <HeaderDropdown>
       <header className="account-dropdown__header">
@@ -26,7 +35,7 @@ export function AccountDropdown({ user }) {
       <div className="account-dropdown__content">
         <ul className="account-dropdown__list">
           <li>
-            <Link to="/" className="account-dropdown__link">
+            <Link onClick={handleLinkClick} to="/" className="account-dropdown__link">
               <RoundIcon>
                 <Icon name="edit" size="sm" />
               </RoundIcon>
@@ -34,7 +43,7 @@ export function AccountDropdown({ user }) {
             </Link>
           </li>
           <li>
-            <Link to="/" className="account-dropdown__link">
+            <Link onClick={handleLinkClick} to="/" className="account-dropdown__link">
               <RoundIcon>
                 <Icon name="settings" size="sm" />
               </RoundIcon>
@@ -47,12 +56,12 @@ export function AccountDropdown({ user }) {
 
         <ul className="account-dropdown__list">
           <li>
-            <Link to="/" className="account-dropdown__link">
+            <button onClick={handleSignOut} type="button" className="account-dropdown__link">
               <RoundIcon>
                 <Icon name="log-out" size="sm" />
               </RoundIcon>
               <h3 className="account-dropdown__link-title">Sign Out</h3>
-            </Link>
+            </button>
           </li>
         </ul>
       </div>
@@ -62,4 +71,5 @@ export function AccountDropdown({ user }) {
 
 AccountDropdown.propTypes = {
   user: PropTypes.object.isRequired,
+  handleLinkClick: PropTypes.func.isRequired,
 };
