@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { HeaderDropdown } from '../header-dropdown/header-dropdown.component';
 import Icon from '../icon/icon.component';
@@ -5,13 +6,13 @@ import { RoundIcon } from '../round-icon/round-icon.component';
 
 import './auth-dropdown.styles.scss';
 
-export function AuthDropdown() {
+export function AuthDropdown({ handleLinkClick }) {
   return (
     <HeaderDropdown title="user session">
       <div className="auth-dropdown__content">
         <ul className="auth-dropdown__list">
           <li>
-            <Link to="/sign-in" className="auth-dropdown__link">
+            <Link onClick={handleLinkClick} to="/sign-in" className="auth-dropdown__link">
               <RoundIcon>
                 <Icon name="log-in" size="sm" />
               </RoundIcon>
@@ -19,7 +20,7 @@ export function AuthDropdown() {
             </Link>
           </li>
           <li>
-            <Link to="/sign-up" className="auth-dropdown__link">
+            <Link onClick={handleLinkClick} to="/sign-up" className="auth-dropdown__link">
               <RoundIcon>
                 <Icon name="user-plus" size="sm" />
               </RoundIcon>
@@ -31,3 +32,7 @@ export function AuthDropdown() {
     </HeaderDropdown>
   );
 }
+
+AuthDropdown.propTypes = {
+  handleLinkClick: PropTypes.func.isRequired,
+};

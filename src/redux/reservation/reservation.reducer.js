@@ -1,15 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  deleteReservationAsync,
-  fetchReservationItemsAsync,
+  deleteUserReservationAsync,
+  fetchUserReservationsAsync,
   resetSelectedReservation,
   setNumNights,
   setSelectedCheckIn, setSelectedCheckOut, setSelectedGuests, setSelectedHosting,
 } from './reservation.actions';
 
 const INITIAL_STATE = {
-  reservationItems: [],
+  userReservations: [],
   selectedGuests: 1,
   selectedCheckIn: null,
   selectedCheckOut: null,
@@ -23,16 +23,16 @@ const reservationSlice = createSlice({
   name: 'reservation',
   initialState: INITIAL_STATE,
   extraReducers: {
-    [fetchReservationItemsAsync.pending]: (state) => {
+    [fetchUserReservationsAsync.pending]: (state) => {
       state.isLoading = true;
     },
-    [fetchReservationItemsAsync.rejected]: (state, { error }) => {
+    [fetchUserReservationsAsync.rejected]: (state, { error }) => {
       state.isLoading = false;
       state.error = error.message;
     },
-    [fetchReservationItemsAsync.fulfilled]: (state, { payload }) => {
+    [fetchUserReservationsAsync.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.reservationItems = payload;
+      state.userReservations = payload;
       state.error = null;
     },
     [setSelectedGuests]: (state, { payload }) => {
@@ -57,16 +57,16 @@ const reservationSlice = createSlice({
       state.numNights = 0;
       state.selectedHosting = null;
     },
-    [deleteReservationAsync.pending]: (state) => {
+    [deleteUserReservationAsync.pending]: (state) => {
       state.isLoading = true;
     },
-    [deleteReservationAsync.rejected]: (state, { error }) => {
+    [deleteUserReservationAsync.rejected]: (state, { error }) => {
       state.isLoading = false;
       state.error = error.message;
     },
-    [deleteReservationAsync.fulfilled]: (state, { payload }) => {
+    [deleteUserReservationAsync.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
-      state.reservationItems = payload;
+      state.userReservations = payload;
       state.error = null;
     },
   },

@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { deleteReservationFromApi } from '../../services/reservationsApi';
 
 import './reservationBlock.styles.scss';
+import { deleteUserReservationAsync } from '../../redux/reservation/reservation.actions';
 
 const ReservationBlock = (props) => {
   // const {
@@ -33,8 +33,9 @@ const ReservationBlock = (props) => {
   } = propertyDetails;
 
   const dispatch = useDispatch();
-  const handleDelete = (reservationId) => {
-    dispatch(deleteReservationFromApi(reservationId));
+
+  const handleDelete = () => {
+    dispatch(deleteUserReservationAsync(reservationId));
   };
 
   return (
@@ -72,7 +73,7 @@ const ReservationBlock = (props) => {
       </div>
 
       <div className="reservation_actions">
-        <button type="button" className="btn-link" onClick={handleDelete(reservationId)}>Delete</button>
+        <button type="button" className="btn-link" onClick={handleDelete}>Delete</button>
       </div>
     </article>
   );
@@ -90,6 +91,6 @@ ReservationBlock.propTypes = {
     image: PropTypes.string.isRequired,
   }).isRequired,
   // id: PropTypes.number.isRequired,
-  reservationId: PropTypes.number.isRequired,
-  // userId: PropTypes.number.isRequired,
+  reservationId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  // userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };

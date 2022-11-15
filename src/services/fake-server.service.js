@@ -49,9 +49,14 @@ export const initFakeServer = () => {
         };
       });
 
-      this.get('/reservations', () => ({
+      this.get('/users/:userId/reservations', () => ({
         success: true,
         data: fakeReservationItems,
+      }));
+
+      this.delete('reservations/:id', () => ({
+        success: true,
+        data: 'Reservation was successfully deleted',
       }));
 
       this.get('/auth/me', (schema, request) => {

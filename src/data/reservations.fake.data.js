@@ -1,6 +1,8 @@
+import { v4 } from 'uuid';
+
 export const fakeReservationItems = [
   {
-    id: 1,
+    id: v4(),
     user_id: 1,
     hosting_id: 1,
     guests: 4,
@@ -13,7 +15,7 @@ export const fakeReservationItems = [
     },
   },
   {
-    id: 2,
+    id: v4(),
     user_id: 1,
     hosting_id: 1,
     guests: 4,
@@ -26,7 +28,7 @@ export const fakeReservationItems = [
     },
   },
   {
-    id: 3,
+    id: v4(),
     user_id: 1,
     hosting_id: 2,
     guests: 3,

@@ -1,6 +1,6 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import {
-  deleteUserReservationById,
+  deleteReservationById,
   fetchUserReservations,
 } from '../../services/api.service';
 import { getSelectedHostingFromNumNights } from '../../utils/reservation.utils';
@@ -44,19 +44,19 @@ export const setSelectedHosting = createAction(
   },
 );
 
-export const fetchReservationItemsAsync = createAsyncThunk(
-  RESERVATION_ACTION_TYPES.FETCH_RESERVATIONS_ASYNC,
+export const fetchUserReservationsAsync = createAsyncThunk(
+  RESERVATION_ACTION_TYPES.FETCH_USER_RESERVATIONS_ASYNC,
   async (userId) => {
-    const reservationItems = await fetchUserReservations(userId);
-    return reservationItems;
+    const userReservations = await fetchUserReservations(userId);
+    return userReservations;
   },
 );
 
-export const deleteReservationAsync = createAsyncThunk(
-  RESERVATION_ACTION_TYPES.FETCH_RESERVATIONS_ASYNC,
-  async ({ userId, reservationId }, { getState }) => {
-    await deleteUserReservationById(userId, reservationId);
-    return getState().reservationItems.filter(
+export const deleteUserReservationAsync = createAsyncThunk(
+  RESERVATION_ACTION_TYPES.DELETE_USER_RESERVATION_ASYNC,
+  async (reservationId, { getState }) => {
+    await deleteReservationById(reservationId);
+    return getState().reservation.userReservations.filter(
       (reservation) => reservation.id !== reservationId,
     );
   },

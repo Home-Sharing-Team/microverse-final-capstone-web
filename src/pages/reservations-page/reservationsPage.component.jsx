@@ -3,9 +3,7 @@ import React from 'react';
 import ReservationsComponent from '../../components/reservation/reservations.component';
 
 const ReservationPage = () => (
-  <>
-    <ReservationsComponent />
-  </>
+  <ReservationsComponent />
 );
 
 export default ReservationPage;

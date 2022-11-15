@@ -69,7 +69,7 @@ export const getMe = async (accessToken) => {
   return handleApiResponse(response);
 };
 
-export const deleteUserReservationById = async (userId, reservationId) => {
-  const response = await api.delete(`users/${userId}/reservations/${reservationId}`);
+export const deleteReservationById = async (reservationId) => {
+  const response = await api.delete(`reservations/${reservationId}`);
   return handleApiResponse(response);
 };

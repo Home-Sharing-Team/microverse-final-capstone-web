@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { signInAsync, signOut } from '../../redux/user/user.actions';
-import { selectCurrentUser, selectUserError } from '../../redux/user/user.selectors';
+import { signInAsync } from '../../redux/user/user.actions';
+import { selectUserError } from '../../redux/user/user.selectors';
 
 import './sign-in.styles.scss';
 
@@ -12,7 +12,6 @@ const defaultFormFields = {
 };
 
 const LogInComponent = () => {
-  const currentUser = useSelector(selectCurrentUser);
   const authError = useSelector(selectUserError);
   const dispatch = useDispatch();
 
@@ -41,35 +40,8 @@ const LogInComponent = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleClick = () => {
-    dispatch(signOut());
-  };
-
   return (
     <section className="sign-ex">
-      {currentUser ? (
-        <div className="sign-ex__status">
-          <p>
-            {'Status: '}
-            <strong>Logged-in!</strong>
-          </p>
-          <p>{`User: ${currentUser.name}`}</p>
-          <button
-            type="button"
-            onClick={handleClick}
-          >
-            Sign Out
-          </button>
-        </div>
-      ) : (
-        <div className="sign-ex__status">
-          <p>
-            {'Status: '}
-            <strong>NOT</strong>
-            {' logged-in.'}
-          </p>
-        </div>
-      )}
 
       <div className="sign-ex__container">
         <div className="sign-ex__container__header">

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import { HeaderDropdown } from '../header-dropdown/header-dropdown.component';
 import Icon from '../icon/icon.component';
@@ -5,13 +7,13 @@ import { RoundIcon } from '../round-icon/round-icon.component';
 
 import './create-dropdown.styles.scss';
 
-export function CreateDropdown() {
+export function CreateDropdown({ handleLinkClick }) {
   return (
     <HeaderDropdown title="create">
       <div className="create-dropdown__content">
         <ul className="create-dropdown__list">
           <li>
-            <Link to="/" className="create-dropdown__link">
+            <Link onClick={handleLinkClick} to="/" className="create-dropdown__link">
               <RoundIcon>
                 <Icon name="home" size="sm" />
               </RoundIcon>
@@ -28,3 +30,7 @@ export function CreateDropdown() {
     </HeaderDropdown>
   );
 }
+
+CreateDropdown.propTypes = {
+  handleLinkClick: PropTypes.func.isRequired,
+};

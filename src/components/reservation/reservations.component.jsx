@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getReservationsFromApi } from '../../services/reservationsApi';
-import { selectReservationIsLoading, selectReservationsItems } from '../../redux/reservation/reservations.selectors';
+import { fetchUserReservationsAsync } from '../../redux/reservation/reservation.actions';
+import { selectReservationIsLoading, selectUserReservations } from '../../redux/reservation/reservation.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 import ReservationBlock from '../reservationBlock/reservationBlock.component';
 import Spinner from '../spinner/spinner.component';
 
@@ -10,31 +11,34 @@ import './reservations.styles.scss';
 const ReservationsComponent = () => {
   const dispatch = useDispatch();
 
-  const allReservations = useSelector(selectReservationsItems);
+  const userReservations = useSelector(selectUserReservations);
   const isLoading = useSelector(selectReservationIsLoading);
+  const currentUser = useSelector(selectCurrentUser);
 
   useEffect(() => {
-    dispatch(getReservationsFromApi());
-  }, []);
+    if (currentUser) {
+      dispatch(fetchUserReservationsAsync(currentUser.id));
+    }
+  }, [currentUser]);
 
   return (
-    <main className="reservations">
+    <section className="reservations">
       <h3 className="reservations__title">Here you&apos;ll see the reservations you&apos;ve made</h3>
       {
         isLoading ? (
           <Spinner />
         ) : (
           <section className="reservations__container">
-            {(allReservations.length > 0) ? (
-              allReservations.map((reservation) => (
+            {(userReservations.length > 0) ? (
+              userReservations.map((reservation) => (
                 <ReservationBlock
-                  checkIn={reservation.checkIn}
-                  checkOut={reservation.checkOut}
+                  checkIn={reservation.check_in}
+                  checkOut={reservation.check_out}
                   price={reservation.price}
                   guests={reservation.guests}
-                  propertyDetails={reservation.propertyDetails}
+                  propertyDetails={reservation.property}
                   id={reservation.id}
-                  reservationId={reservation.reservationId}
+                  reservationId={reservation.id}
                   userId={reservation.userId}
                   key={reservation.id}
                 />
@@ -45,7 +49,7 @@ const ReservationsComponent = () => {
           </section>
         )
       }
-    </main>
+    </section>
   );
 };
 
