@@ -27,6 +27,15 @@ export const signIn = async (email, password) => {
   return handleApiResponse(response);
 };
 
+export const signUp = async (name, email, password) => {
+  const response = await api.post('auth/signup', {
+    name,
+    email,
+    password,
+  });
+  return handleApiResponse(response);
+};
+
 export const getMe = async (accessToken) => {
   const response = await api.get('auth/me', {
     headers: {
