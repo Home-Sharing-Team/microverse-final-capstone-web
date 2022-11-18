@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  addYears, isBefore, subDays, parseISO, differenceInDays, addDays,
+  addYears, subDays, parseISO, differenceInDays, addDays, closestTo, isAfter,
 } from 'date-fns';
 import {
   selectSelectedCheckIn,
@@ -26,14 +26,21 @@ import { getCycleAmountInNights } from '../../utils/cycle.utils';
 import Icon from '../icon/icon.component';
 
 const getClosestAvailableDay = (selectedDay, blockedPeriods) => {
-  const closestBlockedPeriod = blockedPeriods.find(({ from }) =>
-    isBefore(selectedDay, from));
+  const blockedPeriodsStartDates = blockedPeriods
+    .filter(
+      ({ from }) => isAfter(from, selectedDay),
+    )
+    .map(
+      ({ from }) => from,
+    );
 
-  if (!closestBlockedPeriod) {
+  const closestBlockedPeriodStartDate = closestTo(selectedDay, blockedPeriodsStartDates);
+
+  if (!closestBlockedPeriodStartDate) {
     return addYears(new Date(), 2);
   }
 
-  return subDays(closestBlockedPeriod.from, 1);
+  return subDays(closestBlockedPeriodStartDate, 1);
 };
 
 export function DatePicker({ blockedPeriods }) {
