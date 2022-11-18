@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useToast } from '../../hooks/toast.hook';
 import { fetchUserReservationsAsync } from '../../redux/reservation/reservation.actions';
 import { selectReservationIsLoading, selectUserReservations } from '../../redux/reservation/reservation.selectors';
+import { selectStatusMessage } from '../../redux/status/status.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import ReservationBlock from '../reservationBlock/reservationBlock.component';
 import Spinner from '../spinner/spinner.component';
@@ -10,10 +12,16 @@ import './reservations.styles.scss';
 
 const ReservationsComponent = () => {
   const dispatch = useDispatch();
+  const { addToast } = useToast();
 
   const userReservations = useSelector(selectUserReservations);
   const isLoading = useSelector(selectReservationIsLoading);
   const currentUser = useSelector(selectCurrentUser);
+  const statusMessage = useSelector(selectStatusMessage);
+
+  if (statusMessage) {
+    addToast(statusMessage);
+  }
 
   useEffect(() => {
     if (currentUser) {

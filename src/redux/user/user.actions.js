@@ -1,10 +1,9 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { ACCESS_TOKEN_STORAGE_KEY } from '../../config/token.config';
 import { getMe, signIn, signUp } from '../../services/api.service';
 import { thunkErrorHandler } from '../../utils/redux.utils';
 import { setStatusMessage } from '../status/status.actions';
 import { USER_ACTION_TYPES } from './user.types';
-
-const ACCESS_TOKEN_STORAGE_KEY = '@HomeSharing::accessToken';
 
 export const signOut = createAction(USER_ACTION_TYPES.SIGN_OUT, () => {
   localStorage.setItem(ACCESS_TOKEN_STORAGE_KEY, '');

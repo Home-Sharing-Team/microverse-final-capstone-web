@@ -4,7 +4,9 @@ import {
   deleteReservationById,
   fetchUserReservations,
 } from '../../services/api.service';
+import { thunkErrorHandler } from '../../utils/redux.utils';
 import { getSelectedHostingFromNumNights } from '../../utils/reservation.utils';
+import { setStatusMessage } from '../status/status.actions';
 import { RESERVATION_ACTION_TYPES } from './reservation.types';
 
 export const setSelectedGuests = createAction(
@@ -55,19 +57,25 @@ export const fetchUserReservationsAsync = createAsyncThunk(
 
 export const deleteUserReservationAsync = createAsyncThunk(
   RESERVATION_ACTION_TYPES.DELETE_USER_RESERVATION_ASYNC,
-  async (reservationId, { getState }) => {
+  thunkErrorHandler(async (reservationId, { getState, dispatch }) => {
     await deleteReservationById(reservationId);
+
+    dispatch(setStatusMessage({
+      type: 'success',
+      message: 'Reservation deleted successfully.',
+    }));
+
     return getState().reservation.userReservations.filter(
       (reservation) => reservation.id !== reservationId,
     );
-  },
+  }),
 );
 
 export const createReservationAsync = createAsyncThunk(
   RESERVATION_ACTION_TYPES.CREATE_RESERVATION_ASYNC,
-  async ({
+  thunkErrorHandler(async ({
     userId, hostingId, guests, checkIn, checkOut, price,
-  }, { getState }) => {
+  }, { getState, dispatch }) => {
     const newReservation = await createReservationFromApi({
       guests,
       checkIn,
@@ -78,6 +86,11 @@ export const createReservationAsync = createAsyncThunk(
     });
     const { userReservations } = getState().reservation;
 
+    dispatch(setStatusMessage({
+      type: 'success',
+      message: 'Reservation created successfully.',
+    }));
+
     return [...userReservations, newReservation];
-  },
+  }),
 );

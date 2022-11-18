@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ACCESS_TOKEN_STORAGE_KEY } from '../config/token.config';
 
 const API_BASE_URL = 'http://localhost:4000/api/v1';
 
@@ -105,7 +106,13 @@ export const getMe = async (accessToken) => {
 
 export const deleteReservationById = async (reservationId) => {
   try {
-    const response = await api.delete(`reservations/${reservationId}`);
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+
+    const response = await api.delete(`reservations/${reservationId}`, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
     return handleApiResponse(response);
   } catch (error) {
     return handleApiResponse(error.response);
@@ -121,6 +128,8 @@ export const createReservationFromApi = async ({
   hostingId,
 }) => {
   try {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+
     const response = await api.post('reservations', {
       guests,
       check_in: checkIn,
@@ -128,6 +137,10 @@ export const createReservationFromApi = async ({
       price,
       user_id: userId,
       hosting_id: hostingId,
+    }, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
     });
     return handleApiResponse(response);
   } catch (error) {

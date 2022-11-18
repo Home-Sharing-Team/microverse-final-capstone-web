@@ -15,12 +15,12 @@ const ToastProvider = ({ children }) => {
   const addToast = ({ type, message }) => {
     const defaultSettings = {
       position: 'top-right',
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       progress: undefined,
-      theme: 'light',
+      theme: 'colored',
     };
 
     switch (type) {
@@ -30,7 +30,7 @@ const ToastProvider = ({ children }) => {
       case 'error':
         toast.error(message, {
           ...defaultSettings,
-          autoClose: 5000,
+          autoClose: 4000,
         });
         break;
       default:

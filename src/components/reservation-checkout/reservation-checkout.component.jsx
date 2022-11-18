@@ -1,7 +1,8 @@
 import pluralize from 'pluralize';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useToast } from '../../hooks/toast.hook';
 import { selectSelectedProperty } from '../../redux/property/property.selectors';
 import { createReservationAsync } from '../../redux/reservation/reservation.actions';
 import {
@@ -12,6 +13,7 @@ import {
   selectSelectedGuests,
   selectSelectedHosting,
 } from '../../redux/reservation/reservation.selectors';
+import { selectStatusMessage } from '../../redux/status/status.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { GuestSelector } from '../guest-selector/guest-selector.component';
 import { Popup } from '../popup/popup.component';
@@ -21,6 +23,8 @@ import './reservation-checkout.styles.scss';
 
 export function ReservationCheckout({ handleClosePopup }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { addToast } = useToast();
   const checkInDate = useSelector(selectSelectedCheckIn);
   const checkOutDate = useSelector(selectSelectedCheckOut);
   const property = useSelector(selectSelectedProperty);
@@ -29,6 +33,17 @@ export function ReservationCheckout({ handleClosePopup }) {
   const totalPrice = useSelector(selectReservationTotalPrice);
   const guests = useSelector(selectSelectedGuests);
   const selectedHosting = useSelector(selectSelectedHosting);
+  const statusMessage = useSelector(selectStatusMessage);
+
+  if (statusMessage) {
+    const { type } = statusMessage;
+
+    if (type === 'error') {
+      addToast(statusMessage);
+    } else {
+      navigate('/reservations');
+    }
+  }
 
   const handleCreateReservation = () => {
     dispatch(createReservationAsync({
