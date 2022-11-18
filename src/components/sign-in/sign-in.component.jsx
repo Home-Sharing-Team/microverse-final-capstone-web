@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useToast } from '../../hooks/toast.hook';
 import { selectStatusMessage } from '../../redux/status/status.selectors';
 import { signInAsync } from '../../redux/user/user.actions';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import './sign-in.styles.scss';
 
@@ -15,19 +14,11 @@ const defaultFormFields = {
 
 const LogInComponent = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { addToast } = useToast();
-  const currentUser = useSelector(selectCurrentUser);
   const statusMessage = useSelector(selectStatusMessage);
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-
-  useEffect(() => {
-    if (currentUser) {
-      navigate('/');
-    }
-  }, [currentUser]);
 
   if (statusMessage) {
     addToast(statusMessage);

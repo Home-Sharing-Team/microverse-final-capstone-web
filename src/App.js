@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { Navigation } from './components/navigation/navigation.component';
 import LoginPage from './pages/login-page/loginPage.component';
@@ -9,9 +9,12 @@ import { Homepage } from './pages/homepage/homepage.component';
 import { PropertyDetailsPage } from './pages/property-details-page/property-details-page.component';
 import { fetchCategoryItemsAsync } from './redux/category/category.actions';
 import { checkUserSessionAsync } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selectors';
+import { ProtectedRoute } from './components/protected-route/protected-route.component';
 
 export default function App() {
   const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
 
   useEffect(() => {
     dispatch(checkUserSessionAsync());
@@ -26,9 +29,18 @@ export default function App() {
           path="/properties/:propertyId"
           element={<PropertyDetailsPage />}
         />
-        <Route path="/sign-in" element={<LoginPage />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
-        <Route path="/reservations" element={<ReservationPage />} />
+        <Route element={<ProtectedRoute isAllowed={!currentUser} />}>
+          <Route path="/sign-in" element={<LoginPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+        </Route>
+        <Route
+          path="/reservations"
+          element={(
+            <ProtectedRoute isAllowed={!!currentUser}>
+              <ReservationPage />
+            </ProtectedRoute>
+        )}
+        />
       </Route>
     </Routes>
   );

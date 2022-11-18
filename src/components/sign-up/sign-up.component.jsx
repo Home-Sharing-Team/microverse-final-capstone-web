@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useToast } from '../../hooks/toast.hook';
 import { selectStatusMessage } from '../../redux/status/status.selectors';
 import { signUpAsync } from '../../redux/user/user.actions';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import '../sign-in/sign-in.styles.scss';
 
@@ -17,16 +16,13 @@ const SignUpComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { addToast } = useToast();
-  const currentUser = useSelector(selectCurrentUser);
   const statusMessage = useSelector(selectStatusMessage);
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, email, password } = formFields;
 
   useEffect(() => {
-    if (currentUser) {
-      navigate('/');
-    } else if (statusMessage) {
+    if (statusMessage) {
       const { type } = statusMessage;
 
       if (type === 'error') {
@@ -35,7 +31,7 @@ const SignUpComponent = () => {
         navigate('/sign-in');
       }
     }
-  }, [statusMessage, currentUser]);
+  }, [statusMessage]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
