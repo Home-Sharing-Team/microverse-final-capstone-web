@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import './reservationBlock.styles.scss';
 import { deleteUserReservationAsync } from '../../redux/reservation/reservation.actions';
+import HousePlaceholder from '../../assets/images/house_placeholder.png';
+
+import './reservationBlock.styles.scss';
 
 const ReservationBlock = (props) => {
   // const {
@@ -29,7 +31,7 @@ const ReservationBlock = (props) => {
 
   const {
     title,
-    image,
+    images,
   } = propertyDetails;
 
   const dispatch = useDispatch();
@@ -37,6 +39,8 @@ const ReservationBlock = (props) => {
   const handleDelete = () => {
     dispatch(deleteUserReservationAsync(reservationId));
   };
+
+  const image = images.length > 0 ? images[0].source : HousePlaceholder;
 
   return (
     <article className="reservation">
@@ -88,7 +92,10 @@ ReservationBlock.propTypes = {
   guests: PropTypes.number.isRequired,
   propertyDetails: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      source: PropTypes.string.isRequired,
+    })).isRequired,
   }).isRequired,
   // id: PropTypes.number.isRequired,
   reservationId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,

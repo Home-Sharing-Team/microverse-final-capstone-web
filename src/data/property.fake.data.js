@@ -13,7 +13,7 @@ export const fakePropertyItems = [
       avatar: null,
     },
     description:
-      'This is the house perfect for you! Near to the beach, to markets, gyms, etc. Reserve a date! ',
+      'This is the house perfect for you! Near to the beach, to markets, gyms, etc. Reserve a date!',
     guest_capacity: 9,
     bedrooms: 3,
     beds: 5,
@@ -35,42 +35,42 @@ export const fakePropertyItems = [
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/62ad847e-2f84-49cb-a8a7-35856dc93a20.jpg?im_w=960',
+          'https://i.ibb.co/XpgGTmY/62ad847e-2f84-49cb-a8a7-35856dc93a20.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/d88dfa7d-113a-4e26-b3fd-d819df85a446.jpg?im_w=1200',
+          'https://i.ibb.co/103Qnyr/d88dfa7d-113a-4e26-b3fd-d819df85a446.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/492ee2ac-55f8-4c50-8f72-877cc0aa784f.jpg?im_w=1200',
+          'https://i.ibb.co/N7rfLcs/c7ec5fd9-ae03-40f9-9632-9ce1a77a3df2.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/2e505f86-c67c-4353-a542-5ea1eab24f51.jpg?im_w=1200',
+          'https://i.ibb.co/2j0Kvgy/6513c49a-7537-4175-be57-f7581f393b43.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/d62454a1-c7e9-4550-bd56-478cf3d09b65.jpg?im_w=1200',
+          'https://i.ibb.co/CJnmm8J/492ee2ac-55f8-4c50-8f72-877cc0aa784f.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/c7ec5fd9-ae03-40f9-9632-9ce1a77a3df2.jpg?im_w=1200',
+          'https://i.ibb.co/vz1Nrkj/70e4749a-e369-4807-9cfd-a1c344ccf847.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/70e4749a-e369-4807-9cfd-a1c344ccf847.jpg?im_w=1200',
+          'https://i.ibb.co/hXWm9Cm/d62454a1-c7e9-4550-bd56-478cf3d09b65.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/6513c49a-7537-4175-be57-f7581f393b43.jpg?im_w=1200',
+          'https://i.ibb.co/nj5Kd7c/2e505f86-c67c-4353-a542-5ea1eab24f51.webp',
       },
     ],
     blocked_periods: [
@@ -141,37 +141,37 @@ export const fakePropertyItems = [
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/abfdccee-b6d6-4465-89e9-6625482abeb7.jpg?im_w=1200',
+          'https://i.ibb.co/N35JMr8/abfdccee-b6d6-4465-89e9-6625482abeb7.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/3f021541-b841-4ac5-9af0-e28cf0f484a2.jpg?im_w=1200',
+          'https://i.ibb.co/kxmf2cb/db6f128c-e396-4835-944d-ce71b66e7dc0.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/miso/Hosting-49463392/original/693f98b2-4635-466f-becf-d84cd41150bd.jpeg?im_w=1200',
+          'https://i.ibb.co/mvtfrWB/99038ba2-d090-4533-b234-607d20d26000.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/db6f128c-e396-4835-944d-ce71b66e7dc0.jpg?im_w=1200',
+          'https://i.ibb.co/4FbXqYK/693f98b2-4635-466f-becf-d84cd41150bd.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/99038ba2-d090-4533-b234-607d20d26000.jpg?im_w=960',
+          'https://i.ibb.co/26stvN0/431cc039-8c82-417b-95d1-cb4cb4d214dc.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/01ee453c-b5ac-467a-8c4f-c5eb699f1232.jpg?im_w=1200',
+          'https://i.ibb.co/GkY2GCQ/3f021541-b841-4ac5-9af0-e28cf0f484a2.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/431cc039-8c82-417b-95d1-cb4cb4d214dc.jpg?im_w=1200',
+          'https://i.ibb.co/BZ7QHKX/01ee453c-b5ac-467a-8c4f-c5eb699f1232.webp',
       },
     ],
     blocked_periods: [
@@ -251,27 +251,27 @@ export const fakePropertyItems = [
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/miso/Hosting-15058446/original/56fe9e3f-48c1-4777-a2b0-5b7745eb9874.jpeg?im_w=960',
+          'https://i.ibb.co/P98xkTQ/56fe9e3f-48c1-4777-a2b0-5b7745eb9874.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/ad0164c8-acb5-477d-b1d0-19fabd9931cc.jpg?im_w=1200',
+          'https://i.ibb.co/d5m1dSm/ad0164c8-acb5-477d-b1d0-19fabd9931cc.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/90f625f1-67e9-4a62-8e10-554ae12c8763.jpg?im_w=1200',
+          'https://i.ibb.co/Fs7Zy8v/6861fc2a-ca6b-473a-b64d-7303f3836584.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/8ce69729-b8bd-41a4-83a5-383448dd0e80.jpg?im_w=1200',
+          'https://i.ibb.co/0n8T0MP/90f625f1-67e9-4a62-8e10-554ae12c8763.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/6861fc2a-ca6b-473a-b64d-7303f3836584.jpg?im_w=1200',
+          'https://i.ibb.co/3FTr5tY/8ce69729-b8bd-41a4-83a5-383448dd0e80.webp',
       },
     ],
     blocked_periods: [
@@ -349,12 +349,12 @@ export const fakePropertyItems = [
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/3c0dfe9f-6df6-467a-9c80-4edbfe5dc61d.jpg?im_w=960',
+          'https://i.ibb.co/3kPZW0f/3c0dfe9f-6df6-467a-9c80-4edbfe5dc61d.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/miso/Hosting-36353867/original/b7079a51-dd6a-476a-b313-ba8589c534a0.jpeg?im_w=1200',
+          'https://i.ibb.co/mByxRD3/b7079a51-dd6a-476a-b313-ba8589c534a0.webp',
       },
     ],
     blocked_periods: [
@@ -423,7 +423,7 @@ export const fakePropertyItems = [
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/miso/Hosting-578250815153607611/original/0451b654-545c-40e9-9416-458399129abf.jpeg?im_w=960',
+          'https://i.ibb.co/y4hsHMP/0451b654-545c-40e9-9416-458399129abf.webp',
       },
     ],
     blocked_periods: [
@@ -500,47 +500,47 @@ export const fakePropertyItems = [
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/595b5f29-3b46-4441-aa67-a2be6939c84e.jpg?im_w=960',
+          'https://i.ibb.co/WFMLk4H/595b5f29-3b46-4441-aa67-a2be6939c84e.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/d6812963-84c2-4983-a483-ad53098376e9.jpg?im_w=1200',
+          'https://i.ibb.co/J7nfmdZ/f767ccad-eb79-404d-89e0-dd20ca8b3d96.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/f767ccad-eb79-404d-89e0-dd20ca8b3d96.jpg?im_w=1200',
+          'https://i.ibb.co/zXGr9Hn/f71daedc-dc03-4ca0-b9c0-08fdbf0bf892.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/a3c208ff-4f1a-4567-9eab-d0319d55a21e.jpg?im_w=1200',
+          'https://i.ibb.co/H45NzqM/ecf7de4b-7514-4414-8d87-352d4fcf1858.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/c380a8fd-d6dc-48ee-b260-830853706221.jpg?im_w=1200',
+          'https://i.ibb.co/f1WZkqt/d6812963-84c2-4983-a483-ad53098376e9.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/366d8e94-7266-40e7-8ef1-606d6eb8ddd5.jpg?im_w=1200',
+          'https://i.ibb.co/nfhZc5W/c380a8fd-d6dc-48ee-b260-830853706221.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/ecf7de4b-7514-4414-8d87-352d4fcf1858.jpg?im_w=1200',
+          'https://i.ibb.co/Dw0GNn3/a3c208ff-4f1a-4567-9eab-d0319d55a21e.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/0ea037a4-20fc-480a-afc5-0f8837bc7821.jpg?im_w=1200',
+          'https://i.ibb.co/n3bgdVZ/366d8e94-7266-40e7-8ef1-606d6eb8ddd5.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/f71daedc-dc03-4ca0-b9c0-08fdbf0bf892.jpg?im_w=1200',
+          'https://i.ibb.co/gjQsyKF/0ea037a4-20fc-480a-afc5-0f8837bc7821.webp',
       },
     ],
     blocked_periods: [
@@ -626,47 +626,47 @@ export const fakePropertyItems = [
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/5cf60fda-63c1-45d3-84ad-e5c6f593f4af.jpg?im_w=960',
+          'https://i.ibb.co/7rfyBrH/5cf60fda-63c1-45d3-84ad-e5c6f593f4af.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/ac3a26b3-e9aa-4b6a-b40f-fe88b361c35b.jpg?im_w=1200',
+          'https://i.ibb.co/stXcVM2/ac3a26b3-e9aa-4b6a-b40f-fe88b361c35b.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/3a9e4bd8-5281-49c0-a2f1-dbfa598cb2ae.jpg?im_w=1200',
+          'https://i.ibb.co/KKGsVzG/fc0062e5-b322-4b65-993f-febffeaaffd3.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/fc0062e5-b322-4b65-993f-febffeaaffd3.jpg?im_w=1200',
+          'https://i.ibb.co/xFqdcgS/c0c0b77c-0bc5-4836-af0b-fddabcdf8a08.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/682d90e6-b8df-493a-9f32-153b573456dc.jpg?im_w=1200',
+          'https://i.ibb.co/JCY1gwB/3219f1c2-2778-440a-95db-48b4b4052c68.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/3219f1c2-2778-440a-95db-48b4b4052c68.jpg?im_w=1200',
+          'https://i.ibb.co/x6S4RSt/923dee3f-0509-4b85-b2e8-0fe4987cffa5.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/3cb269ae-ded0-4d24-ad4e-269247444616.jpg?im_w=1200',
+          'https://i.ibb.co/pnNJcQ7/682d90e6-b8df-493a-9f32-153b573456dc.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/923dee3f-0509-4b85-b2e8-0fe4987cffa5.jpg?im_w=1200',
+          'https://i.ibb.co/GczTvF9/3cb269ae-ded0-4d24-ad4e-269247444616.webp',
       },
       {
         id: v4(),
         source:
-          'https://a0.muscache.com/im/pictures/c0c0b77c-0bc5-4836-af0b-fddabcdf8a08.jpg?im_w=1200',
+          'https://i.ibb.co/gyPf6Zy/3a9e4bd8-5281-49c0-a2f1-dbfa598cb2ae.webp',
       },
     ],
     blocked_periods: [

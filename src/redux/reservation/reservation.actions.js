@@ -1,5 +1,6 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import {
+  createReservationFromApi,
   deleteReservationById,
   fetchUserReservations,
 } from '../../services/api.service';
@@ -59,5 +60,24 @@ export const deleteUserReservationAsync = createAsyncThunk(
     return getState().reservation.userReservations.filter(
       (reservation) => reservation.id !== reservationId,
     );
+  },
+);
+
+export const createReservationAsync = createAsyncThunk(
+  RESERVATION_ACTION_TYPES.CREATE_RESERVATION_ASYNC,
+  async ({
+    userId, hostingId, guests, checkIn, checkOut, price,
+  }, { getState }) => {
+    const newReservation = await createReservationFromApi({
+      guests,
+      checkIn,
+      checkOut,
+      price,
+      userId,
+      hostingId,
+    });
+    const { userReservations } = getState().reservation;
+
+    return [...userReservations, newReservation];
   },
 );

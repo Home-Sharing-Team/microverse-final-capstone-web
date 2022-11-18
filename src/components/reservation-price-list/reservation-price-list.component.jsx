@@ -60,7 +60,7 @@ export function ReservationPriceList() {
                 </p>
               </li>
 
-              {selectedHosting.hosting.cleaning_fee && (
+              {selectedHosting.hosting.cleaning_fee > 0 && (
                 <li className="reservation-price-list__item">
                   <p className="reservation-price-list__heading">Cleaning fee</p>
                   <p className="reservation-price-list__value">

@@ -1,8 +1,17 @@
 import pluralize from 'pluralize';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { selectSelectedProperty } from '../../redux/property/property.selectors';
-import { selectNumNights, selectSelectedCheckIn, selectSelectedCheckOut } from '../../redux/reservation/reservation.selectors';
+import { createReservationAsync } from '../../redux/reservation/reservation.actions';
+import {
+  selectNumNights,
+  selectReservationTotalPrice,
+  selectSelectedCheckIn,
+  selectSelectedCheckOut,
+  selectSelectedGuests,
+  selectSelectedHosting,
+} from '../../redux/reservation/reservation.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { GuestSelector } from '../guest-selector/guest-selector.component';
 import { Popup } from '../popup/popup.component';
@@ -11,11 +20,26 @@ import { ReservationPriceList } from '../reservation-price-list/reservation-pric
 import './reservation-checkout.styles.scss';
 
 export function ReservationCheckout({ handleClosePopup }) {
+  const dispatch = useDispatch();
   const checkInDate = useSelector(selectSelectedCheckIn);
   const checkOutDate = useSelector(selectSelectedCheckOut);
   const property = useSelector(selectSelectedProperty);
   const numNights = useSelector(selectNumNights);
   const currentUser = useSelector(selectCurrentUser);
+  const totalPrice = useSelector(selectReservationTotalPrice);
+  const guests = useSelector(selectSelectedGuests);
+  const selectedHosting = useSelector(selectSelectedHosting);
+
+  const handleCreateReservation = () => {
+    dispatch(createReservationAsync({
+      guests,
+      checkIn: checkInDate,
+      checkOut: checkOutDate,
+      price: totalPrice,
+      userId: currentUser.id,
+      hostingId: selectedHosting.hosting.id,
+    }));
+  };
 
   const getDateBlockText = (date) => (date ? (
     <p className="reservation-checkout__block-text">
@@ -61,16 +85,16 @@ export function ReservationCheckout({ handleClosePopup }) {
         </div>
         <footer className="reservation-checkout__footer">
           {
-          currentUser ? (
-            <button type="button" className="reservation-checkout__btn">
-              Confirm
-            </button>
-          ) : (
-            <button type="button" className="reservation-checkout__btn">
-              Sign in first
-            </button>
-          )
-        }
+            currentUser ? (
+              <button onClick={handleCreateReservation} type="button" className="reservation-checkout__btn">
+                Confirm
+              </button>
+            ) : (
+              <Link to="/sign-in" className="reservation-checkout__btn">
+                Sign in first
+              </Link>
+            )
+          }
         </footer>
       </div>
     </Popup>

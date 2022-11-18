@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3000/api/v1';
+const API_BASE_URL = 'http://localhost:4000/api/v1';
+
+// const API_BASE_URL = 'http://localhost:3000/api/v1';
 
 const handleApiResponse = (response) => {
   if (!response.data.success) {
@@ -15,61 +17,120 @@ export const api = axios.create({
 });
 
 export const fetchProperties = async () => {
-  const response = await api.get('properties');
-  return handleApiResponse(response);
+  try {
+    const response = await api.get('properties');
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
 };
 
 export const fetchUserReservations = async (userId) => {
-  const response = await api.get(`users/${userId}/reservations`);
-  return handleApiResponse(response);
+  try {
+    const response = await api.get(`users/${userId}/reservations`);
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
 };
 
 export const fetchPropertyById = async (propertyId) => {
-  const response = await api.get(`properties/${propertyId}`);
-  return handleApiResponse(response);
+  try {
+    const response = await api.get(`properties/${propertyId}`);
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
 };
 
 export const fetchPropertiesByCategory = async (categoryId) => {
-  const response = await api.get('properties', {
-    params: {
-      category: categoryId,
-    },
-  });
-  return handleApiResponse(response);
+  try {
+    const response = await api.get('properties', {
+      params: {
+        category: categoryId,
+      },
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
 };
 
 export const fetchCategories = async () => {
-  const response = await api.get('categories');
-  return handleApiResponse(response);
+  try {
+    const response = await api.get('categories');
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
 };
 
 export const signIn = async (email, password) => {
-  const response = await api.post('auth/login', {
-    email,
-    password,
-  });
-  return handleApiResponse(response);
+  try {
+    const response = await api.post('auth/sign_in', {
+      email,
+      password,
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
 };
 
 export const signUp = async (name, email, password) => {
-  const response = await api.post('auth/signup', {
-    name,
-    email,
-    password,
-  });
-  return handleApiResponse(response);
+  try {
+    const response = await api.post('auth/register', {
+      name,
+      email,
+      password,
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
 };
 
 export const getMe = async (accessToken) => {
-  const response = await api.get('auth/me', {
-    headers: {
-      authorization: `Bearer ${accessToken}`,
-    },
-  });
-  return handleApiResponse(response);
+  try {
+    const response = await api.get('auth/me', {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
 };
 
 export const deleteReservationById = async (reservationId) => {
-  const response = await api.delete(`reservations/${reservationId}`);
-  return handleApiResponse(response);
+  try {
+    const response = await api.delete(`reservations/${reservationId}`);
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
+};
+
+export const createReservationFromApi = async ({
+  guests,
+  checkIn,
+  checkOut,
+  price,
+  userId,
+  hostingId,
+}) => {
+  try {
+    const response = await api.post('reservations', {
+      guests,
+      check_in: checkIn,
+      check_out: checkOut,
+      price,
+      user_id: userId,
+      hosting_id: hostingId,
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
 };

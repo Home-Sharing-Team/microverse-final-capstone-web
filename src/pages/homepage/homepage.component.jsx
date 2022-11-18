@@ -15,6 +15,8 @@ import './homepage.styles.scss';
 import { PropertyCard } from '../../components/property-card/property-card.component';
 import { CategorySelector } from '../../components/category-selector/category-selector.component';
 import { selectCategoryItems } from '../../redux/category/category.selectors';
+import { useToast } from '../../hooks/toast.hook';
+import { selectStatusMessage } from '../../redux/status/status.selectors';
 
 const ALL_CATEGORIES_BUTTON_ID = -1;
 
@@ -24,9 +26,11 @@ export function Homepage() {
   );
 
   const dispatch = useDispatch();
+  const { addToast } = useToast();
   const propertyItems = useSelector(selectPropertyItems);
   const categoryItems = useSelector(selectCategoryItems);
   const isPropertyLoading = useSelector(selectPropertyIsLoading);
+  const statusMessage = useSelector(selectStatusMessage);
 
   const handleFetchProperties = (categoryId) => {
     if (categoryId === ALL_CATEGORIES_BUTTON_ID) {
@@ -40,6 +44,10 @@ export function Homepage() {
 
   useEffect(() => {
     handleFetchProperties(ALL_CATEGORIES_BUTTON_ID);
+
+    if (statusMessage) {
+      addToast(statusMessage);
+    }
   }, []);
 
   return (

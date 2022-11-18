@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  createReservationAsync,
   deleteUserReservationAsync,
   fetchUserReservationsAsync,
   resetSelectedReservation,
@@ -65,6 +66,18 @@ const reservationSlice = createSlice({
       state.error = error.message;
     },
     [deleteUserReservationAsync.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.userReservations = payload;
+      state.error = null;
+    },
+    [createReservationAsync.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [createReservationAsync.rejected]: (state, { error }) => {
+      state.isLoading = false;
+      state.error = error.message;
+    },
+    [createReservationAsync.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.userReservations = payload;
       state.error = null;
