@@ -44,11 +44,11 @@ export function Homepage() {
 
   useEffect(() => {
     handleFetchProperties(ALL_CATEGORIES_BUTTON_ID);
-
-    if (statusMessage) {
-      addToast(statusMessage);
-    }
   }, []);
+
+  if (statusMessage) {
+    addToast(statusMessage);
+  }
 
   return (
     <div className="homepage">

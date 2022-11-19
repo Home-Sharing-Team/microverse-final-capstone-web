@@ -36,7 +36,10 @@ export default function App() {
         <Route
           path="/reservations"
           element={(
-            <ProtectedRoute isAllowed={!!currentUser}>
+            <ProtectedRoute
+              isAllowed={!!currentUser}
+              redirectMessage="Sign in first to access that page."
+            >
               <ReservationPage />
             </ProtectedRoute>
         )}
