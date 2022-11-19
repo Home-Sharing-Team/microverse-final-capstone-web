@@ -19,7 +19,7 @@ const ReservationsComponent = () => {
 
   return (
     <main className="reservations">
-      <h3 className="reservations__title">Here you&apos;ll see the reservations you&apos;ve made</h3>
+      <h3 className="reservations__title">Take a look at your reservations</h3>
       {
         isLoading ? (
           <Spinner />

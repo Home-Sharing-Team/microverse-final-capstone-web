@@ -1,7 +1,7 @@
 .reservation {
   background-color: var(--color-white);
   width: 30rem;
-  height: 40rem;
+  height: 44rem;
   padding: 2.4rem;
   border-radius: var(--border-radius);
   display: flex;
@@ -9,13 +9,19 @@
   align-items: center;
   justify-content: center;
   align-content: center;
-  -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: var(--shadow-cards);
+  box-shadow: var(--shadow-cards);
   margin: 2rem auto;
 
   &__img-container {
     &__img {
       width: 100%;
+      margin: 0.8rem 0 0;
+      transition: 0.5s;
+    }
+
+    &__img:hover {
+      transform: scale(1.05);
     }
   }
 
@@ -27,20 +33,20 @@
     margin: 2rem 0;
 
     &__title {
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       color: var(--color-text-primary);
+      margin-bottom: 0.8rem;
     }
 
     p {
+      font-size: 1.8rem;
       color: var(--color-text-secondary);
     }
   }
 
   &__actions {
     width: 100%;
-    display: flex;
     align-self: flex-end;
-    justify-content: space-around;
   }
 }
 
@@ -50,12 +56,26 @@
   border-radius: var(--border-radius);
   padding: 1.2rem 0.8rem;
   color: var(--color-white);
+  transition: 0.2s;
 }
 
 .btn-link:hover {
   background-color: var(--color-delete-hover);
+  animation-name: btn-animate;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
 }
 
 .btn-link:active {
   background-color: var(--color-delete-active);
+}
+
+@keyframes btn-animate {
+  50% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    transform: rotate(-2deg);
+  }
 }

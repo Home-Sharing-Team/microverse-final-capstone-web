@@ -16,8 +16,8 @@
     padding: 3.2rem 2.4rem;
     border-radius: var(--border-radius);
     border: 1px solid var(--color-grey-200);
-    -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: var(--shadow-cards);
+    box-shadow: var(--shadow-cards);
 
     &__header {
       display: flex;
@@ -71,6 +71,7 @@
         transition: 0.5s;
       }
 
+      &__inputBox input:not(:placeholder-shown) ~ span,
       &__inputBox input:valid ~ span,
       &__inputBox input:focus ~ span {
         color: var(--color-primary);
@@ -91,6 +92,7 @@
         z-index: 9;
       }
 
+      &__inputBox input:not(:placeholder-shown) ~ i,
       &__inputBox input:valid ~ i,
       &__inputBox input:focus ~ i {
         background-color: var(--color-primary);
