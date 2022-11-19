@@ -1,3 +1,5 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { HeaderDropdown } from '../header-dropdown/header-dropdown.component';
@@ -6,13 +8,20 @@ import { RoundIcon } from '../round-icon/round-icon.component';
 
 import './auth-dropdown.styles.scss';
 
-export function AuthDropdown({ handleLinkClick }) {
+export function AuthDropdown({
+  handleCloseDropdown,
+  disableClickOutsideRefs,
+}) {
   return (
-    <HeaderDropdown title="user session">
+    <HeaderDropdown
+      disableClickOutsideRefs={disableClickOutsideRefs}
+      handleCloseDropdown={handleCloseDropdown}
+      title="user session"
+    >
       <div className="auth-dropdown__content">
         <ul className="auth-dropdown__list">
           <li>
-            <Link onClick={handleLinkClick} to="/sign-in" className="auth-dropdown__link">
+            <Link onClick={handleCloseDropdown} to="/sign-in" className="auth-dropdown__link">
               <RoundIcon>
                 <Icon name="log-in" size="sm" />
               </RoundIcon>
@@ -20,7 +29,7 @@ export function AuthDropdown({ handleLinkClick }) {
             </Link>
           </li>
           <li>
-            <Link onClick={handleLinkClick} to="/sign-up" className="auth-dropdown__link">
+            <Link onClick={handleCloseDropdown} to="/sign-up" className="auth-dropdown__link">
               <RoundIcon>
                 <Icon name="user-plus" size="sm" />
               </RoundIcon>
@@ -34,5 +43,6 @@ export function AuthDropdown({ handleLinkClick }) {
 }
 
 AuthDropdown.propTypes = {
-  handleLinkClick: PropTypes.func.isRequired,
+  handleCloseDropdown: PropTypes.func.isRequired,
+  disableClickOutsideRefs: PropTypes.array,
 };

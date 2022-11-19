@@ -1,3 +1,5 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
@@ -7,13 +9,20 @@ import { RoundIcon } from '../round-icon/round-icon.component';
 
 import './create-dropdown.styles.scss';
 
-export function CreateDropdown({ handleLinkClick }) {
+export function CreateDropdown({
+  handleCloseDropdown,
+  disableClickOutsideRefs,
+}) {
   return (
-    <HeaderDropdown title="create">
+    <HeaderDropdown
+      handleCloseDropdown={handleCloseDropdown}
+      title="create"
+      disableClickOutsideRefs={disableClickOutsideRefs}
+    >
       <div className="create-dropdown__content">
         <ul className="create-dropdown__list">
           <li>
-            <Link onClick={handleLinkClick} to="/" className="create-dropdown__link">
+            <Link onClick={handleCloseDropdown} to="/" className="create-dropdown__link">
               <RoundIcon>
                 <Icon name="home" size="sm" />
               </RoundIcon>
@@ -32,5 +41,6 @@ export function CreateDropdown({ handleLinkClick }) {
 }
 
 CreateDropdown.propTypes = {
-  handleLinkClick: PropTypes.func.isRequired,
+  handleCloseDropdown: PropTypes.func.isRequired,
+  disableClickOutsideRefs: PropTypes.array,
 };

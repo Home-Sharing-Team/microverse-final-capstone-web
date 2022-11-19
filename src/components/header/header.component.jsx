@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
@@ -25,6 +25,10 @@ export function Header({ handleHamburgerBtnClick }) {
     defaultSelectedDropdown,
   );
 
+  const createDropdownBtnRef = useRef(null);
+  const accountDropdownBtnRef = useRef(null);
+  const authDropdownBtnRef = useRef(null);
+
   const closeDropdown = () => {
     setSelectedDropdown({
       name: '',
@@ -33,9 +37,27 @@ export function Header({ handleHamburgerBtnClick }) {
   };
 
   const headerDropdowns = {
-    create: <CreateDropdown handleLinkClick={closeDropdown} />,
-    account: <AccountDropdown handleLinkClick={closeDropdown} user={user} />,
-    auth: <AuthDropdown handleLinkClick={closeDropdown} />,
+    create: <CreateDropdown
+      handleCloseDropdown={closeDropdown}
+      disableClickOutsideRefs={[
+        createDropdownBtnRef,
+        accountDropdownBtnRef,
+      ]}
+    />,
+    account: <AccountDropdown
+      handleCloseDropdown={closeDropdown}
+      user={user}
+      disableClickOutsideRefs={[
+        createDropdownBtnRef,
+        accountDropdownBtnRef,
+      ]}
+    />,
+    auth: <AuthDropdown
+      handleCloseDropdown={closeDropdown}
+      disableClickOutsideRefs={[
+        authDropdownBtnRef,
+      ]}
+    />,
   };
 
   const toggleDropdown = (dropdownName) => {
@@ -86,6 +108,7 @@ export function Header({ handleHamburgerBtnClick }) {
                   }}
                   className="header__btn"
                   type="button"
+                  ref={createDropdownBtnRef}
                 >
                   <RoundIcon size="md">
                     <Icon name="plus" size="sm" />
@@ -99,6 +122,7 @@ export function Header({ handleHamburgerBtnClick }) {
                   }}
                   className="header__btn"
                   type="button"
+                  ref={accountDropdownBtnRef}
                 >
                   <img src={userAvatar} alt="user avatar" />
                 </button>
@@ -111,6 +135,7 @@ export function Header({ handleHamburgerBtnClick }) {
               }}
               className="header__auth-btn"
               type="button"
+              ref={authDropdownBtnRef}
             >
               <Icon name="menu" size="sm" />
               <Icon name="user" size="sm" />
