@@ -30,6 +30,7 @@ const ReservationBlock = (props) => {
   } = props;
 
   const {
+    id,
     title,
     images,
   } = propertyDetails;
@@ -45,7 +46,7 @@ const ReservationBlock = (props) => {
   return (
     <article className="reservation">
       <div className="reservation__img-container">
-        <Link className="details-link" to="/">
+        <Link className="details-link" to={`/properties/${id}`}>
           <img src={image} alt="visual representation of the house" className="reservation__img-container__img" />
         </Link>
       </div>
@@ -91,6 +92,7 @@ ReservationBlock.propTypes = {
   price: PropTypes.number.isRequired,
   guests: PropTypes.number.isRequired,
   propertyDetails: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     title: PropTypes.string.isRequired,
     images: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,

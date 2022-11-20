@@ -34,7 +34,7 @@ export const signInAsync = createAsyncThunk(
 
     dispatch(setStatusMessage({
       type: 'success',
-      message: 'User successfully signed-in.',
+      message: 'User signed-in successfully.',
     }));
 
     return user;
@@ -48,7 +48,7 @@ export const signUpAsync = createAsyncThunk(
 
     dispatch(setStatusMessage({
       type: 'success',
-      message: 'User account successfully created.',
+      message: 'User account created successfully.',
     }));
   }),
 );

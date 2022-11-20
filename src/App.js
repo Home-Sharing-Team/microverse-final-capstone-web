@@ -38,7 +38,7 @@ export default function App() {
           element={(
             <ProtectedRoute
               isAllowed={!!currentUser}
-              redirectMessage="Sign in first to access that page."
+              redirectMessage="Sign in to access that page."
             >
               <ReservationPage />
             </ProtectedRoute>

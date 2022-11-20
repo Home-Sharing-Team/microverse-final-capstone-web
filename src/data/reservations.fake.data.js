@@ -40,4 +40,17 @@ export const fakeReservationItems = [
       image: 'https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     },
   },
+  {
+    id: 4,
+    user_id: 1,
+    hosting_id: 2,
+    guests: 3,
+    check_in: '11/11/2022',
+    check_out: '15/11/2022',
+    price: 500,
+    property: {
+      title: 'House 3',
+      image: 'https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+  },
 ];
