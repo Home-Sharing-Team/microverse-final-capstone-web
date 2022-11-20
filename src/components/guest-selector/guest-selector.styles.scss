@@ -3,10 +3,10 @@
   height: 5.7rem;
   font-size: 1.4rem;
   border: none;
-  background-color: transparent;
   padding: 1rem 1.2rem;
   appearance: none;
   background: url("../../assets/images/icons/chevron-down.svg") no-repeat calc(100% - 1.2rem) 50%;
+  background-color: transparent;
   cursor: pointer;
 
   &:focus {

@@ -1,13 +1,10 @@
 .calendar {
-  // height: 31.4rem;
   font-size: 1.4rem;
 
   .rdp {
     --rdp-cell-size: 4.2rem;
     --rdp-accent-color: var(--color-primary);
-    --rdp-background-color: rgba(155, 201, 62, 0.35);
     --rdp-background-color: rgba(0, 0, 0, 0.1);
-
     --rdp-outline: 2px solid var(--rdp-accent-color);
     --rdp-outline-selected: 2px solid rgba(0, 0, 0, 0.75);
 
@@ -24,7 +21,6 @@
     background-color: rgba(155, 201, 62, 0.35);
     color: var(--color-text-primary);
   }
-
 
   &__footer {
     display: flex;
