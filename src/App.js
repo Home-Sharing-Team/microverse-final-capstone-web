@@ -11,6 +11,7 @@ import { fetchCategoryItemsAsync } from './redux/category/category.actions';
 import { checkUserSessionAsync } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { ProtectedRoute } from './components/protected-route/protected-route.component';
+import { UserProfilePage } from './pages/user-profile-page/user-profile-page.component';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,10 @@ export default function App() {
         <Route
           path="/properties/:propertyId"
           element={<PropertyDetailsPage />}
+        />
+        <Route
+          path="/users/:userId"
+          element={<UserProfilePage />}
         />
         <Route element={<ProtectedRoute isAllowed={!currentUser} />}>
           <Route path="/sign-in" element={<LoginPage />} />

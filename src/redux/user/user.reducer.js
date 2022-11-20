@@ -1,15 +1,14 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  checkUserSessionAsync, signInAsync, signOut, signUpAsync,
+  checkUserSessionAsync, fetchSelectedUserAsync, signInAsync, signOut, signUpAsync,
 } from './user.actions';
 
 const INITIAL_STATE = {
   currentUser: null,
+  selectedUser: null,
   isLoading: false,
   error: null,
-  successMsg: null,
-  signUpSuccessMsg: null,
 };
 
 const userSlice = createSlice({
@@ -51,6 +50,18 @@ const userSlice = createSlice({
     },
     [signOut]: (state) => {
       state.currentUser = null;
+    },
+    [fetchSelectedUserAsync.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [fetchSelectedUserAsync.rejected]: (state, { error }) => {
+      state.isLoading = false;
+      state.error = error.message;
+    },
+    [fetchSelectedUserAsync.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.selectedUser = payload;
+      state.error = null;
     },
   },
 });

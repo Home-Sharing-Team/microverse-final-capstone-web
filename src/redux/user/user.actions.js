@@ -1,6 +1,8 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { ACCESS_TOKEN_STORAGE_KEY } from '../../config/token.config';
-import { getMe, signIn, signUp } from '../../services/api.service';
+import {
+  fetchUserById, getMe, signIn, signUp,
+} from '../../services/api.service';
 import { thunkErrorHandler } from '../../utils/redux.utils';
 import { setStatusMessage } from '../status/status.actions';
 import { USER_ACTION_TYPES } from './user.types';
@@ -51,4 +53,12 @@ export const signUpAsync = createAsyncThunk(
       message: 'User account created successfully.',
     }));
   }),
+);
+
+export const fetchSelectedUserAsync = createAsyncThunk(
+  USER_ACTION_TYPES.FETCH_SELECTED_USER_ASYNC,
+  async (userId) => {
+    const selectedUser = await fetchUserById(userId);
+    return selectedUser;
+  },
 );

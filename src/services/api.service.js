@@ -44,6 +44,15 @@ export const fetchPropertyById = async (propertyId) => {
   }
 };
 
+export const fetchUserById = async (userId) => {
+  try {
+    const response = await api.get(`users/${userId}`);
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
+};
+
 export const fetchPropertiesByCategory = async (categoryId) => {
   try {
     const response = await api.get('properties', {
