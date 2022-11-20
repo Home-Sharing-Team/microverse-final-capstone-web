@@ -7,6 +7,16 @@ export const selectPropertyItems = createDraftSafeSelector(
   (propertySlice) => propertySlice.propertyItems,
 );
 
+export const selectSelectedProperty = createDraftSafeSelector(
+  selectPropertyReducer,
+  (propertySlice) => propertySlice.selectedProperty,
+);
+
+export const selectSelectedPropertyMinCycleHosting = createDraftSafeSelector(
+  selectSelectedProperty,
+  (property) => property.min_cycle_hosting,
+);
+
 export const selectPropertyIsLoading = createDraftSafeSelector(
   selectPropertyReducer,
   (propertySlice) => propertySlice.isLoading,

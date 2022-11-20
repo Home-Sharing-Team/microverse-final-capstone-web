@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getReservationsFromApi } from '../../services/reservationsApi';
-import { selectReservationIsLoading, selectReservationsItems } from '../../redux/reservation/reservations.selectors';
+import { useToast } from '../../hooks/toast.hook';
+import { fetchUserReservationsAsync } from '../../redux/reservation/reservation.actions';
+import { selectReservationIsLoading, selectUserReservations } from '../../redux/reservation/reservation.selectors';
+import { selectStatusMessage } from '../../redux/status/status.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 import ReservationBlock from '../reservationBlock/reservationBlock.component';
 import Spinner from '../spinner/spinner.component';
 
@@ -9,32 +12,41 @@ import './reservations.styles.scss';
 
 const ReservationsComponent = () => {
   const dispatch = useDispatch();
+  const { addToast } = useToast();
 
-  const allReservations = useSelector(selectReservationsItems);
+  const userReservations = useSelector(selectUserReservations);
   const isLoading = useSelector(selectReservationIsLoading);
+  const currentUser = useSelector(selectCurrentUser);
+  const statusMessage = useSelector(selectStatusMessage);
+
+  if (statusMessage) {
+    addToast(statusMessage);
+  }
 
   useEffect(() => {
-    dispatch(getReservationsFromApi());
-  }, []);
+    if (currentUser) {
+      dispatch(fetchUserReservationsAsync(currentUser.id));
+    }
+  }, [currentUser]);
 
   return (
-    <main className="reservations">
-      <h3 className="reservations__title">Here you&apos;ll see the reservations you&apos;ve made</h3>
+    <section className="reservations">
+      <h3 className="reservations__title">Take a look at your reservations</h3>
       {
         isLoading ? (
           <Spinner />
         ) : (
           <section className="reservations__container">
-            {(allReservations.length > 0) ? (
-              allReservations.map((reservation) => (
+            {(userReservations.length > 0) ? (
+              userReservations.map((reservation) => (
                 <ReservationBlock
-                  checkIn={reservation.checkIn}
-                  checkOut={reservation.checkOut}
+                  checkIn={reservation.check_in}
+                  checkOut={reservation.check_out}
                   price={reservation.price}
                   guests={reservation.guests}
-                  propertyDetails={reservation.propertyDetails}
+                  propertyDetails={reservation.property}
                   id={reservation.id}
-                  reservationId={reservation.reservationId}
+                  reservationId={reservation.id}
                   userId={reservation.userId}
                   key={reservation.id}
                 />
@@ -45,7 +57,7 @@ const ReservationsComponent = () => {
           </section>
         )
       }
-    </main>
+    </section>
   );
 };
 

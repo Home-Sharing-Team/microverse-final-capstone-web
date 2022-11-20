@@ -1,35 +1,85 @@
-import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Spinner from '../../components/spinner/spinner.component';
-import { fetchPropertyItems } from '../../redux/property/property.actions';
-import { selectPropertyIsLoading, selectPropertyItems } from '../../redux/property/property.selectors';
-import { checkUserSessionAsync } from '../../redux/user/user.actions';
+import {
+  fetchPropertyItemsAsync,
+  fetchPropertyItemsByCategoryAsync,
+} from '../../redux/property/property.actions';
+import {
+  selectPropertyIsLoading,
+  selectPropertyItems,
+} from '../../redux/property/property.selectors';
+
+import './homepage.styles.scss';
+import { PropertyCard } from '../../components/property-card/property-card.component';
+import { CategorySelector } from '../../components/category-selector/category-selector.component';
+import { selectCategoryItems } from '../../redux/category/category.selectors';
+import { useToast } from '../../hooks/toast.hook';
+import { selectStatusMessage } from '../../redux/status/status.selectors';
+
+const ALL_CATEGORIES_BUTTON_ID = -1;
 
 export function Homepage() {
+  const [selectedCategory, setSelectedCategory] = useState(
+    ALL_CATEGORIES_BUTTON_ID,
+  );
+
   const dispatch = useDispatch();
+  const { addToast } = useToast();
   const propertyItems = useSelector(selectPropertyItems);
-  const isLoading = useSelector(selectPropertyIsLoading);
+  const categoryItems = useSelector(selectCategoryItems);
+  const isPropertyLoading = useSelector(selectPropertyIsLoading);
+  const statusMessage = useSelector(selectStatusMessage);
+
+  const handleFetchProperties = (categoryId) => {
+    if (categoryId === ALL_CATEGORIES_BUTTON_ID) {
+      dispatch(fetchPropertyItemsAsync());
+    } else {
+      dispatch(fetchPropertyItemsByCategoryAsync(categoryId));
+    }
+
+    setSelectedCategory(categoryId);
+  };
 
   useEffect(() => {
-    dispatch(fetchPropertyItems());
-    dispatch(checkUserSessionAsync());
+    handleFetchProperties(ALL_CATEGORIES_BUTTON_ID);
   }, []);
 
+  if (statusMessage) {
+    addToast(statusMessage);
+  }
+
   return (
-    <>
-      {
-        isLoading ? (
-          <Spinner />
-        ) : (
-          <div>
-            {
-              propertyItems.map((property) => (
-                <p key={property.id}>{property.name}</p>
-              ))
-            }
-          </div>
-        )
-      }
-    </>
+    <div className="homepage">
+      <div className="homepage__top">
+        <CategorySelector
+          categories={categoryItems}
+          handleCategoryButtonClick={handleFetchProperties}
+          allButtonId={ALL_CATEGORIES_BUTTON_ID}
+          activeButtonId={selectedCategory}
+        />
+      </div>
+      {isPropertyLoading ? (
+        <Spinner />
+      ) : (
+        <div className="homepage__bottom">
+          {propertyItems.length > 0 ? (
+            <div className="properties-grid">
+              {propertyItems.map((property) => (
+                <Link key={property.id} to={`/properties/${property.id}`}>
+                  <PropertyCard property={property} />
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p>
+              I&apos;m sorry, we don&apos;t have any property hosted for this
+              category. Be the first to host one!
+            </p>
+          )}
+        </div>
+      )}
+    </div>
   );
 }

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useToast } from '../../hooks/toast.hook';
+import { selectStatusMessage } from '../../redux/status/status.selectors';
 import { signUpAsync } from '../../redux/user/user.actions';
 
 import '../sign-in/sign-in.styles.scss';
@@ -12,13 +14,24 @@ const defaultFormFields = {
 
 const SignUpComponent = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { addToast } = useToast();
+  const statusMessage = useSelector(selectStatusMessage);
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, email, password } = formFields;
 
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
+  useEffect(() => {
+    if (statusMessage) {
+      const { type } = statusMessage;
+
+      if (type === 'error') {
+        addToast(statusMessage);
+      } else {
+        navigate('/sign-in');
+      }
+    }
+  }, [statusMessage]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,8 +43,6 @@ const SignUpComponent = () => {
         password,
       }),
     );
-
-    resetFormFields();
   };
 
   const handleChange = (event) => {
@@ -53,6 +64,7 @@ const SignUpComponent = () => {
             <input
               type="text"
               name="name"
+              placeholder=" "
               value={name}
               onChange={handleChange}
               required
@@ -65,6 +77,7 @@ const SignUpComponent = () => {
             <input
               type="email"
               name="email"
+              placeholder=" "
               value={email}
               onChange={handleChange}
               required
@@ -77,6 +90,7 @@ const SignUpComponent = () => {
             <input
               type="password"
               name="password"
+              placeholder=" "
               value={password}
               onChange={handleChange}
               required

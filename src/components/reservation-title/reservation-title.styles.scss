@@ -1,0 +1,32 @@
+.reservation-title {
+  display: flex;
+  flex-direction: column;
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 2.8rem;
+
+  @media only screen and (min-width: 23.4375em) {
+    flex-direction: row;
+  }
+
+  &__crossed {
+    text-decoration: line-through;
+    color: var(--color-text-secondary);
+    margin-right: 0.4rem;
+  }
+
+  &__cycle {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-left: 0.4rem;
+  }
+
+  &--sm {
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+
+    .reservation-title__cycle {
+      font-size: 1.4rem;
+    }
+  }
+}

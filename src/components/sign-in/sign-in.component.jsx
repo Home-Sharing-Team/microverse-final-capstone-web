@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { signInAsync, signOut } from '../../redux/user/user.actions';
-import { selectCurrentUser, selectUserError } from '../../redux/user/user.selectors';
+import { useToast } from '../../hooks/toast.hook';
+import { selectStatusMessage } from '../../redux/status/status.selectors';
+import { signInAsync } from '../../redux/user/user.actions';
 
 import './sign-in.styles.scss';
 
@@ -12,16 +13,16 @@ const defaultFormFields = {
 };
 
 const LogInComponent = () => {
-  const currentUser = useSelector(selectCurrentUser);
-  const authError = useSelector(selectUserError);
   const dispatch = useDispatch();
+  const { addToast } = useToast();
+  const statusMessage = useSelector(selectStatusMessage);
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
+  if (statusMessage) {
+    addToast(statusMessage);
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -32,7 +33,6 @@ const LogInComponent = () => {
         password,
       }),
     );
-    resetFormFields();
   };
 
   const handleChange = (event) => {
@@ -41,35 +41,8 @@ const LogInComponent = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const handleClick = () => {
-    dispatch(signOut());
-  };
-
   return (
     <section className="sign-ex">
-      {currentUser ? (
-        <div className="sign-ex__status">
-          <p>
-            {'Status: '}
-            <strong>Logged-in!</strong>
-          </p>
-          <p>{`User: ${currentUser.name}`}</p>
-          <button
-            type="button"
-            onClick={handleClick}
-          >
-            Sign Out
-          </button>
-        </div>
-      ) : (
-        <div className="sign-ex__status">
-          <p>
-            {'Status: '}
-            <strong>NOT</strong>
-            {' logged-in.'}
-          </p>
-        </div>
-      )}
 
       <div className="sign-ex__container">
         <div className="sign-ex__container__header">
@@ -82,6 +55,7 @@ const LogInComponent = () => {
             <input
               type="email"
               name="email"
+              placeholder=" "
               value={email}
               onChange={handleChange}
               required
@@ -94,6 +68,7 @@ const LogInComponent = () => {
             <input
               type="password"
               name="password"
+              placeholder=" "
               value={password}
               onChange={handleChange}
               required
@@ -111,8 +86,6 @@ const LogInComponent = () => {
           Sign up
         </Link>
       </p>
-
-      {authError && <p>{`Error: ${authError}`}</p>}
     </section>
   );
 };

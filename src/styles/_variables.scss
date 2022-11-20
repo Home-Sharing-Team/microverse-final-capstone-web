@@ -1,8 +1,8 @@
 :root {
   // Color Palette
   --color-primary-300: #9bc93e;
-  --color-hover-300: #92b148;
-  --color-active-300: #7ca028;
+  --color-primary-400: #86c801;
+  --color-primary-600: #81b122;
   --color-grey-100: #f4f4f4;
   --color-grey-150: #f0f2f5;
   --color-grey-200: #e4e6eb;
@@ -10,7 +10,6 @@
   --color-grey-700: #3d3c42;
   --color-grey-900: #222;
   --color-grey-950: #0f0f0f;
-  --color-delete-300: rgb(237, 36, 36);
   --color-black: #000;
   --color-white: #fff;
 
@@ -22,6 +21,15 @@
   --color-text-secondary: var(--color-grey-500);
   --color-body-bg: var(--color-grey-100);
   --color-cards-bg: var(--color-white);
+  --color-hover-300: #92b148;
+  --color-active-300: #7ca028;
+  --color-error: #c13515;
+  --color-delete-300: rgb(220, 46, 46);
+  --color-delete-hover-300: rgb(189, 58, 58);
+  --color-delete-active-300: rgb(149, 49, 49);
+  --color-delete: var(--color-delete-300);
+  --color-delete-hover: var(--color-delete-hover-300);
+  --color-delete-active: var(--color-delete-active-300);
 
   // Box shadows
   --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -41,4 +49,30 @@
   // Separator lines
   --separator-line-1: 1px solid rgba(0, 0, 0, 0.1);
   --separator-line-2: 1px solid #ced0d4;
+
+  // Category
+  --category-selector-height: 5.7rem;
+
+  // Property
+  --property-grid-columns: 1;
+
+  @media only screen and (min-width: 550px) {
+    --property-grid-columns: 2;
+  }
+
+  @media only screen and (min-width: 1106px) {
+    --property-grid-columns: 3;
+  }
+
+  @media only screen and (min-width: 1388px) {
+    --property-grid-columns: 4;
+  }
+
+  @media only screen and (min-width: 1667px) {
+    --property-grid-columns: 5;
+  }
+
+  @media only screen and (min-width: 1950px) {
+    --property-grid-columns: 6;
+  }
 }

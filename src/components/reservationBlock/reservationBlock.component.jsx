@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { deleteReservationFromApi } from '../../services/reservationsApi';
+
+import { deleteUserReservationAsync } from '../../redux/reservation/reservation.actions';
+import HousePlaceholder from '../../assets/images/house_placeholder.png';
 
 import './reservationBlock.styles.scss';
 
@@ -28,19 +30,23 @@ const ReservationBlock = (props) => {
   } = props;
 
   const {
+    id,
     title,
-    image,
+    images,
   } = propertyDetails;
 
   const dispatch = useDispatch();
-  const handleDelete = (reservationId) => {
-    dispatch(deleteReservationFromApi(reservationId));
+
+  const handleDelete = () => {
+    dispatch(deleteUserReservationAsync(reservationId));
   };
+
+  const image = images.length > 0 ? images[0].source : HousePlaceholder;
 
   return (
     <article className="reservation">
       <div className="reservation__img-container">
-        <Link className="details-link" to="/">
+        <Link className="details-link" to={`/properties/${id}`}>
           <img src={image} alt="visual representation of the house" className="reservation__img-container__img" />
         </Link>
       </div>
@@ -72,7 +78,7 @@ const ReservationBlock = (props) => {
       </div>
 
       <div className="reservation_actions">
-        <button type="button" className="btn-link" onClick={handleDelete(reservationId)}>Delete</button>
+        <button type="button" className="btn-link" onClick={handleDelete}>Delete</button>
       </div>
     </article>
   );
@@ -86,10 +92,14 @@ ReservationBlock.propTypes = {
   price: PropTypes.number.isRequired,
   guests: PropTypes.number.isRequired,
   propertyDetails: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
     title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+      source: PropTypes.string.isRequired,
+    })).isRequired,
   }).isRequired,
   // id: PropTypes.number.isRequired,
-  reservationId: PropTypes.number.isRequired,
-  // userId: PropTypes.number.isRequired,
+  reservationId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  // userId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };

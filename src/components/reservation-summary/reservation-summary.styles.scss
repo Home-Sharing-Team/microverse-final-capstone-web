@@ -1,0 +1,123 @@
+.reservation-summary {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  border: 1px solid rgb(221, 221, 221);
+  box-shadow: rgba(0, 0, 0, 0.12) 0 6px 16px;
+  padding: 2.4rem;
+
+  > *:not(:last-child) {
+    margin-bottom: 2.4rem;
+  }
+
+  &__info {
+    > *:not(:last-child) {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 2.4rem;
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  &__title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 2.8rem;
+
+    &-crossed {
+      text-decoration: line-through;
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &__cycle {
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2rem;
+    color: var(--color-text-secondary);
+  }
+
+  &__action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > *:last-child {
+      margin-top: 1.6rem;
+    }
+  }
+
+  &__btn-group {
+    width: 100%;
+    border: 1px solid #b0b0b0;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.6rem;
+
+    > *:not(:last-child) {
+      border-bottom: 1px solid #b0b0b0;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    width: 100%;
+    color: var(--color-text-primary);
+    background-color: transparent;
+    border: none;
+
+    > *:not(:last-child) {
+      border-right: 1px solid #b0b0b0;
+    }
+
+    &-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem 1.2rem;
+    }
+
+    &-title {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    &-text {
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+  }
+
+  &__list {
+    & > *:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+
+    &-heading {
+      text-decoration: underline;
+    }
+
+    &-value--green {
+      font-weight: 600;
+      color: #008a05;
+    }
+  }
+
+  &__total,
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__total {
+    font-size: 1.6rem;
+    font-weight: 600;
+    // border-top: 1px solid #ddd;
+    // padding-top: 2.4rem;
+  }
+}

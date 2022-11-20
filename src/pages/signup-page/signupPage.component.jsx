@@ -2,9 +2,7 @@ import React from 'react';
 import SignUpComponent from '../../components/sign-up/sign-up.component';
 
 const SignUpPage = () => (
-  <>
-    <SignUpComponent />
-  </>
+  <SignUpComponent />
 );
 
 export default SignUpPage;

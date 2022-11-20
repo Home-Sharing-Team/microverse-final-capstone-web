@@ -1,0 +1,131 @@
+.property-details {
+  max-width: 120rem;
+  padding: 2.4rem 0 8.3rem;
+  margin: 0 auto;
+
+  @media only screen and (min-width: 48em) {
+    padding: 2.4rem 0;
+  }
+
+  &__header {
+    margin-bottom: 2.4rem;
+
+    @media only screen and (min-width: 48em) {
+      > *:not(:last-child) {
+        margin-bottom: 2.4rem;
+      }
+    }
+  }
+
+  &__header-top {
+    margin-bottom: 0.8rem;
+  }
+
+  &__title {
+    font-size: 2.6rem;
+    font-weight: 600;
+    line-height: 3rem;
+  }
+
+  &__left {
+    > *:not(:last-child) {
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  &__right {
+    display: none;
+    margin-top: 2.4rem;
+
+    @media only screen and (min-width: 48em) {
+      display: block;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and (min-width: 75em) {
+      flex-direction: row;
+
+      .property-details__left {
+        flex: 1;
+      }
+
+      .property-details__right {
+        width: 37.3rem;
+        margin: 0 0 0 2.4rem;
+      }
+    }
+  }
+
+  &__text-box {
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: 1.4rem;
+      margin-left: 0.4rem;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    background-color: var(--color-white);
+    padding: 1.6rem 2.4rem;
+    z-index: 50;
+
+    &-text {
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 2rem;
+      color: var(--color-text-secondary);
+    }
+
+    &-left {
+      margin-right: 1.6rem;
+    }
+
+    @media only screen and (min-width: 48em) {
+      display: none;
+    }
+  }
+}
+
+.bullet-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  & > li {
+    display: flex;
+    align-items: center;
+  }
+
+  & > li:not(:last-child) {
+    position: relative;
+    margin-right: 3.2rem;
+  }
+
+  & > li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    height: 0.6rem;
+    width: 0.6rem;
+    border-radius: 50%;
+    background-color: #c1c7d0;
+    background-color: #717171;
+    margin-left: 1.2rem;
+  }
+}

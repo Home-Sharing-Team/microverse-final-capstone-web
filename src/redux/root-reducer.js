@@ -1,9 +1,13 @@
+import categoryReducer from './category/category.reducer';
 import propertyReducer from './property/property.reducer';
-import userReducer from './user/user.reducer';
 import reservationReducer from './reservation/reservation.reducer';
+import statusReducer from './status/status.reducer';
+import userReducer from './user/user.reducer';
 
 export const rootReducer = {
   user: userReducer,
   property: propertyReducer,
-  reservations: reservationReducer,
+  category: categoryReducer,
+  reservation: reservationReducer,
+  status: statusReducer,
 };
