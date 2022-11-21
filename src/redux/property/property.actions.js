@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchProperties, fetchPropertiesByCategory, fetchPropertyById } from '../../services/api.service';
+import {
+  fetchProperties, fetchPropertiesByCategory, fetchPropertyById, fetchUserProperties,
+} from '../../services/api.service';
 import { PROPERTY_ACTION_TYPES } from './property.types';
 
 export const fetchPropertyItemsAsync = createAsyncThunk(
@@ -7,6 +9,14 @@ export const fetchPropertyItemsAsync = createAsyncThunk(
   async () => {
     const propertyItems = await fetchProperties();
     return propertyItems;
+  },
+);
+
+export const fetchUserPropertiesAsync = createAsyncThunk(
+  PROPERTY_ACTION_TYPES.FETCH_USER_PROPERTIES_ASYNC,
+  async (userId) => {
+    const userProperties = await fetchUserProperties(userId);
+    return userProperties;
   },
 );
 

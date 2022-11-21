@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { ACCESS_TOKEN_STORAGE_KEY } from '../config/token.config';
 
-const API_BASE_URL = 'http://localhost:4000/api/v1';
+// const API_BASE_URL = 'http://localhost:4000/api/v1';
 
-// const API_BASE_URL = 'http://localhost:3000/api/v1';
+const API_BASE_URL = 'http://localhost:3000/api/v1';
 
 const handleApiResponse = (response) => {
   if (!response.data.success) {
@@ -20,6 +20,15 @@ export const api = axios.create({
 export const fetchProperties = async () => {
   try {
     const response = await api.get('properties');
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
+};
+
+export const fetchUserProperties = async (userId) => {
+  try {
+    const response = await api.get(`users/${userId}/properties`);
     return handleApiResponse(response);
   } catch (error) {
     return handleApiResponse(error.response);

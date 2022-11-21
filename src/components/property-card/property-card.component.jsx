@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable camelcase */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
@@ -7,12 +8,14 @@ import { ImageSlider } from '../image-slider/image-slider.component';
 
 import './property-card.styles.scss';
 
-export function PropertyCard({ property }) {
+export function PropertyCard({ property, isListing = true }) {
   const {
     images,
     size,
     address: { city, country },
     min_cycle_hosting,
+    is_public,
+    name,
   } = property;
 
   return (
@@ -20,16 +23,33 @@ export function PropertyCard({ property }) {
       <ImageSlider images={images} />
       <div className="property-card__content">
         <header className="property-card__header">
-          <h2 className="property-card__title">{`${city}, ${country}`}</h2>
+          {
+            isListing ? (
+              <h2 className="property-card__title">{`${city}, ${country}`}</h2>
+            ) : (
+              <h2 className="property-card__title">{name}</h2>
+            )
+          }
           <span className="property-card__size">
             {`${size} m`}
             <sup>2</sup>
           </span>
         </header>
-        <p className="property-card__price">
-          {formatCurrencyNumber(min_cycle_hosting.rate)}
-          <span>{` ${min_cycle_hosting.cycle}`}</span>
-        </p>
+        {
+          isListing ? (
+            <p className="property-card__price">
+              {formatCurrencyNumber(min_cycle_hosting.rate)}
+              <span>{` ${min_cycle_hosting.cycle}`}</span>
+            </p>
+          ) : (
+            <>
+              <p className="property-card__text">{`${city}, ${country}`}</p>
+              <p className="property-card__scope">
+                {is_public ? 'Public' : 'Private'}
+              </p>
+            </>
+          )
+        }
       </div>
     </article>
   );
@@ -37,4 +57,5 @@ export function PropertyCard({ property }) {
 
 PropertyCard.propTypes = {
   property: PropTypes.object.isRequired,
+  isListing: PropTypes.bool,
 };

@@ -1,7 +1,7 @@
 import { createServer } from 'miragejs';
 import { v4 as uuidV4 } from 'uuid';
 import { fakeCategories } from '../data/category.fake.data';
-import { fakePropertyItems } from '../data/property.fake.data';
+import { fakePropertyItems, fakeUserProperties } from '../data/property.fake.data';
 import { fakeReservationItems } from '../data/reservations.fake.data';
 
 const fakeUser = {
@@ -54,6 +54,11 @@ export const initFakeServer = () => {
         data: fakeReservationItems,
       }));
 
+      this.get('/users/:userId/properties', () => ({
+        success: true,
+        data: fakeUserProperties,
+      }));
+
       this.delete('reservations/:id', () => ({
         success: true,
         data: 'Reservation was successfully deleted',
@@ -85,7 +90,7 @@ export const initFakeServer = () => {
         }
       });
 
-      this.post('/auth/login', (schema, request) => {
+      this.post('/auth/sign_in', (schema, request) => {
         try {
           const { email, password } = JSON.parse(request.requestBody);
 

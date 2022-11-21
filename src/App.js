@@ -12,6 +12,7 @@ import { checkUserSessionAsync } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { ProtectedRoute } from './components/protected-route/protected-route.component';
 import { UserProfilePage } from './pages/user-profile-page/user-profile-page.component';
+import { UserPropertiesPage } from './pages/user-properties-page/user-properties-page.component';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -34,21 +35,20 @@ export default function App() {
           path="/users/:userId"
           element={<UserProfilePage />}
         />
+        <Route element={(
+          <ProtectedRoute
+            isAllowed={!!currentUser}
+            redirectMessage="Sign in to access that page."
+          />
+        )}
+        >
+          <Route path="/users/:userId/properties" element={<UserPropertiesPage />} />
+          <Route path="/reservations" element={<ReservationPage />} />
+        </Route>
         <Route element={<ProtectedRoute isAllowed={!currentUser} />}>
           <Route path="/sign-in" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
         </Route>
-        <Route
-          path="/reservations"
-          element={(
-            <ProtectedRoute
-              isAllowed={!!currentUser}
-              redirectMessage="Sign in to access that page."
-            >
-              <ReservationPage />
-            </ProtectedRoute>
-        )}
-        />
       </Route>
     </Routes>
   );
