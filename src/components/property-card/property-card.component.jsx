@@ -4,6 +4,8 @@
 import PropTypes from 'prop-types';
 import { formatCurrencyNumber } from '../../utils/format.utils';
 
+import PropertyPlaceholder from '../../assets/images/property_placeholder.jpeg';
+
 import { ImageSlider } from '../image-slider/image-slider.component';
 
 import './property-card.styles.scss';
@@ -20,7 +22,10 @@ export function PropertyCard({ property, isListing = true }) {
 
   return (
     <article className="property-card">
-      <ImageSlider images={images} />
+      <ImageSlider
+        placeholder={PropertyPlaceholder}
+        images={images}
+      />
       <div className="property-card__content">
         <header className="property-card__header">
           {

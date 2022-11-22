@@ -7,11 +7,9 @@ import { selectSelectedProperty } from '../../redux/property/property.selectors'
 import { createReservationAsync } from '../../redux/reservation/reservation.actions';
 import {
   selectNumNights,
-  selectReservationTotalPrice,
   selectSelectedCheckIn,
   selectSelectedCheckOut,
   selectSelectedGuests,
-  selectSelectedHosting,
 } from '../../redux/reservation/reservation.selectors';
 import { selectStatusMessage } from '../../redux/status/status.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
@@ -30,9 +28,7 @@ export function ReservationCheckout({ handleClosePopup }) {
   const property = useSelector(selectSelectedProperty);
   const numNights = useSelector(selectNumNights);
   const currentUser = useSelector(selectCurrentUser);
-  const totalPrice = useSelector(selectReservationTotalPrice);
   const guests = useSelector(selectSelectedGuests);
-  const selectedHosting = useSelector(selectSelectedHosting);
   const statusMessage = useSelector(selectStatusMessage);
 
   if (statusMessage) {
@@ -50,9 +46,7 @@ export function ReservationCheckout({ handleClosePopup }) {
       guests,
       checkIn: checkInDate,
       checkOut: checkOutDate,
-      price: totalPrice,
-      userId: currentUser.id,
-      hostingId: selectedHosting.hosting.id,
+      propertyId: property.id,
     }));
   };
 

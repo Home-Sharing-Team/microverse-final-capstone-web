@@ -6,7 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import './image-slider.styles.scss';
 
-export function ImageSlider({ images }) {
+export function ImageSlider({ images, placeholder }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -18,9 +18,11 @@ export function ImageSlider({ images }) {
   return (
     <div className="image-slider">
       <Slider {...settings}>
-        {images.map(({ id, source }) => (
+        {images.length > 0 ? images.map(({ id, source }) => (
           <img key={id} className="image-slider__img" src={source} alt="" />
-        ))}
+        )) : (
+          <img className="image-slider__img" src={placeholder} alt="" />
+        )}
       </Slider>
     </div>
   );
@@ -34,4 +36,5 @@ ImageSlider.propTypes = {
     ]).isRequired,
     source: PropTypes.string.isRequired,
   })).isRequired,
+  placeholder: PropTypes.string.isRequired,
 };

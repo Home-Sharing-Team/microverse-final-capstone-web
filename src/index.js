@@ -6,11 +6,11 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import AppProvider from './hooks';
 import { store } from './redux/store';
-import { initFakeServer } from './services/fake-server.service';
+// import { initFakeServer } from './services/fake-server.service';
 
 import './styles/global.scss';
 
-initFakeServer();
+// initFakeServer();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

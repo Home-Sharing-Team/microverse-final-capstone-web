@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { deleteUserReservationAsync } from '../../redux/reservation/reservation.actions';
-import HousePlaceholder from '../../assets/images/house_placeholder.png';
+import PropertyPlaceholder from '../../assets/images/property_placeholder.jpeg';
 
 import './reservationBlock.styles.scss';
 
@@ -41,7 +41,7 @@ const ReservationBlock = (props) => {
     dispatch(deleteUserReservationAsync(reservationId));
   };
 
-  const image = images.length > 0 ? images[0].source : HousePlaceholder;
+  const image = images.length > 0 ? images[0].source : PropertyPlaceholder;
 
   return (
     <article className="reservation">

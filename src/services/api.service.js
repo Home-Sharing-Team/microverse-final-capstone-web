@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { ACCESS_TOKEN_STORAGE_KEY } from '../config/token.config';
 
-// const API_BASE_URL = 'http://localhost:4000/api/v1';
+const API_BASE_URL = 'http://localhost:4000/api/v1';
 
-const API_BASE_URL = 'http://localhost:3000/api/v1';
+// const API_BASE_URL = 'http://localhost:3000/api/v1';
 
 const handleApiResponse = (response) => {
   if (!response.data.success) {
@@ -141,20 +141,18 @@ export const createReservationFromApi = async ({
   guests,
   checkIn,
   checkOut,
-  price,
-  userId,
-  hostingId,
+  propertyId,
 }) => {
   try {
     const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+
+    console.log(propertyId);
 
     const response = await api.post('reservations', {
       guests,
       check_in: checkIn,
       check_out: checkOut,
-      price,
-      user_id: userId,
-      hosting_id: hostingId,
+      property_id: propertyId,
     }, {
       headers: {
         authorization: `Bearer ${accessToken}`,

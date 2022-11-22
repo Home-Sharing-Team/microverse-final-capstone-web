@@ -26,7 +26,7 @@ const getSidebarLinksSections = (currentUser) => {
           isVisible: true,
         },
         {
-          id: 1,
+          id: 2,
           route: '/reservations',
           title: 'My reservations',
           iconName: 'calendar',
