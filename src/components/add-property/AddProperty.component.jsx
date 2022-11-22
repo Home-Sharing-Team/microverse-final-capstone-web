@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useToast } from '../../hooks/toast.hook';
+import { selectCategoryItems } from '../../redux/category/category.selectors';
 import { selectStatusMessage } from '../../redux/status/status.selectors';
 
 import './add-property.styles.scss';
@@ -15,7 +16,7 @@ const defaultFormFields = {
   beds: 0,
   baths: 0,
   kind: '',
-  size: '',
+  size: 0,
   address: {
     street: '',
     city: '',
@@ -41,6 +42,8 @@ const AddPropertyComponent = () => {
     address,
     categories,
   } = formFields;
+
+  const availableCategories = useSelector(selectCategoryItems);
 
   const { addToast } = useToast();
   const statusMessage = useSelector(selectStatusMessage);
@@ -138,6 +141,33 @@ const AddPropertyComponent = () => {
               required
             />
             <span>Baths</span>
+          </div>
+
+          <div className="form_selectorBox">
+            <select
+              name="kind"
+              placeholder=" "
+              onChange={handleChange}
+              required
+              value={kind}
+            >
+              <option value="select">Select the type</option>
+              <option value="House">House</option>
+              <option value="Apartment">Apartment</option>
+            </select>
+            <span>Baths</span>
+          </div>
+
+          <div className="form_selectorBox">
+            <input
+              type="number"
+              name="size"
+              placeholder=" "
+              value={size}
+              onChange={handleChange}
+              required
+            />
+            <span>Size</span>
           </div>
         </div>
 
