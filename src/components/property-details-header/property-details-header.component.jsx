@@ -4,6 +4,8 @@ import Icon from '../icon/icon.component';
 import { ImageViewer } from '../image-viewer/image-viewer.component';
 import { SimpleCard } from '../simple-card/simple-card.component';
 
+import PropertyPlaceholder from '../../assets/images/property_placeholder.jpeg';
+
 import './property-details-header.styles.scss';
 
 export function PropertyDetailsHeader({ property }) {
@@ -33,7 +35,7 @@ export function PropertyDetailsHeader({ property }) {
           </ul>
         </div>
       </SimpleCard>
-      <ImageViewer images={property.images} />
+      <ImageViewer placeholder={PropertyPlaceholder} images={property.images} />
     </header>
   );
 }
