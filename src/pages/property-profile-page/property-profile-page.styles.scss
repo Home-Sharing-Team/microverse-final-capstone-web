@@ -9,7 +9,6 @@
 }
 
 .hostings {
-
   &__header {
     display: flex;
     align-items: center;
@@ -59,7 +58,6 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  width: 19.05rem;
   width: 20rem;
   background-color: var(--color-white);
   border-radius: var(--border-radius);
@@ -72,15 +70,15 @@
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
+    // left: 0;
     left: 50%;
-    width: 30rem;
-    height: 30rem;
+    // width: 30rem;
+    // height: 30rem;
     width: 25rem;
     height: 25rem;
-    transform: translate(-2rem, calc(-50% + 1rem));
-    transform: translate(-2.5rem, calc(-50% + 2rem));
-    transform: translate(-50%, calc(-50% - 1rem));
+    // transform: translate(-2rem, calc(-50% + 1rem));
+    // transform: translate(-2.5rem, calc(-50% + 2rem));
+    // transform: translate(-50%, calc(-50% - 1rem));
     transform: translate(-50%, calc(-50% + 2rem));
     border-radius: 50%;
     z-index: 1;
