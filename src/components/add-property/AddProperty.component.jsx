@@ -43,7 +43,34 @@ const AddPropertyComponent = () => {
     categories,
   } = formFields;
 
-  const availableCategories = useSelector(selectCategoryItems);
+  const {
+    street,
+    city,
+    country,
+    zip_code,
+    number,
+    continent,
+  } = address;
+
+  const [selectedAddress, setSelectedAddress] = useState(address);
+
+  // const availableCategories = useSelector(selectCategoryItems);
+  const availableCategories = [
+    {
+      id: 1,
+      name: 'Beach Houses',
+    },
+    {
+      id: 2,
+      name: 'Forest Houses',
+    },
+    {
+      id: 3,
+      name: 'Big Houses',
+    },
+  ];
+
+  const [selectedCategories, setSelectedCategories] = useState(categories);
 
   const { addToast } = useToast();
   const statusMessage = useSelector(selectStatusMessage);
@@ -61,13 +88,31 @@ const AddPropertyComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // dispatch();
+    console.log(formFields);
+
+    dispatch();
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setFormFields({ ...formFields, [name]: value });
+  };
+
+  const handleCategoriesValue = (e) => {
+    const { name, value } = e.target;
+
+    setSelectedCategories([...selectedCategories, value]);
+
+    console.log(selectedCategories);
+
+    setFormFields({ ...formFields, [name]: selectedCategories });
+  };
+
+  const handleAddress = (e) => {
+    const { name, value } = e.target;
+
+    setSelectedAddress({ ...selectedAddress, [name]: value });
   };
 
   return (
@@ -155,7 +200,7 @@ const AddPropertyComponent = () => {
               <option value="House">House</option>
               <option value="Apartment">Apartment</option>
             </select>
-            <span>Baths</span>
+            <span>Kind</span>
           </div>
 
           <div className="form_selectorBox">
@@ -171,6 +216,36 @@ const AddPropertyComponent = () => {
           </div>
         </div>
 
+        <div className="form__checkBox">
+          {
+            availableCategories.map((category) => (
+              <div className="form__checkBox__block" key={category.id}>
+                <label htmlFor={category.name}>{category.name}</label>
+                <input
+                  type="checkbox"
+                  name="categories"
+                  value={category.name}
+                  onChange={handleCategoriesValue}
+                />
+              </div>
+            ))
+          }
+        </div>
+
+        <div className="form__addressBox">
+          <div className="form__inputBox">
+            <input
+              type="text"
+              name="name"
+              placeholder=" "
+              value={name}
+              onChange={handleChange}
+              required
+            />
+            <span>Name</span>
+            <i />
+          </div>
+        </div>
         <button type="submit" className="form__btn">Add your property!</button>
       </form>
     </section>
