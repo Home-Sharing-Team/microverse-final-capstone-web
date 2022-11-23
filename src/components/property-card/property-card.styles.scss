@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.2rem;
   }
 
   &__title {
@@ -36,9 +36,27 @@
 
   &__price {
     font-weight: 600;
+    margin-top: 0.6rem;
 
     span {
       font-weight: 400;
     }
+  }
+
+  &__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+    overflow: hidden;
+    color: var(--color-text-secondary);
+    padding-right: 20%;
+    margin-bottom: 0.6rem;
+  }
+
+  &__scope {
+    font-style: italic;
   }
 }

@@ -13,3 +13,14 @@ export const CYCLE_DURATIONS = {
 
 export const getCycleAmountInNights = (amount, cycleType) =>
   amount * CYCLE_DURATIONS[cycleType];
+
+export const getCycleAbbreviation = (cycle) => {
+  switch (cycle) {
+    case CYCLE_TYPES.WEEK:
+      return 'wk';
+    case CYCLE_TYPES.MONTH:
+      return 'mo';
+    default:
+      return 'nt';
+  }
+};

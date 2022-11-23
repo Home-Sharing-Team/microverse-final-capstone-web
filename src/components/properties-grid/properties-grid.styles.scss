@@ -1,0 +1,7 @@
+.properties-grid {
+  display: grid;
+  grid-gap: 4rem 2.4rem;
+  grid-auto-flow: row dense;
+  grid-auto-rows: minmax(min-content, max-content);
+  grid-template-columns: repeat(var(--property-grid-columns), minmax(0, 1fr));
+}

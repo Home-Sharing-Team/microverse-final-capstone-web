@@ -13,13 +13,13 @@ const getSelectedHostingByMinAvailableCycle = (
   if (
     CYCLE_DURATIONS[minCycle] < CYCLE_DURATIONS[CYCLE_TYPES.WEEK]
     && numNights >= CYCLE_DURATIONS[CYCLE_TYPES.WEEK]
-    && numNights < CYCLE_DURATIONS[CYCLE_TYPES.MONTH]
     && hostingsHash[CYCLE_TYPES.WEEK]
   ) {
     selectedHosting = hostingsHash[CYCLE_TYPES.WEEK];
     priceByMinCycle = (selectedHosting.rate * CYCLE_DURATIONS[minCycle]) / CYCLE_DURATIONS[CYCLE_TYPES.WEEK];
     discount = hostingsHash[minCycle].rate - priceByMinCycle;
-  } else if (
+  }
+  if (
     CYCLE_DURATIONS[minCycle] < CYCLE_DURATIONS[CYCLE_TYPES.MONTH]
     && numNights >= CYCLE_DURATIONS[CYCLE_TYPES.MONTH]
     && hostingsHash[CYCLE_TYPES.MONTH]

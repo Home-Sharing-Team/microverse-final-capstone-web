@@ -1,9 +1,16 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPropertyItemsAsync, fetchPropertyItemsByCategoryAsync, fetchSelectedPropertyAsync } from './property.actions';
+import {
+  createPropertyAsync,
+  fetchPropertyItemsAsync,
+  fetchPropertyItemsByCategoryAsync,
+  fetchSelectedPropertyAsync,
+  fetchUserPropertiesAsync,
+} from './property.actions';
 
 const INITIAL_STATE = {
   propertyItems: [],
+  userProperties: [],
   selectedProperty: null,
   isLoading: false,
   error: null,
@@ -23,6 +30,18 @@ const propertySlice = createSlice({
     [fetchPropertyItemsAsync.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.propertyItems = payload;
+      state.error = null;
+    },
+    [fetchUserPropertiesAsync.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [fetchUserPropertiesAsync.rejected]: (state, { error }) => {
+      state.isLoading = false;
+      state.error = error.message;
+    },
+    [fetchUserPropertiesAsync.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.userProperties = payload;
       state.error = null;
     },
     [fetchPropertyItemsByCategoryAsync.pending]: (state) => {
@@ -47,6 +66,18 @@ const propertySlice = createSlice({
     [fetchSelectedPropertyAsync.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.selectedProperty = payload;
+      state.error = null;
+    },
+    [createPropertyAsync.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [createPropertyAsync.rejected]: (state, { error }) => {
+      state.isLoading = false;
+      state.error = error.message;
+    },
+    [createPropertyAsync.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.userProperties = payload;
       state.error = null;
     },
   },

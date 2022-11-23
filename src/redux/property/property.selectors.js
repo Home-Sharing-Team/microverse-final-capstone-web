@@ -7,6 +7,11 @@ export const selectPropertyItems = createDraftSafeSelector(
   (propertySlice) => propertySlice.propertyItems,
 );
 
+export const selectUserProperties = createDraftSafeSelector(
+  selectPropertyReducer,
+  (propertySlice) => propertySlice.userProperties,
+);
+
 export const selectSelectedProperty = createDraftSafeSelector(
   selectPropertyReducer,
   (propertySlice) => propertySlice.selectedProperty,

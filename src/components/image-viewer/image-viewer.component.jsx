@@ -5,8 +5,13 @@ import { ThumbnailSelector } from '../thumbnail-selector/thumbnail-selector.comp
 
 import './image-viewer.styles.scss';
 
-export function ImageViewer({ images }) {
-  const [selectedImage, setSelectedImage] = useState(images[0]);
+export function ImageViewer({ images, placeholder }) {
+  const [selectedImage, setSelectedImage] = useState(
+    images.length > 0 ? images[0] : {
+      id: 1,
+      source: placeholder,
+    },
+  );
 
   const handleClickImage = (imageId) => {
     const image = images.find((image) => image.id === imageId);
@@ -38,4 +43,5 @@ ImageViewer.propTypes = {
       source: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  placeholder: PropTypes.string.isRequired,
 };

@@ -17,12 +17,7 @@ export const selectUserError = createDraftSafeSelector(
   (userSlice) => userSlice.error,
 );
 
-export const selectUserSuccessMsg = createDraftSafeSelector(
+export const selectSelectedUser = createDraftSafeSelector(
   selectUserReducer,
-  (userSlice) => userSlice.successMsg,
-);
-
-export const selectUserSignUpSuccessMsg = createDraftSafeSelector(
-  selectUserReducer,
-  (userSlice) => userSlice.signUpSuccessMsg,
+  (userSlice) => userSlice.selectedUser,
 );

@@ -1,6 +1,227 @@
 import { v4 as uuidV4, v4 } from 'uuid';
 import { fakeCategories } from './category.fake.data';
 
+export const fakeUserProperties = [
+  {
+    id: uuidV4(),
+    name: 'Luxury Beachfront Six Palms Villas # 1',
+    user: {
+      id: v4(),
+      name: 'Gabriel Santo',
+      email: 'gabriel@test.com',
+      role: 'user',
+      avatar: null,
+    },
+    description:
+      'This is the house perfect for you! Near to the beach, to markets, gyms, etc. Reserve a date!',
+    guest_capacity: 9,
+    bedrooms: 3,
+    is_public: false,
+    beds: 5,
+    baths: 3,
+    type: 'house',
+    size: 690,
+    address: {
+      id: v4(),
+      city: 'Rocky Point',
+      country: 'Mexico',
+    },
+    categories: [
+      fakeCategories.beachfront,
+      fakeCategories.mansions,
+      fakeCategories.luxe,
+      fakeCategories.beach,
+    ],
+    images: [
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/XpgGTmY/62ad847e-2f84-49cb-a8a7-35856dc93a20.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/103Qnyr/d88dfa7d-113a-4e26-b3fd-d819df85a446.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/N7rfLcs/c7ec5fd9-ae03-40f9-9632-9ce1a77a3df2.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/2j0Kvgy/6513c49a-7537-4175-be57-f7581f393b43.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/CJnmm8J/492ee2ac-55f8-4c50-8f72-877cc0aa784f.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/vz1Nrkj/70e4749a-e369-4807-9cfd-a1c344ccf847.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/hXWm9Cm/d62454a1-c7e9-4550-bd56-478cf3d09b65.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/nj5Kd7c/2e505f86-c67c-4353-a542-5ea1eab24f51.webp',
+      },
+    ],
+    blocked_periods: [
+      {
+        id: v4(),
+        start_date: new Date(2022, 11, 15),
+        end_date: new Date(2022, 11, 25),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 0, 1),
+        end_date: new Date(2023, 0, 3),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 1, 8),
+        end_date: new Date(2023, 1, 25),
+      },
+    ],
+    min_cycle_hosting: {
+      id: v4(),
+      cycle: 'night',
+      minimum_cycle_amount: 3,
+      rate: 365,
+      cleaning_fee: null,
+      public: true,
+    },
+    hostings: [
+      {
+        id: v4(),
+        cycle: 'night',
+        minimum_cycle_amount: 3,
+        rate: 365,
+        cleaning_fee: null,
+        public: true,
+      },
+    ],
+  },
+  {
+    id: uuidV4(),
+    name: 'Iconic Glass Mansion - Huge Views - Best Location',
+    user: {
+      id: v4(),
+      name: 'Gabriel Santo',
+      email: 'gabriel@test.com',
+      role: 'user',
+      avatar: null,
+    },
+    description:
+      'The iconic and luxurious Glass Mansion has awe-inspiring, expansive lake views for miles from almost every room.\n It is located directly in the heart of Lake of the Ozarks in Osage Beach, yet is securely and privately tucked away in the prestigious gated Ledges Waterfront Homes neighborhood. Glass Mansion sits on the main channel of the lake directly on the water at the 20 mile marker, perched on beautiful natural rock cliffs with cascading waterfalls into the lake below.',
+    guest_capacity: 16,
+    bedrooms: 5,
+    beds: 10,
+    baths: 5,
+    type: 'house',
+    size: 1200,
+    is_public: true,
+    address: {
+      id: v4(),
+      city: 'Osage Beach',
+      country: 'United States',
+    },
+    categories: [
+      fakeCategories.lakefront,
+      fakeCategories.mansions,
+      fakeCategories.luxe,
+    ],
+    images: [
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/N35JMr8/abfdccee-b6d6-4465-89e9-6625482abeb7.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/kxmf2cb/db6f128c-e396-4835-944d-ce71b66e7dc0.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/mvtfrWB/99038ba2-d090-4533-b234-607d20d26000.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/4FbXqYK/693f98b2-4635-466f-becf-d84cd41150bd.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/26stvN0/431cc039-8c82-417b-95d1-cb4cb4d214dc.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/GkY2GCQ/3f021541-b841-4ac5-9af0-e28cf0f484a2.webp',
+      },
+      {
+        id: v4(),
+        source:
+          'https://i.ibb.co/BZ7QHKX/01ee453c-b5ac-467a-8c4f-c5eb699f1232.webp',
+      },
+    ],
+    blocked_periods: [
+      {
+        id: v4(),
+        start_date: new Date(2022, 11, 15),
+        end_date: new Date(2022, 11, 25),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 0, 1),
+        end_date: new Date(2023, 0, 3),
+      },
+      {
+        id: v4(),
+        start_date: new Date(2023, 1, 8),
+        end_date: new Date(2023, 1, 25),
+      },
+    ],
+    min_cycle_hosting: {
+      id: v4(),
+      cycle: 'night',
+      minimum_cycle_amount: 1,
+      rate: 459.99,
+      cleaning_fee: 400,
+      public: true,
+    },
+    hostings: [
+      {
+        id: v4(),
+        cycle: 'night',
+        minimum_cycle_amount: 1,
+        rate: 459.99,
+        cleaning_fee: 400,
+        public: true,
+      },
+      {
+        id: v4(),
+        cycle: 'month',
+        minimum_cycle_amount: 1,
+        rate: 10000,
+        cleaning_fee: 300,
+        public: true,
+      },
+    ],
+  },
+];
+
 export const fakePropertyItems = [
   {
     id: uuidV4(),

@@ -74,15 +74,13 @@ export const deleteUserReservationAsync = createAsyncThunk(
 export const createReservationAsync = createAsyncThunk(
   RESERVATION_ACTION_TYPES.CREATE_RESERVATION_ASYNC,
   thunkErrorHandler(async ({
-    userId, hostingId, guests, checkIn, checkOut, price,
+    propertyId, guests, checkIn, checkOut,
   }, { getState, dispatch }) => {
     const newReservation = await createReservationFromApi({
       guests,
       checkIn,
       checkOut,
-      price,
-      userId,
-      hostingId,
+      propertyId,
     });
     const { userReservations } = getState().reservation;
 
