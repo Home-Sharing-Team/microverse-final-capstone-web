@@ -52,21 +52,7 @@ const AddPropertyComponent = () => {
     continent,
   } = address;
 
-  // const availableCategories = useSelector(selectCategoryItems);
-  const availableCategories = [
-    {
-      id: 1,
-      name: 'Beach Houses',
-    },
-    {
-      id: 2,
-      name: 'Forest Houses',
-    },
-    {
-      id: 3,
-      name: 'Big Houses',
-    },
-  ];
+  const availableCategories = useSelector(selectCategoryItems);
 
   const { addToast } = useToast();
   const statusMessage = useSelector(selectStatusMessage);
