@@ -52,7 +52,21 @@ const AddPropertyComponent = () => {
     continent,
   } = address;
 
-  const availableCategories = useSelector(selectCategoryItems);
+  // const availableCategories = useSelector(selectCategoryItems);
+  const availableCategories = [
+    {
+      id: 1,
+      name: 'Beach Houses',
+    },
+    {
+      id: 2,
+      name: 'Forest Houses',
+    },
+    {
+      id: 3,
+      name: 'Big Houses',
+    },
+  ];
 
   const { addToast } = useToast();
   const statusMessage = useSelector(selectStatusMessage);
@@ -132,6 +146,7 @@ const AddPropertyComponent = () => {
 
         <div className="form__selectors">
           <div className="form__selectorBox">
+            <span>Guest Capacity</span>
             <input
               type="number"
               name="guest_capacity"
@@ -140,10 +155,10 @@ const AddPropertyComponent = () => {
               onChange={handleChange}
               required
             />
-            <span>Guest Capacity</span>
           </div>
 
           <div className="form__selectorBox">
+            <span>Bedrooms</span>
             <input
               type="number"
               name="bedrooms"
@@ -152,10 +167,10 @@ const AddPropertyComponent = () => {
               onChange={handleChange}
               required
             />
-            <span>Bedrooms</span>
           </div>
 
           <div className="form__selectorBox">
+            <span>Baths</span>
             <input
               type="number"
               name="baths"
@@ -164,7 +179,6 @@ const AddPropertyComponent = () => {
               onChange={handleChange}
               required
             />
-            <span>Baths</span>
           </div>
 
           <div className="form__selectorBox">
@@ -183,6 +197,7 @@ const AddPropertyComponent = () => {
           </div>
 
           <div className="form__selectorBox">
+            <span>Size</span>
             <input
               type="number"
               name="size"
@@ -191,7 +206,6 @@ const AddPropertyComponent = () => {
               onChange={handleChange}
               required
             />
-            <span>Size</span>
           </div>
         </div>
 
@@ -204,7 +218,7 @@ const AddPropertyComponent = () => {
                 <label htmlFor={category.name}>{category.name}</label>
                 <input
                   type="checkbox"
-                  name="categories"
+                  name={category.name}
                   value={category.name}
                   id={category.id}
                   onChange={handleCategoriesValue}
