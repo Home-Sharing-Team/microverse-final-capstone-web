@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import axios from 'axios';
 import { ACCESS_TOKEN_STORAGE_KEY } from '../config/token.config';
 
@@ -151,6 +152,41 @@ export const createReservationFromApi = async ({
       check_in: checkIn,
       check_out: checkOut,
       property_id: propertyId,
+    }, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
+};
+
+export const createNewPropertyApi = async ({
+  name,
+  description,
+  guest_capacity,
+  bedrooms,
+  baths,
+  kind,
+  size,
+  address,
+  categories,
+}) => {
+  try {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+
+    const response = await api.post('properties', {
+      name,
+      description,
+      guest_capacity,
+      bedrooms,
+      baths,
+      kind,
+      size,
+      address,
+      categories,
     }, {
       headers: {
         authorization: `Bearer ${accessToken}`,
