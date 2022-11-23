@@ -13,6 +13,7 @@ import { selectCurrentUser } from './redux/user/user.selectors';
 import { ProtectedRoute } from './components/protected-route/protected-route.component';
 import { UserProfilePage } from './pages/user-profile-page/user-profile-page.component';
 import { UserPropertiesPage } from './pages/user-properties-page/user-properties-page.component';
+import { PropertyProfilePage } from './pages/property-profile-page/property-profile-page.components';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,10 @@ export default function App() {
         >
           <Route path="/users/:userId/properties" element={<UserPropertiesPage />} />
           <Route path="/reservations" element={<ReservationPage />} />
+          <Route
+            path="/properties/:propertyId/private"
+            element={<PropertyProfilePage />}
+          />
         </Route>
         <Route element={<ProtectedRoute isAllowed={!currentUser} />}>
           <Route path="/sign-in" element={<LoginPage />} />

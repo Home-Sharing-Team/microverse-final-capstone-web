@@ -1,0 +1,22 @@
+.property-details-header {
+  @media only screen and (min-width: 48em) {
+    > *:not(:last-child) {
+      margin-bottom: 2.4rem;
+    }
+  }
+
+  &__top {
+    margin-bottom: 0.8rem;
+  }
+
+  &__text-box {
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: 1.4rem;
+      margin-left: 0.4rem;
+    }
+  }
+}
+

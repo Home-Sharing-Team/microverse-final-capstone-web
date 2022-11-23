@@ -146,8 +146,6 @@ export const createReservationFromApi = async ({
   try {
     const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
 
-    console.log(propertyId);
-
     const response = await api.post('reservations', {
       guests,
       check_in: checkIn,

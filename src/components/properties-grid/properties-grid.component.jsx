@@ -10,7 +10,7 @@ export function PropertiesGrid({ properties, isListing = true }) {
   return (
     <div className="properties-grid">
       {properties.map((property) => (
-        <Link key={property.id} to={`/properties/${property.id}`}>
+        <Link key={property.id} to={isListing ? `/properties/${property.id}` : `/properties/${property.id}/private`}>
           <PropertyCard property={property} isListing={isListing} />
         </Link>
       ))}

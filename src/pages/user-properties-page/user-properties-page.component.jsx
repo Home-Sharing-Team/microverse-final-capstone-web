@@ -6,8 +6,9 @@ import { CustomSelector } from '../../components/custom-selector/custom-selector
 import { PropertiesGrid } from '../../components/properties-grid/properties-grid.component';
 import { SectionTitle } from '../../components/section-title/section-title.component';
 import { SimpleCard } from '../../components/simple-card/simple-card.component';
+import Spinner from '../../components/spinner/spinner.component';
 import { fetchUserPropertiesAsync } from '../../redux/property/property.actions';
-import { selectUserProperties } from '../../redux/property/property.selectors';
+import { selectPropertyIsLoading, selectUserProperties } from '../../redux/property/property.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import './user-properties-page.styles.scss';
@@ -37,6 +38,7 @@ export function UserPropertiesPage() {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const userProperties = useSelector(selectUserProperties);
+  const isLoading = useSelector(selectPropertyIsLoading);
   const [propertiesToShow, setPropertiesToShow] = useState([]);
 
   useEffect(() => {
@@ -68,23 +70,27 @@ export function UserPropertiesPage() {
   };
 
   return (
-    <section className="user-properties">
-      <SimpleCard>
-        <header className="user-properties__header">
-          <SectionTitle
-            title={pluralize('Property', propertiesToShow.length, true)}
-          />
-          <CustomSelector
-            handleChangeCallback={handleSelectOption}
-            defaultOption={PROPERTY_OPTIONS.ALL}
-            options={options}
-          />
-        </header>
-      </SimpleCard>
+    isLoading ? (
+      <Spinner />
+    ) : (
+      <section className="user-properties">
+        <SimpleCard>
+          <header className="user-properties__header">
+            <SectionTitle
+              title={pluralize('Property', propertiesToShow.length, true)}
+            />
+            <CustomSelector
+              handleChangeCallback={handleSelectOption}
+              defaultOption={PROPERTY_OPTIONS.ALL}
+              options={options}
+            />
+          </header>
+        </SimpleCard>
 
-      <div className="user-properties__content">
-        <PropertiesGrid properties={propertiesToShow} isListing={false} />
-      </div>
-    </section>
+        <div className="user-properties__content">
+          <PropertiesGrid properties={propertiesToShow} isListing={false} />
+        </div>
+      </section>
+    )
   );
 }
