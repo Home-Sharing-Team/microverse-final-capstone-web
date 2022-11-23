@@ -151,58 +151,6 @@ const AddPropertyComponent = () => {
 
         <div className="form__selectors">
           <div className="form__selectorBox">
-            <input
-              type="number"
-              name="guest_capacity"
-              placeholder=" "
-              value={guest_capacity}
-              min={1}
-              onChange={handleChange}
-              required
-            />
-            <span>Guest Capacity</span>
-          </div>
-
-          <div className="form__selectorBox">
-            <input
-              type="number"
-              name="bedrooms"
-              placeholder=" "
-              value={bedrooms}
-              min={1}
-              onChange={handleChange}
-              required
-            />
-            <span>Bedrooms</span>
-          </div>
-
-          <div className="form__selectorBox">
-            <input
-              type="number"
-              name="beds"
-              placeholder=" "
-              value={beds}
-              min={1}
-              onChange={handleChange}
-              required
-            />
-            <span>Beds</span>
-          </div>
-
-          <div className="form__selectorBox">
-            <input
-              type="number"
-              name="baths"
-              placeholder=" "
-              min={1}
-              value={baths}
-              onChange={handleChange}
-              required
-            />
-            <span>Baths</span>
-          </div>
-
-          <div className="form__selectorBox">
             <span>Kind</span>
             <select
               name="kind"
@@ -218,6 +166,59 @@ const AddPropertyComponent = () => {
           </div>
 
           <div className="form__selectorBox">
+            <span>Guest Capacity</span>
+            <input
+              type="number"
+              name="guest_capacity"
+              placeholder=" "
+              value={guest_capacity}
+              min={1}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form__selectorBox">
+            <span>Bedrooms</span>
+            <input
+              type="number"
+              name="bedrooms"
+              placeholder=" "
+              value={bedrooms}
+              min={1}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form__selectorBox">
+            <span>Beds</span>
+            <input
+              type="number"
+              name="beds"
+              placeholder=" "
+              value={beds}
+              min={1}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form__selectorBox">
+            <span>Baths</span>
+            <input
+              type="number"
+              name="baths"
+              placeholder=" "
+              min={1}
+              value={baths}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form__selectorBox">
+            <span>Size</span>
             <input
               type="number"
               name="size"
@@ -228,7 +229,6 @@ const AddPropertyComponent = () => {
               onChange={handleChange}
               required
             />
-            <span>Size</span>
           </div>
         </div>
 
@@ -243,7 +243,7 @@ const AddPropertyComponent = () => {
                   <label htmlFor={category.name}>{category.name}</label>
                   <input
                     type="checkbox"
-                    name="categories"
+                    name={category.name}
                     value={category.name}
                     id={category.id}
                     onChange={handleCategoriesValue}
@@ -270,6 +270,33 @@ const AddPropertyComponent = () => {
 
           <div className="form__inputBox form__addressBox__element-half">
             <input
+              type="number"
+              name="number"
+              placeholder=" "
+              min={1}
+              value={number}
+              onChange={handleAddress}
+              required
+            />
+            <span>House Number</span>
+            <i />
+          </div>
+
+          <div className="form__inputBox form__addressBox__element-half">
+            <input
+              type="text"
+              name="zip_code"
+              placeholder=" "
+              value={zip_code}
+              onChange={handleAddress}
+              required
+            />
+            <span>Zip Code</span>
+            <i />
+          </div>
+
+          <div className="form__inputBox form__addressBox__element-half">
+            <input
               type="text"
               name="city"
               placeholder=" "
@@ -291,33 +318,6 @@ const AddPropertyComponent = () => {
               required
             />
             <span>Country</span>
-            <i />
-          </div>
-
-          <div className="form__inputBox form__addressBox__element-half">
-            <input
-              type="text"
-              name="zip_code"
-              placeholder=" "
-              value={zip_code}
-              onChange={handleAddress}
-              required
-            />
-            <span>Zip Code</span>
-            <i />
-          </div>
-
-          <div className="form__inputBox form__addressBox__element-half">
-            <input
-              type="number"
-              name="number"
-              placeholder=" "
-              min={1}
-              value={number}
-              onChange={handleAddress}
-              required
-            />
-            <span>House Number</span>
             <i />
           </div>
 
