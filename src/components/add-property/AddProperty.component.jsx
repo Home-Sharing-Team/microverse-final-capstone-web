@@ -52,21 +52,7 @@ const AddPropertyComponent = () => {
     continent,
   } = address;
 
-  // const availableCategories = useSelector(selectCategoryItems);
-  const availableCategories = [
-    {
-      id: 1,
-      name: 'Beach Houses',
-    },
-    {
-      id: 2,
-      name: 'Forest Houses',
-    },
-    {
-      id: 3,
-      name: 'Big Houses',
-    },
-  ];
+  const availableCategories = useSelector(selectCategoryItems);
 
   const { addToast } = useToast();
   const statusMessage = useSelector(selectStatusMessage);
@@ -145,7 +131,7 @@ const AddPropertyComponent = () => {
         </div>
 
         <div className="form__selectors">
-          <div className="form_selectorBox">
+          <div className="form__selectorBox">
             <input
               type="number"
               name="guest_capacity"
@@ -157,7 +143,7 @@ const AddPropertyComponent = () => {
             <span>Guest Capacity</span>
           </div>
 
-          <div className="form_selectorBox">
+          <div className="form__selectorBox">
             <input
               type="number"
               name="bedrooms"
@@ -169,7 +155,7 @@ const AddPropertyComponent = () => {
             <span>Bedrooms</span>
           </div>
 
-          <div className="form_selectorBox">
+          <div className="form__selectorBox">
             <input
               type="number"
               name="baths"
@@ -181,7 +167,8 @@ const AddPropertyComponent = () => {
             <span>Baths</span>
           </div>
 
-          <div className="form_selectorBox">
+          <div className="form__selectorBox">
+            <span>Kind</span>
             <select
               name="kind"
               placeholder=" "
@@ -193,10 +180,9 @@ const AddPropertyComponent = () => {
               <option value="House">House</option>
               <option value="Apartment">Apartment</option>
             </select>
-            <span>Kind</span>
           </div>
 
-          <div className="form_selectorBox">
+          <div className="form__selectorBox">
             <input
               type="number"
               name="size"
@@ -211,6 +197,7 @@ const AddPropertyComponent = () => {
 
         <div className="form__checkBox">
           <h3>Under which categories would you match your property?</h3>
+          <p>(You must select at least 1 category)</p>
           {
             availableCategories.map((category) => (
               <div className="form__checkBox__block" key={category.id}>
@@ -270,7 +257,7 @@ const AddPropertyComponent = () => {
 
           <div className="form__inputBox form__addressBox__element-half">
             <input
-              type="text"
+              type="number"
               name="zip_code"
               placeholder=" "
               value={zip_code}
@@ -283,7 +270,7 @@ const AddPropertyComponent = () => {
 
           <div className="form__inputBox form__addressBox__element-half">
             <input
-              type="text"
+              type="number"
               name="number"
               placeholder=" "
               value={number}

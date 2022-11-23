@@ -102,16 +102,35 @@
     border-radius: var(--border-radius);
   }
 
+  &__selectors {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__selectorBox {
+    width: 25%;
+  }
+
+  &__selectorBox > input{
+    display: inline;
+    width: 20%;
+  }
+
   &__addressBox {
     display: flex;
     flex-flow: row wrap;
+
+    & > *:not(:first-child) {
+      margin-right: 5%;
+    }
 
     &__element-full {
       width: 100%;
     }
 
     &__element-half {
-      width: 50%;
+      width: 45%;
     }
   }
 
