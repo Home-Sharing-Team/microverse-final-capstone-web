@@ -1,7 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
+  createNewPropertyApi,
   fetchProperties, fetchPropertiesByCategory, fetchPropertyById, fetchUserProperties,
 } from '../../services/api.service';
+import { thunkErrorHandler } from '../../utils/redux.utils';
+import { setStatusMessage } from '../status/status.actions';
 import { PROPERTY_ACTION_TYPES } from './property.types';
 
 export const fetchPropertyItemsAsync = createAsyncThunk(
@@ -34,4 +37,19 @@ export const fetchSelectedPropertyAsync = createAsyncThunk(
     const selectedProperty = await fetchPropertyById(propertyId);
     return selectedProperty;
   },
+);
+
+export const createPropertyAsync = createAsyncThunk(
+  PROPERTY_ACTION_TYPES.CREATE_PROPERTY_ASYNC,
+  thunkErrorHandler(async (propertyData, { getState, dispatch }) => {
+    const newProperty = await createNewPropertyApi(propertyData);
+    const { userProperties } = getState().property;
+
+    dispatch(setStatusMessage({
+      type: 'success',
+      message: 'Property created successfully.',
+    }));
+
+    return [...userProperties, newProperty];
+  }),
 );

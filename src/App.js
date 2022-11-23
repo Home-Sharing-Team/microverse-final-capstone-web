@@ -40,7 +40,6 @@ export default function App() {
         <Route element={(
           <ProtectedRoute
             isAllowed={!!currentUser}
-            redirectMessage="Sign in to access that page."
           />
         )}
         >

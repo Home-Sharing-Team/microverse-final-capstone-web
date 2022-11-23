@@ -1,5 +1,6 @@
 /* eslint-disable react/require-default-props */
 import PropTypes from 'prop-types';
+import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
@@ -15,6 +16,7 @@ const getSidebarLinksSections = (currentUser) => {
 
   return [
     {
+      sectionId: 1,
       sectionTitle: 'For Guests',
       iconsSize: 'md',
       links: [
@@ -35,6 +37,7 @@ const getSidebarLinksSections = (currentUser) => {
       ],
     },
     {
+      sectionId: 2,
       sectionTitle: 'For Hosts',
       iconsSize: 'md',
       links: [
@@ -73,12 +76,14 @@ export function Sidebar({ handleCloseBtnClick, isActive = false }) {
         <SearchBar />
       </div>
       <div className="sidebar__content">
-        {linksSections.map(({ sectionTitle, iconsSize, links }) => {
+        {linksSections.map(({
+          sectionId, sectionTitle, iconsSize, links,
+        }) => {
           const isSectionVisible = links.some(({ isVisible }) => isVisible);
 
           return (
             isSectionVisible && (
-              <>
+              <Fragment key={sectionId}>
                 <h3 className="sidebar__title">{sectionTitle}</h3>
                 <ul className="sidebar__list">
                   {links.map(
@@ -101,7 +106,7 @@ export function Sidebar({ handleCloseBtnClick, isActive = false }) {
                     ),
                   )}
                 </ul>
-              </>
+              </Fragment>
             )
           );
         })}

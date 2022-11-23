@@ -1,22 +1,26 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { useToast } from '../../hooks/toast.hook';
 import { selectCategoryItems } from '../../redux/category/category.selectors';
+import { createPropertyAsync } from '../../redux/property/property.actions';
 import { selectStatusMessage } from '../../redux/status/status.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import './add-property.styles.scss';
 
 const defaultFormFields = {
   name: '',
   description: '',
-  guest_capacity: 0,
-  bedrooms: 0,
-  beds: 0,
-  baths: 0,
+  guest_capacity: 1,
+  bedrooms: 1,
+  beds: 1,
+  baths: 1,
   kind: '',
-  size: 0,
+  size: '',
   address: {
     street: '',
     city: '',
@@ -25,17 +29,20 @@ const defaultFormFields = {
     number: '',
     continent: '',
   },
-  categories: [],
+  categories: {},
 };
 
 const AddPropertyComponent = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const currentUser = useSelector(selectCurrentUser);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {
     name,
     description,
     guest_capacity,
     bedrooms,
+    beds,
     baths,
     kind,
     size,
@@ -57,22 +64,27 @@ const AddPropertyComponent = () => {
   const { addToast } = useToast();
   const statusMessage = useSelector(selectStatusMessage);
 
-  useEffect(() => {
-    if (statusMessage) {
-      const { type } = statusMessage;
+  if (statusMessage) {
+    const { type } = statusMessage;
 
-      if (type === 'error') {
-        addToast(statusMessage);
-      }
+    if (type === 'error') {
+      addToast(statusMessage);
+    } else {
+      navigate(`/users/${currentUser.id}/properties`);
     }
-  }, [statusMessage]);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(formFields);
+    const propertyData = {
+      ...formFields,
+      categories: Object.entries(categories)
+        .filter(([_, value]) => value)
+        .map(([key, _]) => key),
+    };
 
-    dispatch();
+    dispatch(createPropertyAsync(propertyData));
   };
 
   const handleChange = (e) => {
@@ -82,10 +94,17 @@ const AddPropertyComponent = () => {
   };
 
   const handleCategoriesValue = (e) => {
-    const { id, value } = e.target;
-    const name = value;
+    const { value } = e.target;
 
-    setFormFields({ ...formFields, categories: [...categories, { id, name }] });
+    const selectedCategory = categories[value] ? !categories[value] : true;
+
+    setFormFields({
+      ...formFields,
+      categories: {
+        ...categories,
+        [value]: selectedCategory,
+      },
+    });
   };
 
   const handleAddress = (e) => {
@@ -137,6 +156,7 @@ const AddPropertyComponent = () => {
               name="guest_capacity"
               placeholder=" "
               value={guest_capacity}
+              min={1}
               onChange={handleChange}
               required
             />
@@ -149,6 +169,7 @@ const AddPropertyComponent = () => {
               name="bedrooms"
               placeholder=" "
               value={bedrooms}
+              min={1}
               onChange={handleChange}
               required
             />
@@ -158,8 +179,22 @@ const AddPropertyComponent = () => {
           <div className="form__selectorBox">
             <input
               type="number"
+              name="beds"
+              placeholder=" "
+              value={beds}
+              min={1}
+              onChange={handleChange}
+              required
+            />
+            <span>Beds</span>
+          </div>
+
+          <div className="form__selectorBox">
+            <input
+              type="number"
               name="baths"
               placeholder=" "
+              min={1}
               value={baths}
               onChange={handleChange}
               required
@@ -177,8 +212,8 @@ const AddPropertyComponent = () => {
               value={kind}
             >
               <option value="select">Select the type</option>
-              <option value="House">House</option>
-              <option value="Apartment">Apartment</option>
+              <option value="house">House</option>
+              <option value="apartment">Apartment</option>
             </select>
           </div>
 
@@ -188,6 +223,8 @@ const AddPropertyComponent = () => {
               name="size"
               placeholder=" "
               value={size}
+              min={1}
+              step="any"
               onChange={handleChange}
               required
             />
@@ -199,18 +236,20 @@ const AddPropertyComponent = () => {
           <h3>Under which categories would you match your property?</h3>
           <p>(You must select at least 1 category)</p>
           {
-            availableCategories.map((category) => (
-              <div className="form__checkBox__block" key={category.id}>
-                <label htmlFor={category.name}>{category.name}</label>
-                <input
-                  type="checkbox"
-                  name="categories"
-                  value={category.name}
-                  id={category.id}
-                  onChange={handleCategoriesValue}
-                />
-              </div>
-            ))
+            availableCategories
+              .filter(({ name }) => name !== 'latests')
+              .map((category) => (
+                <div className="form__checkBox__block" key={category.id}>
+                  <label htmlFor={category.name}>{category.name}</label>
+                  <input
+                    type="checkbox"
+                    name="categories"
+                    value={category.name}
+                    id={category.id}
+                    onChange={handleCategoriesValue}
+                  />
+                </div>
+              ))
           }
         </div>
 
@@ -257,7 +296,7 @@ const AddPropertyComponent = () => {
 
           <div className="form__inputBox form__addressBox__element-half">
             <input
-              type="number"
+              type="text"
               name="zip_code"
               placeholder=" "
               value={zip_code}
@@ -273,6 +312,7 @@ const AddPropertyComponent = () => {
               type="number"
               name="number"
               placeholder=" "
+              min={1}
               value={number}
               onChange={handleAddress}
               required

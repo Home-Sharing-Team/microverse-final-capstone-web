@@ -7,8 +7,10 @@ import { PropertiesGrid } from '../../components/properties-grid/properties-grid
 import { SectionTitle } from '../../components/section-title/section-title.component';
 import { SimpleCard } from '../../components/simple-card/simple-card.component';
 import Spinner from '../../components/spinner/spinner.component';
+import { useToast } from '../../hooks/toast.hook';
 import { fetchUserPropertiesAsync } from '../../redux/property/property.actions';
 import { selectPropertyIsLoading, selectUserProperties } from '../../redux/property/property.selectors';
+import { selectStatusMessage } from '../../redux/status/status.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import './user-properties-page.styles.scss';
@@ -36,9 +38,11 @@ const options = [
 
 export function UserPropertiesPage() {
   const dispatch = useDispatch();
+  const { addToast } = useToast();
   const currentUser = useSelector(selectCurrentUser);
   const userProperties = useSelector(selectUserProperties);
   const isLoading = useSelector(selectPropertyIsLoading);
+  const statusMessage = useSelector(selectStatusMessage);
   const [propertiesToShow, setPropertiesToShow] = useState([]);
 
   useEffect(() => {
@@ -68,6 +72,10 @@ export function UserPropertiesPage() {
         break;
     }
   };
+
+  if (statusMessage) {
+    addToast(statusMessage);
+  }
 
   return (
     isLoading ? (

@@ -22,7 +22,7 @@ export function CreateDropdown({
       <div className="create-dropdown__content">
         <ul className="create-dropdown__list">
           <li>
-            <Link onClick={handleCloseDropdown} to="/" className="create-dropdown__link">
+            <Link onClick={handleCloseDropdown} to="/new-property" className="create-dropdown__link">
               <RoundIcon>
                 <Icon name="home" size="sm" />
               </RoundIcon>
