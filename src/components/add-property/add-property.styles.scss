@@ -1,7 +1,7 @@
 .add-property {
   display: grid;
   place-content: center;
-  width: 50%;
+  width: 80%;
   padding: 2.4rem;
   background-color: var(--color-cards-bg);
   border: 1px solid var(--color-grey-200);
@@ -29,7 +29,8 @@
   flex-direction: column;
   width: 100%;
 
-  & > *:not(:last-child) {
+  & > *:not(:last-child),
+  &__addressBox > *:not(:last-child) {
     margin-bottom: 1.6rem;
   }
 
@@ -76,7 +77,6 @@
   }
 
   &__inputBox input:not(:placeholder-shown) ~ span,
-  &__inputBox input:valid ~ span,
   &__inputBox input:focus ~ span {
     color: var(--color-primary);
     transform: translateX(-0.6rem) translateY(-2.2rem);
@@ -97,10 +97,22 @@
   }
 
   &__inputBox input:not(:placeholder-shown) ~ i,
-  &__inputBox input:valid ~ i,
   &__inputBox input:focus ~ i {
     background-color: var(--color-primary);
     border-radius: var(--border-radius);
+  }
+
+  &__addressBox {
+    display: flex;
+    flex-flow: row wrap;
+
+    &__element-full {
+      width: 100%;
+    }
+
+    &__element-half {
+      width: 50%;
+    }
   }
 
   &__btn {

@@ -52,8 +52,6 @@ const AddPropertyComponent = () => {
     continent,
   } = address;
 
-  const [selectedAddress, setSelectedAddress] = useState(address);
-
   // const availableCategories = useSelector(selectCategoryItems);
   const availableCategories = [
     {
@@ -69,8 +67,6 @@ const AddPropertyComponent = () => {
       name: 'Big Houses',
     },
   ];
-
-  const [selectedCategories, setSelectedCategories] = useState(categories);
 
   const { addToast } = useToast();
   const statusMessage = useSelector(selectStatusMessage);
@@ -100,19 +96,16 @@ const AddPropertyComponent = () => {
   };
 
   const handleCategoriesValue = (e) => {
-    const { name, value } = e.target;
+    const { id, value } = e.target;
+    const name = value;
 
-    setSelectedCategories([...selectedCategories, value]);
-
-    console.log(selectedCategories);
-
-    setFormFields({ ...formFields, [name]: selectedCategories });
+    setFormFields({ ...formFields, categories: [...categories, { id, name }] });
   };
 
   const handleAddress = (e) => {
     const { name, value } = e.target;
 
-    setSelectedAddress({ ...selectedAddress, [name]: value });
+    setFormFields({ ...formFields, address: { ...address, [name]: value } });
   };
 
   return (
@@ -217,6 +210,7 @@ const AddPropertyComponent = () => {
         </div>
 
         <div className="form__checkBox">
+          <h3>Under which categories would you match your property?</h3>
           {
             availableCategories.map((category) => (
               <div className="form__checkBox__block" key={category.id}>
@@ -225,6 +219,7 @@ const AddPropertyComponent = () => {
                   type="checkbox"
                   name="categories"
                   value={category.name}
+                  id={category.id}
                   onChange={handleCategoriesValue}
                 />
               </div>
@@ -233,16 +228,82 @@ const AddPropertyComponent = () => {
         </div>
 
         <div className="form__addressBox">
-          <div className="form__inputBox">
+          <h3>Enter the address of your property</h3>
+          <div className="form__inputBox form__addressBox__element-full">
             <input
               type="text"
-              name="name"
+              name="street"
               placeholder=" "
-              value={name}
-              onChange={handleChange}
+              value={street}
+              onChange={handleAddress}
               required
             />
-            <span>Name</span>
+            <span>Street</span>
+            <i />
+          </div>
+
+          <div className="form__inputBox form__addressBox__element-half">
+            <input
+              type="text"
+              name="city"
+              placeholder=" "
+              value={city}
+              onChange={handleAddress}
+              required
+            />
+            <span>City</span>
+            <i />
+          </div>
+
+          <div className="form__inputBox form__addressBox__element-half">
+            <input
+              type="text"
+              name="country"
+              placeholder=" "
+              value={country}
+              onChange={handleAddress}
+              required
+            />
+            <span>Country</span>
+            <i />
+          </div>
+
+          <div className="form__inputBox form__addressBox__element-half">
+            <input
+              type="text"
+              name="zip_code"
+              placeholder=" "
+              value={zip_code}
+              onChange={handleAddress}
+              required
+            />
+            <span>Zip Code</span>
+            <i />
+          </div>
+
+          <div className="form__inputBox form__addressBox__element-half">
+            <input
+              type="text"
+              name="number"
+              placeholder=" "
+              value={number}
+              onChange={handleAddress}
+              required
+            />
+            <span>House Number</span>
+            <i />
+          </div>
+
+          <div className="form__inputBox form__addressBox__element-half">
+            <input
+              type="text"
+              name="continent"
+              placeholder=" "
+              value={continent}
+              onChange={handleAddress}
+              required
+            />
+            <span>Continent</span>
             <i />
           </div>
         </div>
