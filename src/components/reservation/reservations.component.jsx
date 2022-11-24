@@ -1,3 +1,4 @@
+import pluralize from 'pluralize';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useToast } from '../../hooks/toast.hook';
@@ -6,6 +7,8 @@ import { selectReservationIsLoading, selectUserReservations } from '../../redux/
 import { selectStatusMessage } from '../../redux/status/status.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import ReservationBlock from '../reservationBlock/reservationBlock.component';
+import { SectionTitle } from '../section-title/section-title.component';
+import { SimpleCard } from '../simple-card/simple-card.component';
 import Spinner from '../spinner/spinner.component';
 
 import './reservations.styles.scss';
@@ -30,34 +33,44 @@ const ReservationsComponent = () => {
   }, [currentUser]);
 
   return (
-    <section className="reservations">
-      <h3 className="reservations__title">Take a look at your reservations</h3>
-      {
-        isLoading ? (
-          <Spinner />
-        ) : (
-          <section className="reservations__container">
-            {(userReservations.length > 0) ? (
-              userReservations.map((reservation) => (
-                <ReservationBlock
-                  checkIn={reservation.check_in}
-                  checkOut={reservation.check_out}
-                  price={reservation.price}
-                  guests={reservation.guests}
-                  propertyDetails={reservation.property}
-                  id={reservation.id}
-                  reservationId={reservation.id}
-                  userId={reservation.userId}
-                  key={reservation.id}
-                />
-              ))
-            ) : (
-              <h4>You have no reservations!</h4>
-            )}
-          </section>
-        )
-      }
-    </section>
+    isLoading ? (
+      <Spinner />
+    ) : (
+      <section className="reservations">
+        <SimpleCard>
+          <header className="reservations__header">
+            <SectionTitle
+              title={pluralize('Reservation', userReservations.length, true)}
+            />
+          </header>
+        </SimpleCard>
+        {
+          userReservations.length > 0 ? (
+            <section className="reservations__container">
+              {
+                userReservations.map((reservation) => (
+                  <ReservationBlock
+                    checkIn={reservation.check_in}
+                    checkOut={reservation.check_out}
+                    price={reservation.price}
+                    guests={reservation.guests}
+                    propertyDetails={reservation.property}
+                    id={reservation.id}
+                    reservationId={reservation.id}
+                    userId={reservation.userId}
+                    key={reservation.id}
+                  />
+                ))
+              }
+            </section>
+          ) : (
+            <h4 className="reservations__text">
+              You have no reservations!
+            </h4>
+          )
+        }
+      </section>
+    )
   );
 };
 

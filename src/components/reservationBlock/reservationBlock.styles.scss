@@ -1,7 +1,8 @@
 .reservation {
   background-color: var(--color-white);
+
   width: 30rem;
-  height: 44rem;
+  // height: 44rem;
   padding: 2.4rem;
   border-radius: var(--border-radius);
   display: flex;
@@ -11,11 +12,14 @@
   align-content: center;
   -webkit-box-shadow: var(--shadow-cards);
   box-shadow: var(--shadow-cards);
-  margin: 2rem auto;
+  // margin: 2rem auto;
 
   &__img-container {
     &__img {
       width: 100%;
+      height: 18.9rem;
+      object-fit: cover;
+      border-radius: var(--border-radius);
       margin: 0.8rem 0 0;
       transition: 0.5s;
     }
@@ -30,6 +34,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    width: 100%;
     margin: 2rem 0;
 
     &__title {
@@ -39,7 +44,7 @@
     }
 
     p {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: var(--color-text-secondary);
     }
   }
