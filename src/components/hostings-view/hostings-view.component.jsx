@@ -7,7 +7,11 @@ import Icon from '../icon/icon.component';
 
 import './hostings-view.styles.scss';
 
-export function HostingsView({ hostings, handleClick }) {
+export function HostingsView({
+  hostings,
+  handleClick,
+  handleDeleteHosting,
+}) {
   return (
     <div className="hostings-view">
       <header className="hostings-view__header">
@@ -15,24 +19,41 @@ export function HostingsView({ hostings, handleClick }) {
           Rental rates
         </h2>
         {
-          hostings.length < 3 && (
-          <button onClick={handleClick} type="button" className="hostings-view__btn">
-            <Icon size="sm" name="plus" />
-          </button>
+          hostings.length < 3 ? (
+            <button onClick={handleClick} type="button" className="hostings-view__btn">
+              <Icon size="sm" name="plus" />
+            </button>
+          ) : (
+            <p className="hostings-view__count">
+              3/3 items
+            </p>
           )
         }
       </header>
-      <ScrollContainer>
-        <ul className="hostings-view__list">
-          {
-            hostings.map((hosting) => (
-              <li key={hosting.id}>
-                <HostingCard hosting={hosting} />
-              </li>
-            ))
-          }
-        </ul>
-      </ScrollContainer>
+      {
+        hostings.length > 0 ? (
+          <ScrollContainer>
+            <ul className="hostings-view__list">
+              {
+                hostings.map((hosting) => (
+                  <li key={hosting.id}>
+                    <HostingCard
+                      handleDeleteHosting={handleDeleteHosting}
+                      hosting={hosting}
+                    />
+                  </li>
+                ))
+              }
+            </ul>
+          </ScrollContainer>
+        ) : (
+          <p>
+            No rental rates available for this property yet. Create one!
+            <br />
+            <strong>You need at least one rental rate available to publish your property.</strong>
+          </p>
+        )
+      }
     </div>
   );
 }
@@ -40,4 +61,5 @@ export function HostingsView({ hostings, handleClick }) {
 HostingsView.propTypes = {
   hostings: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleClick: PropTypes.func.isRequired,
+  handleDeleteHosting: PropTypes.func.isRequired,
 };

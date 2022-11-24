@@ -7,8 +7,12 @@ import Icon from '../../components/icon/icon.component';
 import { PropertyDetailsHeader } from '../../components/property-details-header/property-details-header.component';
 import { SimpleCard } from '../../components/simple-card/simple-card.component';
 import Spinner from '../../components/spinner/spinner.component';
+import { useToast } from '../../hooks/toast.hook';
+import { createPropertyHostingAsync, deletePropertyHostingAsync, setPropertyHostings } from '../../redux/hosting/hosting.actions';
+import { selectPropertyHostings } from '../../redux/hosting/hosting.selectors';
 import { fetchSelectedPropertyAsync } from '../../redux/property/property.actions';
 import { selectPropertyIsLoading, selectSelectedProperty } from '../../redux/property/property.selectors';
+import { selectStatusMessage } from '../../redux/status/status.selectors';
 
 import './property-profile-page.styles.scss';
 
@@ -16,7 +20,10 @@ export function PropertyProfilePage() {
   const dispatch = useDispatch();
   const { propertyId } = useParams();
   const property = useSelector(selectSelectedProperty);
+  const hostings = useSelector(selectPropertyHostings);
   const isLoading = useSelector(selectPropertyIsLoading);
+  const { addToast } = useToast();
+  const statusMessage = useSelector(selectStatusMessage);
   const [isCreateHostingOpen, setIsCreateHostingOpen] = useState(false);
 
   const openCreateHostingPopup = () => {
@@ -27,9 +34,42 @@ export function PropertyProfilePage() {
     setIsCreateHostingOpen(false);
   };
 
+  const handleCreateHosting = (hostingData) => {
+    const dataToCreateNewHosting = {
+      ...hostingData,
+      cleaningFee: hostingData.cleaningFee || 0,
+      propertyId: property.id,
+    };
+
+    dispatch(createPropertyHostingAsync(dataToCreateNewHosting));
+  };
+
+  const handleDeleteHosting = (hostingId) => {
+    dispatch(deletePropertyHostingAsync(hostingId));
+  };
+
   useEffect(() => {
     dispatch(fetchSelectedPropertyAsync(propertyId));
   }, []);
+
+  useEffect(() => {
+    if (property) {
+      dispatch(setPropertyHostings(property.hostings));
+    }
+  }, [property]);
+
+  useEffect(() => {
+    if (statusMessage) {
+      const { type } = statusMessage;
+
+      if (type === 'error') {
+        addToast(statusMessage);
+      } else {
+        addToast(statusMessage);
+        closeCreateHostingPopup();
+      }
+    }
+  }, [statusMessage]);
 
   return (
     isLoading ? (
@@ -97,15 +137,19 @@ export function PropertyProfilePage() {
                   </SimpleCard>
                   <SimpleCard>
                     <HostingsView
-                      hostings={property.hostings}
+                      hostings={hostings}
                       handleClick={openCreateHostingPopup}
+                      handleDeleteHosting={handleDeleteHosting}
                     />
                   </SimpleCard>
                   {
                       isCreateHostingOpen && (
-                      <CreateHostingPopup
-                        handleClosePopup={closeCreateHostingPopup}
-                      />
+                        <CreateHostingPopup
+                          hostings={hostings}
+                          handleClosePopup={closeCreateHostingPopup}
+                          handleCreateHosting={handleCreateHosting}
+                          handleDeleteHosting={handleDeleteHosting}
+                        />
                       )
                   }
                 </div>

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import { useState } from 'react';
 import { FormInput } from '../form-input/form-input.component';
@@ -5,14 +6,22 @@ import { FormSelector } from '../form-selector/form-selector.component';
 import { InputGroup } from '../input-group/input-group.component';
 import './create-hosting-form.styles.scss';
 
-const defaultFormFields = {
-  cycle: 'night',
-  cleaningFee: '',
-  rate: '',
-  minimumCycleAmount: '',
-};
+export function CreateHostingForm({
+  availableCycleOptions,
+  handleSubmitCallback,
+}) {
+  const formSelectorOptions = availableCycleOptions.map((option) => ({
+    name: option.charAt(0).toUpperCase() + option.slice(1),
+    value: option,
+  }));
 
-export function CreateHostingForm() {
+  const defaultFormFields = {
+    cycle: formSelectorOptions.length > 0 ? formSelectorOptions[0].value : '',
+    cleaningFee: '',
+    rate: '',
+    minimumCycleAmount: '',
+  };
+
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {
     cleaningFee, rate, cycle, minimumCycleAmount,
@@ -24,33 +33,26 @@ export function CreateHostingForm() {
     setFormFields({ ...formFields, [name]: value });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    handleSubmitCallback(formFields);
+  };
+
   return (
-    <form className="create-hosting-form">
+    <form onSubmit={handleSubmit} className="create-hosting-form">
       <div className="create-hosting-form__content">
         <h2 className="create-hosting-form__title">
-          Create new pricing
+          Create new rate
         </h2>
         <div className="create-hosting-form__group">
           <FormSelector
             name="cycle"
             onChange={handleChange}
-            required
             value={cycle}
             title="Time unit"
-            options={[
-              {
-                name: 'Night',
-                value: 'night',
-              },
-              {
-                name: 'Week',
-                value: 'week',
-              },
-              {
-                name: 'Month',
-                value: 'month',
-              },
-            ]}
+            options={formSelectorOptions}
+            required
           />
           <p className="create-hosting-form__text">
             The time period that the rental rate is related to.
@@ -66,6 +68,9 @@ export function CreateHostingForm() {
               value={rate}
               placeholder="Enter the rental rate..."
               onChange={handleChange}
+              min={1}
+              step="0.01"
+              required
             />
 
             <FormInput
@@ -75,6 +80,8 @@ export function CreateHostingForm() {
               name="cleaningFee"
               value={cleaningFee}
               placeholder="Enter the cleaning fee..."
+              min={1}
+              step="0.01"
               onChange={handleChange}
             />
           </InputGroup>
@@ -90,8 +97,11 @@ export function CreateHostingForm() {
             type="number"
             name="minimumCycleAmount"
             value={minimumCycleAmount}
-            placeholder={`Enter the minimum number of ${pluralize(cycle, 2)}...`}
+            placeholder={`Enter the minimum ${pluralize(cycle, 2)}...`}
+            min={1}
+            step="1"
             onChange={handleChange}
+            required
           />
           <p className="create-hosting-form__text">
             {`The minimum number of ${pluralize(cycle, 2)} needed for the rental rate to take effect.`}
@@ -102,7 +112,7 @@ export function CreateHostingForm() {
 
       <div className="create-hosting-form__action">
         <button
-          type="button"
+          type="submit"
           className="create-hosting-form__btn"
         >
           Create
@@ -111,3 +121,8 @@ export function CreateHostingForm() {
     </form>
   );
 }
+
+CreateHostingForm.propTypes = {
+  availableCycleOptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  handleSubmitCallback: PropTypes.func.isRequired,
+};
