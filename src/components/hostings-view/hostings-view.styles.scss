@@ -1,0 +1,46 @@
+.hostings-view {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.4rem;
+  }
+
+  &__title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 3rem;
+  }
+
+  &__count {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    color: #969cb3;
+  }
+
+  &__list {
+    display: flex;
+
+    > li:not(:last-child) {
+      margin-right: 1.6rem;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--color-grey-200);
+    border: none;
+    border-radius: var(--border-radius);
+    border-radius: 50%;
+    transition: all 0.2s;
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+}

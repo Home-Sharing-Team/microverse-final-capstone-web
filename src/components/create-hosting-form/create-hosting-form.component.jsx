@@ -1,14 +1,22 @@
+import pluralize from 'pluralize';
 import { useState } from 'react';
+import { FormInput } from '../form-input/form-input.component';
+import { FormSelector } from '../form-selector/form-selector.component';
+import { InputGroup } from '../input-group/input-group.component';
 import './create-hosting-form.styles.scss';
 
 const defaultFormFields = {
-  cleaningFee: null,
-  rate: null,
+  cycle: 'night',
+  cleaningFee: '',
+  rate: '',
+  minimumCycleAmount: '',
 };
 
 export function CreateHostingForm() {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { cleaningFee, rate } = formFields;
+  const {
+    cleaningFee, rate, cycle, minimumCycleAmount,
+  } = formFields;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -18,41 +26,87 @@ export function CreateHostingForm() {
 
   return (
     <form className="create-hosting-form">
-      <div className="input-group">
-        <label htmlFor="rate" className="form-input">
-          <span
-            className="form-input__text"
-          >
-            Rental rate
-          </span>
-          <input
-            id="rate"
-            className="form-input__input"
+      <div className="create-hosting-form__content">
+        <h2 className="create-hosting-form__title">
+          Create new pricing
+        </h2>
+        <div className="create-hosting-form__group">
+          <FormSelector
+            name="cycle"
+            onChange={handleChange}
+            required
+            value={cycle}
+            title="Time unit"
+            options={[
+              {
+                name: 'Night',
+                value: 'night',
+              },
+              {
+                name: 'Week',
+                value: 'week',
+              },
+              {
+                name: 'Month',
+                value: 'month',
+              },
+            ]}
+          />
+          <p className="create-hosting-form__text">
+            The time period that the rental rate is related to.
+          </p>
+        </div>
+        <div className="create-hosting-form__group">
+          <InputGroup>
+            <FormInput
+              title="Rental rate"
+              id="rate"
+              type="number"
+              name="rate"
+              value={rate}
+              placeholder="Enter the rental rate..."
+              onChange={handleChange}
+            />
+
+            <FormInput
+              title="Cleaning fee"
+              id="cleaningFee"
+              type="number"
+              name="cleaningFee"
+              value={cleaningFee}
+              placeholder="Enter the cleaning fee..."
+              onChange={handleChange}
+            />
+          </InputGroup>
+          <p className="create-hosting-form__text">
+            The cleaning fee is optional.
+          </p>
+        </div>
+
+        <div className="create-hosting-form__group">
+          <FormInput
+            title={`Minimum ${pluralize(cycle, 2)}`}
+            id="minimumCycleAmount"
             type="number"
-            name="rate"
-            value={rate}
-            placeholder="Enter the rental rate..."
+            name="minimumCycleAmount"
+            value={minimumCycleAmount}
+            placeholder={`Enter the minimum number of ${pluralize(cycle, 2)}...`}
             onChange={handleChange}
           />
-        </label>
-        <label htmlFor="cleaningFee" className="form-input">
-          <span
-            className="form-input__text"
-          >
-            Cleaning fee
-          </span>
-          <input
-            id="cleaningFee"
-            className="form-input__input"
-            type="number"
-            name="cleaningFee"
-            value={cleaningFee}
-            onChange={handleChange}
-          />
-        </label>
-        <p className="input-group__text">
-          Some text
-        </p>
+          <p className="create-hosting-form__text">
+            {`The minimum number of ${pluralize(cycle, 2)} needed for the rental rate to take effect.`}
+          </p>
+        </div>
+
+      </div>
+
+      <div className="create-hosting-form__action">
+        <button
+          type="button"
+          className="create-hosting-form__btn"
+        >
+          Create
+        </button>
       </div>
     </form>
   );

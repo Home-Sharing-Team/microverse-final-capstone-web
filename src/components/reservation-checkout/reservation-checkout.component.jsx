@@ -64,7 +64,7 @@ export function ReservationCheckout({ handleClosePopup }) {
   const checkOutBlockText = getDateBlockText(checkOutDate);
 
   return (
-    <Popup handleClosePopup={handleClosePopup}>
+    <Popup size="sm" handleClosePopup={handleClosePopup}>
       <div className="reservation-checkout">
         <header className="reservation-checkout__header">
           <h2 className="reservation-checkout__title">Your trip</h2>

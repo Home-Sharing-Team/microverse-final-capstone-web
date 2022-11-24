@@ -1,12 +1,9 @@
-import pluralize from 'pluralize';
-import { useEffect } from 'react';
-import ScrollContainer from 'react-indiana-drag-scroll';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { CreateHostingForm } from '../../components/create-hosting-form/create-hosting-form.component';
-import { HostingCard } from '../../components/hosting-card/hosting-card.component';
+import { CreateHostingPopup } from '../../components/create-hosting-popup/create-hosting-popup.component';
+import { HostingsView } from '../../components/hostings-view/hostings-view.component';
 import Icon from '../../components/icon/icon.component';
-import { Popup } from '../../components/popup/popup.component';
 import { PropertyDetailsHeader } from '../../components/property-details-header/property-details-header.component';
 import { SimpleCard } from '../../components/simple-card/simple-card.component';
 import Spinner from '../../components/spinner/spinner.component';
@@ -20,6 +17,15 @@ export function PropertyProfilePage() {
   const { propertyId } = useParams();
   const property = useSelector(selectSelectedProperty);
   const isLoading = useSelector(selectPropertyIsLoading);
+  const [isCreateHostingOpen, setIsCreateHostingOpen] = useState(false);
+
+  const openCreateHostingPopup = () => {
+    setIsCreateHostingOpen(true);
+  };
+
+  const closeCreateHostingPopup = () => {
+    setIsCreateHostingOpen(false);
+  };
 
   useEffect(() => {
     dispatch(fetchSelectedPropertyAsync(propertyId));
@@ -38,44 +44,70 @@ export function PropertyProfilePage() {
                 <PropertyDetailsHeader property={property} />
                 <div className="property-profile__content">
                   <SimpleCard>
-                    <div className="hostings">
-                      <header className="hostings__header">
-                        <h2 className="hostings__title">
-                          Pricings
-                        </h2>
-                        <span className="hostings__count">
-                          {`${property.hostings.length}/3 ${pluralize('item', property.hostings.length)}`}
-                        </span>
-                      </header>
-                      <ScrollContainer>
-                        <ul className="hostings__list">
-                          {
-                              property.hostings.length < 3 && (
-                                <li>
-                                  <button type="button" className="hostings__btn">
-                                    <Icon size="lg" name="plus" />
-                                  </button>
-                                </li>
-                              )
-                            }
-                          {
-                              property.hostings.map((hosting) => (
-                                <li key={hosting.id}>
-                                  <HostingCard hosting={hosting} />
-                                </li>
-                              ))
-                              }
+                    <div className="property-profile-info">
+                      <header className="property-profile-info__header">
+                        <h2 className="property-profile-info__title">Description</h2>
+                        <ul className="bullet-list">
+                          <li>
+                            <span>{`${property.guest_capacity} guests`}</span>
+                          </li>
+                          <li>
+                            <span>{`${property.bedrooms} bedrooms`}</span>
+                          </li>
+                          <li>
+                            <span>{`${property.beds} beds`}</span>
+                          </li>
+                          <li>
+                            <span>{`${property.baths} baths`}</span>
+                          </li>
                         </ul>
-                      </ScrollContainer>
+                      </header>
+                      <div className="property-profile-info__content">
+                        <p className="property-profile-info__description">{property.description}</p>
+                        <div className="property-profile-info__box">
+                          <ul className="property-profile-info__list">
+                            {property.categories.map(({ id, name }) => (
+                              <li key={id}>
+                                <span className="property-profile-info__category">{name}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          <div className="property-profile-info__action">
+                            <button
+                              type="button"
+                              className="property-profile-info__btn"
+                            >
+                              <Icon size="sm" name="trash" />
+                              <span>Delete</span>
+                            </button>
+                            <button
+                              type="button"
+                              className="property-profile-info__btn"
+                            >
+                              <Icon size="sm" name="share-2" />
+                              <span>Publish</span>
+                            </button>
+                          </div>
+                        </div>
+
+                      </div>
+
                     </div>
                   </SimpleCard>
-
-                  <Popup>
-                    <div className="create-hosting-popup">
-                      <CreateHostingForm />
-                    </div>
-                  </Popup>
-
+                  <SimpleCard>
+                    <HostingsView
+                      hostings={property.hostings}
+                      handleClick={openCreateHostingPopup}
+                    />
+                  </SimpleCard>
+                  {
+                      isCreateHostingOpen && (
+                      <CreateHostingPopup
+                        handleClosePopup={closeCreateHostingPopup}
+                      />
+                      )
+                  }
                 </div>
               </>
             )

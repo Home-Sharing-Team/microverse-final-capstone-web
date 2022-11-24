@@ -1,12 +1,17 @@
+/* eslint-disable react/require-default-props */
 import PropTypes from 'prop-types';
 
 import Icon from '../icon/icon.component';
 
 import './popup.styles.scss';
 
-export function Popup({ children, handleClosePopup }) {
+export function Popup({
+  children,
+  handleClosePopup,
+  size = 'md',
+}) {
   return (
-    <div className="popup">
+    <div className={`popup popup--${size}`}>
       <div className="popup__overlay" />
       <div className="popup__window">
         <button
@@ -25,4 +30,5 @@ export function Popup({ children, handleClosePopup }) {
 Popup.propTypes = {
   children: PropTypes.node.isRequired,
   handleClosePopup: PropTypes.func.isRequired,
+  size: PropTypes.string,
 };

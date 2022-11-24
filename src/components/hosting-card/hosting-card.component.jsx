@@ -6,6 +6,8 @@ import { getCycleAbbreviation, getCycleAmountInNights } from '../../utils/cycle.
 import { formatCurrencyNumber } from '../../utils/format.utils';
 import Icon from '../icon/icon.component';
 
+import './hosting-card.styles.scss';
+
 export function HostingCard({ hosting }) {
   const {
     cycle,

@@ -7,6 +7,7 @@ import { deleteUserReservationAsync } from '../../redux/reservation/reservation.
 import PropertyPlaceholder from '../../assets/images/property_placeholder.jpeg';
 
 import './reservationBlock.styles.scss';
+import { formatCurrencyNumber } from '../../utils/format.utils';
 
 const ReservationBlock = (props) => {
   // const {
@@ -54,8 +55,8 @@ const ReservationBlock = (props) => {
       <div className="reservation__content">
         <h3 className="reservation__content__title">{title}</h3>
         <p className="reservation__content_price">
-          Price: $
-          {price}
+
+          {`Price: ${formatCurrencyNumber(price)}`}
         </p>
         <div className="reservation__content__dates">
           <p>
