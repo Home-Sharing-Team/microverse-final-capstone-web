@@ -2,9 +2,9 @@
 import axios from 'axios';
 import { ACCESS_TOKEN_STORAGE_KEY } from '../config/token.config';
 
-const API_BASE_URL = 'http://localhost:4000/api/v1';
+// const API_BASE_URL = 'http://localhost:4000/api/v1';
 
-// const API_BASE_URL = 'http://localhost:3000/api/v1';
+const API_BASE_URL = 'https://home-sharing-api.onrender.com/api/v1';
 
 const handleApiResponse = (response) => {
   if (!response.data.success) {
