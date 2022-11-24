@@ -258,3 +258,18 @@ export const updatePropertyIsPublic = async (propertyId, isPublic) => {
     return handleApiResponse(error.response);
   }
 };
+
+export const deletePropertyFromApi = async (propertyId) => {
+  try {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+
+    const response = await api.delete(`properties/${propertyId}`, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
+};

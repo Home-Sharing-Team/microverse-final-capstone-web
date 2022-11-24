@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CreateHostingPopup } from '../../components/create-hosting-popup/create-hosting-popup.component';
 import { HostingsView } from '../../components/hostings-view/hostings-view.component';
 import Icon from '../../components/icon/icon.component';
@@ -14,11 +14,13 @@ import { fetchSelectedPropertyAsync, updatePropertyIsPublicAsync } from '../../r
 import { selectPropertyIsLoading, selectSelectedProperty } from '../../redux/property/property.selectors';
 import { setStatusMessage } from '../../redux/status/status.actions';
 import { selectStatusMessage } from '../../redux/status/status.selectors';
+import { deletePropertyFromApi } from '../../services/api.service';
 
 import './property-profile-page.styles.scss';
 
 export function PropertyProfilePage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { propertyId } = useParams();
   const property = useSelector(selectSelectedProperty);
   const hostings = useSelector(selectPropertyHostings);
@@ -54,6 +56,24 @@ export function PropertyProfilePage() {
       isPublic: false,
       propertyId: property.id,
     }));
+  };
+
+  const handleDeleteProperty = async () => {
+    try {
+      await deletePropertyFromApi(property.id);
+
+      dispatch(setStatusMessage({
+        type: 'success',
+        message: 'Property deleted successfully.',
+      }));
+
+      navigate('/');
+    } catch (error) {
+      dispatch(setStatusMessage({
+        type: 'error',
+        message: error.message,
+      }));
+    }
   };
 
   const handleCreateHosting = (hostingData) => {
@@ -146,6 +166,7 @@ export function PropertyProfilePage() {
                             <button
                               type="button"
                               className="property-profile-info__btn"
+                              onClick={handleDeleteProperty}
                             >
                               <Icon size="sm" name="trash" />
                               <span>Delete</span>
