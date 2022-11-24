@@ -241,3 +241,20 @@ export const createNewPropertyApi = async ({
     return handleApiResponse(error.response);
   }
 };
+
+export const updatePropertyIsPublic = async (propertyId, isPublic) => {
+  try {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+
+    const response = await api.patch(`properties/${propertyId}/visibility`, {
+      is_public: isPublic,
+    }, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
+};

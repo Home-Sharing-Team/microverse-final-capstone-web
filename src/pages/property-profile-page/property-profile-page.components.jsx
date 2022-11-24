@@ -10,8 +10,9 @@ import Spinner from '../../components/spinner/spinner.component';
 import { useToast } from '../../hooks/toast.hook';
 import { createPropertyHostingAsync, deletePropertyHostingAsync, setPropertyHostings } from '../../redux/hosting/hosting.actions';
 import { selectPropertyHostings } from '../../redux/hosting/hosting.selectors';
-import { fetchSelectedPropertyAsync } from '../../redux/property/property.actions';
+import { fetchSelectedPropertyAsync, updatePropertyIsPublicAsync } from '../../redux/property/property.actions';
 import { selectPropertyIsLoading, selectSelectedProperty } from '../../redux/property/property.selectors';
+import { setStatusMessage } from '../../redux/status/status.actions';
 import { selectStatusMessage } from '../../redux/status/status.selectors';
 
 import './property-profile-page.styles.scss';
@@ -34,6 +35,27 @@ export function PropertyProfilePage() {
     setIsCreateHostingOpen(false);
   };
 
+  const publishProperty = () => {
+    if (hostings.length > 0) {
+      dispatch(updatePropertyIsPublicAsync({
+        isPublic: true,
+        propertyId: property.id,
+      }));
+    } else {
+      dispatch(setStatusMessage({
+        type: 'error',
+        message: 'You need at least one rental rate available to publish your property. Create one first!',
+      }));
+    }
+  };
+
+  const unpublishProperty = () => {
+    dispatch(updatePropertyIsPublicAsync({
+      isPublic: false,
+      propertyId: property.id,
+    }));
+  };
+
   const handleCreateHosting = (hostingData) => {
     const dataToCreateNewHosting = {
       ...hostingData,
@@ -45,7 +67,14 @@ export function PropertyProfilePage() {
   };
 
   const handleDeleteHosting = (hostingId) => {
-    dispatch(deletePropertyHostingAsync(hostingId));
+    if (property.is_public) {
+      dispatch(setStatusMessage({
+        type: 'error',
+        message: 'A public property needs to have at least one available rental rate! Unpublish this property first to be able to delete this rental rate.',
+      }));
+    } else {
+      dispatch(deletePropertyHostingAsync(hostingId));
+    }
   };
 
   useEffect(() => {
@@ -121,13 +150,28 @@ export function PropertyProfilePage() {
                               <Icon size="sm" name="trash" />
                               <span>Delete</span>
                             </button>
-                            <button
-                              type="button"
-                              className="property-profile-info__btn"
-                            >
-                              <Icon size="sm" name="share-2" />
-                              <span>Publish</span>
-                            </button>
+                            {
+                                property.is_public ? (
+                                  <button
+                                    type="button"
+                                    className="property-profile-info__btn"
+                                    onClick={unpublishProperty}
+                                  >
+                                    <Icon size="sm" name="lock" />
+                                    <span>Unpublish</span>
+                                  </button>
+                                ) : (
+                                  <button
+                                    type="button"
+                                    className="property-profile-info__btn"
+                                    onClick={publishProperty}
+                                  >
+                                    <Icon size="sm" name="share-2" />
+                                    <span>Publish</span>
+                                  </button>
+                                )
+                              }
+
                           </div>
                         </div>
 
