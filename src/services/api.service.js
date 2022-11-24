@@ -138,6 +138,21 @@ export const deleteReservationById = async (reservationId) => {
   }
 };
 
+export const deleteHostingById = async (hostingId) => {
+  try {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+
+    const response = await api.delete(`hostings/${hostingId}`, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
+};
+
 export const createReservationFromApi = async ({
   guests,
   checkIn,
@@ -151,6 +166,33 @@ export const createReservationFromApi = async ({
       guests,
       check_in: checkIn,
       check_out: checkOut,
+      property_id: propertyId,
+    }, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
+};
+
+export const createHostingFromApi = async ({
+  propertyId,
+  rate,
+  cycle,
+  cleaningFee,
+  minimumCycleAmount,
+}) => {
+  try {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+
+    const response = await api.post('hostings', {
+      rate,
+      cycle,
+      cleaning_fee: cleaningFee,
+      minimum_cycle_amount: minimumCycleAmount,
       property_id: propertyId,
     }, {
       headers: {
@@ -190,6 +232,38 @@ export const createNewPropertyApi = async ({
       address,
       categories,
     }, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
+};
+
+export const updatePropertyIsPublic = async (propertyId, isPublic) => {
+  try {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+
+    const response = await api.patch(`properties/${propertyId}/visibility`, {
+      is_public: isPublic,
+    }, {
+      headers: {
+        authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return handleApiResponse(response);
+  } catch (error) {
+    return handleApiResponse(error.response);
+  }
+};
+
+export const deletePropertyFromApi = async (propertyId) => {
+  try {
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+
+    const response = await api.delete(`properties/${propertyId}`, {
       headers: {
         authorization: `Bearer ${accessToken}`,
       },

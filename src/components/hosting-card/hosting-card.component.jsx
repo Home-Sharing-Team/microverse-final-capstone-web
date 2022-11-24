@@ -6,13 +6,20 @@ import { getCycleAbbreviation, getCycleAmountInNights } from '../../utils/cycle.
 import { formatCurrencyNumber } from '../../utils/format.utils';
 import Icon from '../icon/icon.component';
 
-export function HostingCard({ hosting }) {
+import './hosting-card.styles.scss';
+
+export function HostingCard({ hosting, handleDeleteHosting }) {
   const {
+    id,
     cycle,
     minimum_cycle_amount,
     rate,
     cleaning_fee,
   } = hosting;
+
+  const handleClick = () => {
+    handleDeleteHosting(id);
+  };
 
   return (
     <div className="hosting-card">
@@ -51,7 +58,7 @@ export function HostingCard({ hosting }) {
       </ul>
 
       <div className="hosting-card__action">
-        <button type="button" className="hosting-card__btn">
+        <button onClick={handleClick} type="button" className="hosting-card__btn">
           delete
         </button>
       </div>
@@ -61,4 +68,5 @@ export function HostingCard({ hosting }) {
 
 HostingCard.propTypes = {
   hosting: PropTypes.object.isRequired,
+  handleDeleteHosting: PropTypes.func.isRequired,
 };

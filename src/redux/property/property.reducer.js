@@ -6,6 +6,7 @@ import {
   fetchPropertyItemsByCategoryAsync,
   fetchSelectedPropertyAsync,
   fetchUserPropertiesAsync,
+  updatePropertyIsPublicAsync,
 } from './property.actions';
 
 const INITIAL_STATE = {
@@ -78,6 +79,18 @@ const propertySlice = createSlice({
     [createPropertyAsync.fulfilled]: (state, { payload }) => {
       state.isLoading = false;
       state.userProperties = payload;
+      state.error = null;
+    },
+    [updatePropertyIsPublicAsync.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [updatePropertyIsPublicAsync.rejected]: (state, { error }) => {
+      state.isLoading = false;
+      state.error = error.message;
+    },
+    [updatePropertyIsPublicAsync.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      state.selectedProperty = payload;
       state.error = null;
     },
   },

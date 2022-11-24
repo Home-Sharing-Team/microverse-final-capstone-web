@@ -11,7 +11,7 @@
   overflow-y: scroll;
 
   @media only screen and (min-width: 48em) {
-    padding-top: calc(var(--header-height));
+    padding: calc(var(--header-height)) 0;
   }
 
   &__overlay {
@@ -33,7 +33,7 @@
     box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     // padding: 2rem 2.4rem;
     z-index: 160;
-    overflow-y: hidden;
+    overflow-y: auto;
 
     @media only screen and (min-width: 48em) {
       width: 80%;
@@ -52,5 +52,13 @@
     border: none;
     background-color: transparent;
     margin: 2rem 2.4rem 1.6rem;
+  }
+
+  &--sm {
+    .popup__window {
+      @media only screen and (min-width: 48em) {
+        max-width: 56.8rem;
+      }
+    }
   }
 }

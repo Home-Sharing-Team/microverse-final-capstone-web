@@ -26,6 +26,8 @@ import { ReservationTitle } from '../../components/reservation-title/reservation
 import { ReservationButton } from '../../components/reservation-button/reservation-button.component';
 import { selectNumNights } from '../../redux/reservation/reservation.selectors';
 
+import PropertyPlaceholder from '../../assets/images/property_placeholder.jpeg';
+
 export function PropertyDetailsPage() {
   const dispatch = useDispatch();
   const { propertyId } = useParams();
@@ -81,7 +83,7 @@ export function PropertyDetailsPage() {
                 </ul>
               </div>
             </SimpleCard>
-            <ImageViewer images={property.images} />
+            <ImageViewer placeholder={PropertyPlaceholder} images={property.images} />
           </header>
 
           <div className="property-details__content">

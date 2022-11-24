@@ -234,13 +234,12 @@ const AddPropertyComponent = () => {
 
         <div className="form__checkBox">
           <h3>Under which categories would you match your property?</h3>
-          <p>(You must select at least 1 category)</p>
+          <p className="form__checkBox__text">(You must select at least 1 category)</p>
           {
             availableCategories
               .filter(({ name }) => name !== 'latests')
               .map((category) => (
                 <div className="form__checkBox__block" key={category.id}>
-                  <label htmlFor={category.name}>{category.name}</label>
                   <input
                     type="checkbox"
                     name={category.name}
@@ -248,6 +247,7 @@ const AddPropertyComponent = () => {
                     id={category.id}
                     onChange={handleCategoriesValue}
                   />
+                  <label htmlFor={category.name}>{category.name}</label>
                 </div>
               ))
           }

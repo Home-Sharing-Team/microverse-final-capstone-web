@@ -1,7 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   createNewPropertyApi,
-  fetchProperties, fetchPropertiesByCategory, fetchPropertyById, fetchUserProperties,
+  fetchProperties,
+  fetchPropertiesByCategory,
+  fetchPropertyById,
+  fetchUserProperties,
+  updatePropertyIsPublic,
 } from '../../services/api.service';
 import { thunkErrorHandler } from '../../utils/redux.utils';
 import { setStatusMessage } from '../status/status.actions';
@@ -51,5 +55,19 @@ export const createPropertyAsync = createAsyncThunk(
     }));
 
     return [...userProperties, newProperty];
+  }),
+);
+
+export const updatePropertyIsPublicAsync = createAsyncThunk(
+  PROPERTY_ACTION_TYPES.UPDATE_PROPERTY_IS_PUBLIC_ASYNC,
+  thunkErrorHandler(async ({ isPublic, propertyId }, { dispatch }) => {
+    const updatedProperty = await updatePropertyIsPublic(propertyId, isPublic);
+
+    dispatch(setStatusMessage({
+      type: 'success',
+      message: `Property ${isPublic ? 'published' : 'unpublished'} successfully.`,
+    }));
+
+    return updatedProperty;
   }),
 );
