@@ -93,6 +93,7 @@ export function Sidebar({ handleCloseBtnClick, isActive = false }) {
                     <li key={id} className="sidebar__item">
                       <NavLink
                         to={route}
+                        onClick={handleCloseBtnClick}
                         className={({ isActive }) => (isActive
                           ? 'sidebar__link sidebar__link--active'
                           : 'sidebar__link')}

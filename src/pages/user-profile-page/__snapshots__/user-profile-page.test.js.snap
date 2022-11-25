@@ -1,27 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MainContent component should render correctly 1`] = `
+exports[`UserProfilePage component should render correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <main
-        class="main"
+      <section
+        class="user-profile"
       >
-        <h1>
-          Testing
-        </h1>
-      </main>
+        <div
+          class="spinner spinner--md"
+        >
+          <div
+            class="spinner__content"
+          />
+        </div>
+      </section>
     </div>
   </body>,
   "container": <div>
-    <main
-      class="main"
+    <section
+      class="user-profile"
     >
-      <h1>
-        Testing
-      </h1>
-    </main>
+      <div
+        class="spinner spinner--md"
+      >
+        <div
+          class="spinner__content"
+        />
+      </div>
+    </section>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

@@ -2,8 +2,12 @@ import Icon from '../icon/icon.component';
 import './search-bar.styles.scss';
 
 export function SearchBar() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <form className="search">
+    <form onSubmit={handleSubmit} className="search">
       <input
         type="text"
         className="search__input"

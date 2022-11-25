@@ -1,0 +1,624 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewPropertyPage component should render correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <section
+        class="new-property"
+      >
+        <section
+          class="add-property"
+        >
+          <div
+            class="add-property__header"
+          >
+            <h2>
+              Add your property so that other people can rent it!
+            </h2>
+            <p>
+              Please, fill all the inputs so that you can host a home!
+            </p>
+          </div>
+          <form
+            class="form"
+          >
+            <div
+              class="form__text-containers"
+            >
+              <div
+                class="form__inputBox"
+              >
+                <input
+                  name="name"
+                  placeholder=" "
+                  required=""
+                  type="text"
+                  value=""
+                />
+                <span>
+                  Name
+                </span>
+                <i />
+              </div>
+              <div
+                class="form__inputBox"
+              >
+                <input
+                  name="description"
+                  placeholder=" "
+                  required=""
+                  type="text"
+                  value=""
+                />
+                <span>
+                  Description
+                </span>
+                <i />
+              </div>
+            </div>
+            <div
+              class="form__selectors"
+            >
+              <div
+                class="form__selectorBox"
+              >
+                <span>
+                  Kind
+                </span>
+                <select
+                  name="kind"
+                  placeholder=" "
+                  required=""
+                >
+                  <option
+                    value="select"
+                  >
+                    Select the type
+                  </option>
+                  <option
+                    value="house"
+                  >
+                    House
+                  </option>
+                  <option
+                    value="apartment"
+                  >
+                    Apartment
+                  </option>
+                </select>
+              </div>
+              <div
+                class="form__selectorBox"
+              >
+                <span>
+                  Guest Capacity
+                </span>
+                <input
+                  min="1"
+                  name="guest_capacity"
+                  placeholder=" "
+                  required=""
+                  type="number"
+                  value="1"
+                />
+              </div>
+              <div
+                class="form__selectorBox"
+              >
+                <span>
+                  Bedrooms
+                </span>
+                <input
+                  min="1"
+                  name="bedrooms"
+                  placeholder=" "
+                  required=""
+                  type="number"
+                  value="1"
+                />
+              </div>
+              <div
+                class="form__selectorBox"
+              >
+                <span>
+                  Beds
+                </span>
+                <input
+                  min="1"
+                  name="beds"
+                  placeholder=" "
+                  required=""
+                  type="number"
+                  value="1"
+                />
+              </div>
+              <div
+                class="form__selectorBox"
+              >
+                <span>
+                  Baths
+                </span>
+                <input
+                  min="1"
+                  name="baths"
+                  placeholder=" "
+                  required=""
+                  type="number"
+                  value="1"
+                />
+              </div>
+              <div
+                class="form__selectorBox"
+              >
+                <span>
+                  Size
+                </span>
+                <input
+                  min="1"
+                  name="size"
+                  placeholder=" "
+                  required=""
+                  step="any"
+                  type="number"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="form__checkBox"
+            >
+              <h3>
+                Under which categories would you match your property?
+              </h3>
+              <p
+                class="form__checkBox__text"
+              >
+                (You must select at least 1 category)
+              </p>
+            </div>
+            <div
+              class="form__addressBox"
+            >
+              <h3>
+                Enter the address of your property
+              </h3>
+              <div
+                class="form__inputBox form__addressBox__element-full"
+              >
+                <input
+                  name="street"
+                  placeholder=" "
+                  required=""
+                  type="text"
+                  value=""
+                />
+                <span>
+                  Street
+                </span>
+                <i />
+              </div>
+              <div
+                class="form__inputBox form__addressBox__element-half"
+              >
+                <input
+                  min="1"
+                  name="number"
+                  placeholder=" "
+                  required=""
+                  type="number"
+                  value=""
+                />
+                <span>
+                  House Number
+                </span>
+                <i />
+              </div>
+              <div
+                class="form__inputBox form__addressBox__element-half"
+              >
+                <input
+                  name="zip_code"
+                  placeholder=" "
+                  required=""
+                  type="text"
+                  value=""
+                />
+                <span>
+                  Zip Code
+                </span>
+                <i />
+              </div>
+              <div
+                class="form__inputBox form__addressBox__element-half"
+              >
+                <input
+                  name="city"
+                  placeholder=" "
+                  required=""
+                  type="text"
+                  value=""
+                />
+                <span>
+                  City
+                </span>
+                <i />
+              </div>
+              <div
+                class="form__inputBox form__addressBox__element-half"
+              >
+                <input
+                  name="country"
+                  placeholder=" "
+                  required=""
+                  type="text"
+                  value=""
+                />
+                <span>
+                  Country
+                </span>
+                <i />
+              </div>
+              <div
+                class="form__inputBox form__addressBox__element-half"
+              >
+                <input
+                  name="continent"
+                  placeholder=" "
+                  required=""
+                  type="text"
+                  value=""
+                />
+                <span>
+                  Continent
+                </span>
+                <i />
+              </div>
+            </div>
+            <button
+              class="form__btn"
+              type="submit"
+            >
+              Add your property!
+            </button>
+          </form>
+        </section>
+      </section>
+    </div>
+  </body>,
+  "container": <div>
+    <section
+      class="new-property"
+    >
+      <section
+        class="add-property"
+      >
+        <div
+          class="add-property__header"
+        >
+          <h2>
+            Add your property so that other people can rent it!
+          </h2>
+          <p>
+            Please, fill all the inputs so that you can host a home!
+          </p>
+        </div>
+        <form
+          class="form"
+        >
+          <div
+            class="form__text-containers"
+          >
+            <div
+              class="form__inputBox"
+            >
+              <input
+                name="name"
+                placeholder=" "
+                required=""
+                type="text"
+                value=""
+              />
+              <span>
+                Name
+              </span>
+              <i />
+            </div>
+            <div
+              class="form__inputBox"
+            >
+              <input
+                name="description"
+                placeholder=" "
+                required=""
+                type="text"
+                value=""
+              />
+              <span>
+                Description
+              </span>
+              <i />
+            </div>
+          </div>
+          <div
+            class="form__selectors"
+          >
+            <div
+              class="form__selectorBox"
+            >
+              <span>
+                Kind
+              </span>
+              <select
+                name="kind"
+                placeholder=" "
+                required=""
+              >
+                <option
+                  value="select"
+                >
+                  Select the type
+                </option>
+                <option
+                  value="house"
+                >
+                  House
+                </option>
+                <option
+                  value="apartment"
+                >
+                  Apartment
+                </option>
+              </select>
+            </div>
+            <div
+              class="form__selectorBox"
+            >
+              <span>
+                Guest Capacity
+              </span>
+              <input
+                min="1"
+                name="guest_capacity"
+                placeholder=" "
+                required=""
+                type="number"
+                value="1"
+              />
+            </div>
+            <div
+              class="form__selectorBox"
+            >
+              <span>
+                Bedrooms
+              </span>
+              <input
+                min="1"
+                name="bedrooms"
+                placeholder=" "
+                required=""
+                type="number"
+                value="1"
+              />
+            </div>
+            <div
+              class="form__selectorBox"
+            >
+              <span>
+                Beds
+              </span>
+              <input
+                min="1"
+                name="beds"
+                placeholder=" "
+                required=""
+                type="number"
+                value="1"
+              />
+            </div>
+            <div
+              class="form__selectorBox"
+            >
+              <span>
+                Baths
+              </span>
+              <input
+                min="1"
+                name="baths"
+                placeholder=" "
+                required=""
+                type="number"
+                value="1"
+              />
+            </div>
+            <div
+              class="form__selectorBox"
+            >
+              <span>
+                Size
+              </span>
+              <input
+                min="1"
+                name="size"
+                placeholder=" "
+                required=""
+                step="any"
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="form__checkBox"
+          >
+            <h3>
+              Under which categories would you match your property?
+            </h3>
+            <p
+              class="form__checkBox__text"
+            >
+              (You must select at least 1 category)
+            </p>
+          </div>
+          <div
+            class="form__addressBox"
+          >
+            <h3>
+              Enter the address of your property
+            </h3>
+            <div
+              class="form__inputBox form__addressBox__element-full"
+            >
+              <input
+                name="street"
+                placeholder=" "
+                required=""
+                type="text"
+                value=""
+              />
+              <span>
+                Street
+              </span>
+              <i />
+            </div>
+            <div
+              class="form__inputBox form__addressBox__element-half"
+            >
+              <input
+                min="1"
+                name="number"
+                placeholder=" "
+                required=""
+                type="number"
+                value=""
+              />
+              <span>
+                House Number
+              </span>
+              <i />
+            </div>
+            <div
+              class="form__inputBox form__addressBox__element-half"
+            >
+              <input
+                name="zip_code"
+                placeholder=" "
+                required=""
+                type="text"
+                value=""
+              />
+              <span>
+                Zip Code
+              </span>
+              <i />
+            </div>
+            <div
+              class="form__inputBox form__addressBox__element-half"
+            >
+              <input
+                name="city"
+                placeholder=" "
+                required=""
+                type="text"
+                value=""
+              />
+              <span>
+                City
+              </span>
+              <i />
+            </div>
+            <div
+              class="form__inputBox form__addressBox__element-half"
+            >
+              <input
+                name="country"
+                placeholder=" "
+                required=""
+                type="text"
+                value=""
+              />
+              <span>
+                Country
+              </span>
+              <i />
+            </div>
+            <div
+              class="form__inputBox form__addressBox__element-half"
+            >
+              <input
+                name="continent"
+                placeholder=" "
+                required=""
+                type="text"
+                value=""
+              />
+              <span>
+                Continent
+              </span>
+              <i />
+            </div>
+          </div>
+          <button
+            class="form__btn"
+            type="submit"
+          >
+            Add your property!
+          </button>
+        </form>
+      </section>
+    </section>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

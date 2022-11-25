@@ -87,7 +87,7 @@ export function PropertyProfilePage() {
   };
 
   const handleDeleteHosting = (hostingId) => {
-    if (property.is_public) {
+    if (property.is_public && hostings.length === 1) {
       dispatch(setStatusMessage({
         type: 'error',
         message: 'A public property needs to have at least one available rental rate! Unpublish this property first to be able to delete this rental rate.',

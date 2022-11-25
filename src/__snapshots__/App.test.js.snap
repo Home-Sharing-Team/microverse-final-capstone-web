@@ -1,0 +1,516 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component should render correctly with the Homepage content 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <header
+        class="header"
+      >
+        <div
+          class="header__start"
+        >
+          <button
+            class="header__btn header__hamburger-btn"
+            type="button"
+          >
+            <svg
+              class="icon--md"
+            >
+              <use
+                xlink:href="sprite.svg#menu"
+              />
+            </svg>
+          </button>
+          <a
+            class="header__logo"
+            href="/"
+          >
+            <div
+              class="logo"
+            >
+              <svg
+                class="icon--lg"
+              >
+                <use
+                  xlink:href="sprite.svg#logo"
+                />
+              </svg>
+              <span
+                class="logo__text"
+              >
+                Home Sharing
+              </span>
+            </div>
+          </a>
+        </div>
+        <div
+          class="header__center"
+        >
+          <form
+            class="search"
+          >
+            <input
+              class="search__input"
+              placeholder="Search destinations..."
+              type="text"
+            />
+            <button
+              class="search__btn"
+              type="submit"
+            >
+              <svg
+                class="icon--sm"
+              >
+                <use
+                  xlink:href="sprite.svg#search"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+        <div
+          class="header__end"
+        >
+          <button
+            class="header__auth-btn"
+            type="button"
+          >
+            <svg
+              class="icon--sm"
+            >
+              <use
+                xlink:href="sprite.svg#menu"
+              />
+            </svg>
+            <svg
+              class="icon--sm"
+            >
+              <use
+                xlink:href="sprite.svg#user"
+              />
+            </svg>
+          </button>
+        </div>
+      </header>
+      <nav
+        class="sidebar "
+      >
+        <header
+          class="sidebar__header"
+        >
+          <button
+            class="sidebar__btn"
+            type="button"
+          >
+            <svg
+              class="icon--md"
+            >
+              <use
+                xlink:href="sprite.svg#x"
+              />
+            </svg>
+          </button>
+          <a
+            class="sidebar__logo"
+            href="/"
+          >
+            <div
+              class="logo"
+            >
+              <svg
+                class="icon--lg"
+              >
+                <use
+                  xlink:href="sprite.svg#logo"
+                />
+              </svg>
+              <span
+                class="logo__text"
+              >
+                Home Sharing
+              </span>
+            </div>
+          </a>
+        </header>
+        <div
+          class="sidebar__search"
+        >
+          <form
+            class="search"
+          >
+            <input
+              class="search__input"
+              placeholder="Search destinations..."
+              type="text"
+            />
+            <button
+              class="search__btn"
+              type="submit"
+            >
+              <svg
+                class="icon--sm"
+              >
+                <use
+                  xlink:href="sprite.svg#search"
+                />
+              </svg>
+            </button>
+          </form>
+        </div>
+        <div
+          class="sidebar__content"
+        >
+          <h3
+            class="sidebar__title"
+          >
+            For Guests
+          </h3>
+          <ul
+            class="sidebar__list"
+          >
+            <li
+              class="sidebar__item"
+            >
+              <a
+                aria-current="page"
+                class="sidebar__link sidebar__link--active"
+                href="/"
+              >
+                <div
+                  class="sidebar__link-content"
+                >
+                  <svg
+                    class="icon--md"
+                  >
+                    <use
+                      xlink:href="sprite.svg#globe"
+                    />
+                  </svg>
+                  <span>
+                    Find a home
+                  </span>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <div
+            class="sidebar__legal"
+          >
+            © 2022 by HomeSharing. All rights reserved.
+          </div>
+        </div>
+      </nav>
+      <main
+        class="main"
+      >
+        <div
+          class="homepage"
+        >
+          <div
+            class="homepage__top"
+          >
+            <div
+              class="category-selector indiana-scroll-container indiana-scroll-container--hide-scrollbars"
+            >
+              <button
+                class="category-selector-btn category-selector-btn--active"
+                type="button"
+              >
+                All
+              </button>
+            </div>
+          </div>
+          <div
+            class="spinner spinner--md"
+          >
+            <div
+              class="spinner__content"
+            />
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>,
+  "container": <div>
+    <header
+      class="header"
+    >
+      <div
+        class="header__start"
+      >
+        <button
+          class="header__btn header__hamburger-btn"
+          type="button"
+        >
+          <svg
+            class="icon--md"
+          >
+            <use
+              xlink:href="sprite.svg#menu"
+            />
+          </svg>
+        </button>
+        <a
+          class="header__logo"
+          href="/"
+        >
+          <div
+            class="logo"
+          >
+            <svg
+              class="icon--lg"
+            >
+              <use
+                xlink:href="sprite.svg#logo"
+              />
+            </svg>
+            <span
+              class="logo__text"
+            >
+              Home Sharing
+            </span>
+          </div>
+        </a>
+      </div>
+      <div
+        class="header__center"
+      >
+        <form
+          class="search"
+        >
+          <input
+            class="search__input"
+            placeholder="Search destinations..."
+            type="text"
+          />
+          <button
+            class="search__btn"
+            type="submit"
+          >
+            <svg
+              class="icon--sm"
+            >
+              <use
+                xlink:href="sprite.svg#search"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+      <div
+        class="header__end"
+      >
+        <button
+          class="header__auth-btn"
+          type="button"
+        >
+          <svg
+            class="icon--sm"
+          >
+            <use
+              xlink:href="sprite.svg#menu"
+            />
+          </svg>
+          <svg
+            class="icon--sm"
+          >
+            <use
+              xlink:href="sprite.svg#user"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <nav
+      class="sidebar "
+    >
+      <header
+        class="sidebar__header"
+      >
+        <button
+          class="sidebar__btn"
+          type="button"
+        >
+          <svg
+            class="icon--md"
+          >
+            <use
+              xlink:href="sprite.svg#x"
+            />
+          </svg>
+        </button>
+        <a
+          class="sidebar__logo"
+          href="/"
+        >
+          <div
+            class="logo"
+          >
+            <svg
+              class="icon--lg"
+            >
+              <use
+                xlink:href="sprite.svg#logo"
+              />
+            </svg>
+            <span
+              class="logo__text"
+            >
+              Home Sharing
+            </span>
+          </div>
+        </a>
+      </header>
+      <div
+        class="sidebar__search"
+      >
+        <form
+          class="search"
+        >
+          <input
+            class="search__input"
+            placeholder="Search destinations..."
+            type="text"
+          />
+          <button
+            class="search__btn"
+            type="submit"
+          >
+            <svg
+              class="icon--sm"
+            >
+              <use
+                xlink:href="sprite.svg#search"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+      <div
+        class="sidebar__content"
+      >
+        <h3
+          class="sidebar__title"
+        >
+          For Guests
+        </h3>
+        <ul
+          class="sidebar__list"
+        >
+          <li
+            class="sidebar__item"
+          >
+            <a
+              aria-current="page"
+              class="sidebar__link sidebar__link--active"
+              href="/"
+            >
+              <div
+                class="sidebar__link-content"
+              >
+                <svg
+                  class="icon--md"
+                >
+                  <use
+                    xlink:href="sprite.svg#globe"
+                  />
+                </svg>
+                <span>
+                  Find a home
+                </span>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <div
+          class="sidebar__legal"
+        >
+          © 2022 by HomeSharing. All rights reserved.
+        </div>
+      </div>
+    </nav>
+    <main
+      class="main"
+    >
+      <div
+        class="homepage"
+      >
+        <div
+          class="homepage__top"
+        >
+          <div
+            class="category-selector indiana-scroll-container indiana-scroll-container--hide-scrollbars"
+          >
+            <button
+              class="category-selector-btn category-selector-btn--active"
+              type="button"
+            >
+              All
+            </button>
+          </div>
+        </div>
+        <div
+          class="spinner spinner--md"
+        >
+          <div
+            class="spinner__content"
+          />
+        </div>
+      </div>
+    </main>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

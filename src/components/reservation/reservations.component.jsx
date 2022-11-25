@@ -65,7 +65,7 @@ const ReservationsComponent = () => {
             </section>
           ) : (
             <h4 className="reservations__text">
-              You have no reservations!
+              &mdash;&nbsp; No reservations &nbsp;&mdash;
             </h4>
           )
         }
