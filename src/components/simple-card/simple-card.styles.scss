@@ -1,0 +1,10 @@
+.simple-card {
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-cards);
+  padding: 1.6rem 2.4rem;
+
+  @media only screen and (min-width: 48em) {
+    border-radius: var(--border-radius);
+    padding: 1.6rem;
+  }
+}

@@ -1,0 +1,42 @@
+.reservations {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  width: 100%;
+  padding-top: 2.4rem;
+
+  &__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin-top: 2rem;
+    font-size: 2.8rem;
+  }
+
+  &__text {
+    width: 100%;
+    text-align: center;
+    padding: 4.8rem 0;
+  }
+
+  &__container {
+    display: grid;
+    grid-gap: 4rem 2.4rem;
+    grid-template-columns:
+      repeat(
+        auto-fit,
+        minmax(30rem, min-content)
+      );
+    justify-content: center;
+    margin-top: 2.4rem;
+
+    @media only screen and (min-width: 58em) {
+      justify-content: flex-start;
+    }
+  }
+}

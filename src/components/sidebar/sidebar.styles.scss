@@ -1,0 +1,207 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 85vw;
+  max-width: 29.35rem;
+  height: 100vh;
+  background-color: var(--color-cards-bg);
+  box-shadow: var(--shadow-cards);
+  transform: translateX(-100%);
+  visibility: hidden;
+  z-index: 70;
+  transition: all 0.5s;
+
+  @media only screen and (min-width: 48em) {
+    top: var(--header-height);
+    width: var(--sidebar-width-desktop);
+    height: calc(100vh - var(--header-height));
+    transform: translateX(0%);
+    visibility: visible;
+    z-index: 50;
+  }
+
+  &__header {
+    flex: 0 0 var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 1.2rem;
+
+    @media only screen and (min-width: 48em) {
+      display: none;
+    }
+
+    & > *:not(:last-child) {
+      margin-right: 0.8rem;
+    }
+  }
+
+  &__search {
+    padding-top: 2.4rem;
+
+    @media only screen and (min-width: 48em) {
+      display: none;
+    }
+  }
+
+  &__list {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2.4rem 0;
+
+    & > .sidebar__list:not(:last-of-type) {
+      border-bottom: var(--separator-line-1);
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: 0 2.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__link {
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 3px;
+      height: 100%;
+      background-color: var(--color-primary);
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scaleY(0);
+      transition:
+        transform 0.2s,
+        width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+        background-color 0.1s;
+    }
+
+    &:hover::before,
+    &--active::before {
+      width: 100%;
+      transform: scaleY(1);
+    }
+
+    &:active::before {
+      filter: brightness(1.05);
+    }
+
+    &--active,
+    &:active {
+      color: var(--color-white);
+    }
+
+    &-content {
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      position: relative;
+      padding: 1.2rem 2.4rem;
+      z-index: 10;
+
+      & > *:not(:last-child) {
+        margin-right: 1.2rem;
+      }
+    }
+  }
+
+  // &__item {
+  //   position: relative;
+
+  //   &:not(:last-child) {
+  //     margin-bottom: 0.5rem;
+  //   }
+
+  //   &::before {
+  //     content: '';
+  //     width: 3px;
+  //     height: 100%;
+  //     background-color: var(--color-primary);
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     transform: scaleY(0);
+  //     transition:
+  //       transform 0.2s,
+  //       width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+  //       background-color 0.1s;
+  //   }
+
+  //   &:hover::before,
+  //   &--active::before {
+  //     width: 100%;
+  //     transform: scaleY(1);
+  //   }
+
+  //   &:active::before {
+  //     filter: brightness(1.05);
+  //   }
+
+  //   &--active,
+  //   &:active {
+  //     color: var(--color-white);
+  //   }
+  // }
+
+  // &__link {
+  //   display: flex;
+  //   align-items: center;
+  //   text-transform: uppercase;
+  //   position: relative;
+  //   padding: 1.2rem 2.4rem;
+  //   z-index: 10;
+
+  //   & > *:not(:last-child) {
+  //     margin-right: 1.2rem;
+  //   }
+  // }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    transition: all 0.2s;
+    color: var(--color-text-primary);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__legal {
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--color-text-secondary);
+    padding: 1.2rem 1.2rem 0;
+    margin-top: auto;
+  }
+
+  &--active {
+    transform: translateX(0%);
+    visibility: visible;
+  }
+}

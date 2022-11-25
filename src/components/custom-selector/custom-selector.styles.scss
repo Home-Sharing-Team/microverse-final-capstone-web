@@ -1,0 +1,16 @@
+.custom-selector {
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 100px;
+  appearance: none;
+  background: url("../../assets/images/icons/chevron-down-sm-light.svg") no-repeat calc(100% - 1.2rem) 50%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  outline: none;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+
+  // &:focus {
+  //   outline-color: var(--color-primary-400);
+  // }
+}

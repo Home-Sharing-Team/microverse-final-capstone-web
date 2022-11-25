@@ -1,0 +1,9 @@
+.main {
+  margin-top: var(--header-height);
+  padding-bottom: 3.2rem;
+
+  @media only screen and (min-width: 48em) {
+    margin: var(--header-height) 0 0 var(--sidebar-width-desktop);
+    padding: 0 2.4rem 3.2rem;
+  }
+}

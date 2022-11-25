@@ -1,0 +1,38 @@
+.reservation-price-list {
+  > *:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2.4rem;
+    margin-bottom: 2.4rem;
+  }
+
+  &__list {
+    & > *:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+  }
+
+  &__heading {
+    text-decoration: underline;
+  }
+
+  &__value {
+    &--green {
+      font-weight: 600;
+      color: #008a05;
+    }
+  }
+
+  &__total,
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__total {
+    font-size: 1.6rem;
+    font-weight: 600;
+    // border-top: 1px solid #ddd;
+    // padding-top: 2.4rem;
+  }
+}

@@ -1,0 +1,22 @@
+.hdropdown {
+  position: fixed;
+  top: calc(var(--header-height) - 0.2rem);
+  right: 2.4rem;
+  width: 85vw;
+  max-width: 36rem;
+  max-height: calc(100vh - var(--header-height) - 6rem);
+  background-color: var(--color-white);
+  box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  padding: 1.6rem 0.8rem 0.8rem;
+  z-index: 60;
+  overflow-y: auto;
+  transition: all 0.2s;
+
+  &__title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    padding: 0 0.8rem;
+  }
+}
