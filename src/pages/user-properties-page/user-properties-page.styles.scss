@@ -9,5 +9,18 @@
 
   &__content {
     margin-top: 3.2rem;
+    padding: 0 2.4rem;
+
+    @media only screen and (min-width: 48em) {
+      padding: 0;
+    }
+  }
+
+  &__text {
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 1.6rem 0 4.8rem;
   }
 }

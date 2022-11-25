@@ -96,7 +96,15 @@ export function UserPropertiesPage() {
         </SimpleCard>
 
         <div className="user-properties__content">
-          <PropertiesGrid properties={propertiesToShow} isListing={false} />
+          {
+              propertiesToShow.length > 0 ? (
+                <PropertiesGrid properties={propertiesToShow} isListing={false} />
+              ) : (
+                <p className="user-properties__text">
+                  &mdash;&nbsp; No properties &nbsp;&mdash;
+                </p>
+              )
+            }
         </div>
       </section>
     )
